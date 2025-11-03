@@ -1,13 +1,15 @@
 "use client"
 
 import { FaHtml5, FaReact, FaCss3, FaGitAlt, FaGithub, FaFigma, FaTrello } from "react-icons/fa"
-import { FaFlutter, FaGraduationCap } from "react-icons/fa6";
+import { FaFlutter, FaGraduationCap,FaDartLang } from "react-icons/fa6";
 import { TbBrandKotlin } from "react-icons/tb";
 import { RiFirebaseFill, RiSupabaseFill, RiJavascriptFill, RiNextjsFill } from "react-icons/ri";
 import { VscVscode } from "react-icons/vsc";
 import { SiAndroidstudio, SiClickup, SiCanva, SiPostman, SiVercel, SiFramer, SiTailwindcss } from "react-icons/si";
 import { DiMysql } from "react-icons/di";
 import { LuActivity } from "react-icons/lu";
+import { BiLogoTypescript } from "react-icons/bi";
+
 
 
 
@@ -55,7 +57,7 @@ const experience = {
             ]
         },
         {
-            company: 'PT Damai Nusa Abadi',
+            company: 'PT Damai Nusa Abadi (DNA Group - Divisi IT DMB)',
             position: 'Flutter Developer',
             duration: 'Okt 2024 - Sep 25 | Hybrid | Full Time',
             jobdesc: [
@@ -108,7 +110,7 @@ const education = {
             achivement: ''
         },
         {
-            institution: 'Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka',
+            institution: 'Studi Independen by KampusMerdeka with Dicoding Indonesia',
             degree: 'Multi-Platform (Flutter) and Back-End (Node.Js)',
             duration: 'Aug 22 - Dec 22',
             gpa: '',
@@ -129,18 +131,7 @@ const skills = {
             icon: < TbBrandKotlin />,
             name: 'Kotlin'
         },
-        {
-            icon: < RiFirebaseFill />,
-            name: 'Firebase'
-        },
-        {
-            icon: < RiSupabaseFill />,
-            name: 'Supabase'
-        },
-        {
-            icon: < DiMysql />,
-            name: 'MySql'
-        },
+        
         {
             icon: < FaReact />,
             name: 'React Js'
@@ -148,14 +139,6 @@ const skills = {
         {
             icon: < RiNextjsFill />,
             name: 'Next Js'
-        },
-        {
-            icon: <FaHtml5 />,
-            name: 'HTML 5'
-        },
-        {
-            icon: <FaCss3 />,
-            name: 'CSS 3'
         },
         {
             icon: <SiTailwindcss />,
@@ -170,6 +153,26 @@ const skills = {
             name: 'Javascript'
         },
         {
+            icon: <BiLogoTypescript />,
+            name: 'Typescript'
+        },
+        {
+            icon: <FaDartLang />,
+            name: 'Dart'
+        },
+
+        {
+            icon: <FaHtml5 />,
+            name: 'HTML 5'
+        },
+        {
+            icon: <FaCss3 />,
+            name: 'CSS 3'
+        },
+        
+        
+        
+        {
             icon: <FaGitAlt />,
             name: 'Git'
         },
@@ -180,6 +183,18 @@ const skills = {
         {
             icon: <SiPostman />,
             name: 'Postman'
+        },
+        {
+            icon: < RiFirebaseFill />,
+            name: 'Firebase'
+        },
+        {
+            icon: < RiSupabaseFill />,
+            name: 'Supabase'
+        },
+        {
+            icon: < DiMysql />,
+            name: 'MySql'
         },
         {
             icon: <VscVscode />,
@@ -268,8 +283,8 @@ const Resume = () => {
                                                         <p>{item.company}</p>
                                                         <ul className="list-disc list-outside space-y-1 text-white/60">
                                                             {item.jobdesc.map((desc, index) => (
-                                                                <li key={index} className="py-1">
-                                                                    <span className="text-white/60">{index + 1}.</span> {desc}
+                                                                <li key={index} className="p-1 mx-5">
+                                                                    {desc}
                                                                 </li>
                                                             ))}
                                                         </ul>
@@ -298,7 +313,7 @@ const Resume = () => {
                                                     <span className="text-white/60">{item.duration}</span>
                                                     <h3 className="text-accent-hover text-xl leading-snug">{item.degree}</h3>
                                                     <div>
-                                                        <p>{item.institution}</p>
+                                                        <p className="leading-snug">{item.institution}</p>
                                                         <p className="text-white/60 text-xs">{item.gpa && `GPA ${item.gpa}`}</p>
                                                         <p className="text-white/60 text-xs">{item.achivement && `${item.achivement}`}</p>
                                                     </div>
