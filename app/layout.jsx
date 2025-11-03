@@ -11,8 +11,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "My Portfolio",
-  description: "Created with Next.js and Tailwind CSS v4",
+  title: "Fadhil Muhammad's Portfolio",
+  description: "Created with Next.js, Tailwind CSS v4, Motion.dev, Shadcn/UI, etc",
 };
 
 export default function RootLayout({ children }) {
