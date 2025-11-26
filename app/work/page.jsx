@@ -9,7 +9,7 @@ import { LuPaintbrushVertical, LuGrid2X2Plus } from "react-icons/lu";
 import { FaDartLang, FaFlutter } from "react-icons/fa6";
 import { FaGithub, FaReact, FaHtml5, FaCss3 } from "react-icons/fa";
 
-import { SiTensorflow, SiRedux, SiGooglegemini,SiAxios,SiMysql, SiGooglemaps, SiEslint,SiExpress,SiBulma, SiOpenstreetmap,SiKotlin, SiFlask, SiFastapi, SiKaggle, SiCodemagic, SiThemoviedatabase, SiTailwindcss, SiNextdotjs, SiFramer, SiJavascript, SiWhatsapp, SiShadcnui } from "react-icons/si";
+import { SiTensorflow, SiRedux, SiGooglegemini,SiAxios,SiMysql, SiGooglemaps, SiEslint,SiExpress,SiBulma, SiOpenstreetmap,SiKotlin, SiFlask, SiFastapi, SiKaggle, SiCodemagic, SiThemoviedatabase, SiTailwindcss, SiNextdotjs, SiFramer, SiJavascript, SiWhatsapp, SiShadcnui, SiTypescript, SiBun, SiHono, SiZod, SiPrisma } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
 import { BsArrowDownRight } from 'react-icons/bs'
 
@@ -220,6 +220,62 @@ const website = {
   title: 'Website',
   description: '-',
   projects: [
+        {
+      name: 'P3 ( Pembalian/Purchasing, Penjualan/Sales, Persediaan/Inventory )',
+      description: 'The P3 system manages purchasing, sales, and inventory within a unified platform. With structured recording, businesses can track stock and transactions accurately. This system helps improve operational efficiency and reduces data errors.',
+      demo: "",
+      preview: '/assets/img/p3.png',
+      techstack: [
+        {
+          icon: <SiNextdotjs />,
+          name: 'NextJs'
+        },
+        {
+          icon: <p className="text-sm text-center">Zustand</p>,
+          name: 'Zustand'
+        },
+        {
+          icon: <SiTailwindcss />,
+          name: 'Tailwind'
+        },
+        {
+          icon: <SiTypescript />,
+          name: 'Typescript'
+        },
+        {
+          icon: <SiShadcnui />,
+          name: 'Shadcn UI'
+        },
+        {
+          icon: <SiBun />,
+          name: 'Bun'
+        },
+        {
+          icon: <SiHono />,
+          name: 'Hono (Typescript)'
+        },
+        {
+          icon: <SiZod />,
+          name: 'Zod'
+        },
+        {
+          icon: <SiPrisma />,
+          name: 'Prisma'
+        },
+        {
+          icon: <SiMysql />,
+          name: 'MySql'
+        },
+       
+        
+      ],
+      specific: {
+        frontEnd: "Front-End",
+        frontEndTech: "Next Js, Typescript, Zustand, TanStack, Tailwind CSS",
+        backEnd: "Back-End",
+        backEndTech: "Bun, Hono, Prisma, Zod, MySql, Typescript"
+      }
+    },
     {
       name: 'Alpha Coffee Medan',
       description: "A coffee shop website with a unique design. Users can directly make orders by adding menus and then filling out the order form to be sent to the seller via WhatsApp.",
@@ -557,7 +613,14 @@ const Work = () => {
 
 
                         <h3 className="text-accent-hover text-xl leading-none mb-2 my-4">{item.name}</h3>
-                        <p className="text-white/70 mb-4 text-sm">{item.description}</p>
+                        <p className="text-white/70 text-sm mb-2">{item.description}</p>
+                        {
+                          item.specific != null && <p className="text-accent-hover/70 text-sm">{item.specific.frontEnd && 'Front-End : '} {item.specific.frontEndTech}</p>
+                        }
+                        {
+                          item.specific != null && <p className="text-accent-hover/70 text-sm">{item.specific.backEnd && 'Back-End : '} {item.specific.backEndTech}</p>
+                        }
+                        
                       </li>
 
                     )

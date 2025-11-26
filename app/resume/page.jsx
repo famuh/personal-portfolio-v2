@@ -1,11 +1,11 @@
 "use client"
 
-import { FaHtml5, FaReact, FaCss3, FaGitAlt, FaGithub, FaFigma, FaTrello } from "react-icons/fa"
+import { FaHtml5, FaReact, FaCss3, FaGitAlt, FaGithub, FaFigma, FaTrello, FaNodeJs } from "react-icons/fa"
 import { FaFlutter, FaGraduationCap,FaDartLang } from "react-icons/fa6";
 import { TbBrandKotlin } from "react-icons/tb";
 import { RiFirebaseFill, RiSupabaseFill, RiJavascriptFill, RiNextjsFill } from "react-icons/ri";
 import { VscVscode } from "react-icons/vsc";
-import { SiAndroidstudio, SiClickup, SiCanva, SiPostman, SiVercel, SiFramer, SiTailwindcss } from "react-icons/si";
+import { SiAndroidstudio, SiClickup, SiCanva, SiPostman, SiVercel, SiFramer, SiTailwindcss, SiBun, SiHono, SiExpress } from "react-icons/si";
 import { DiMysql } from "react-icons/di";
 import { LuActivity } from "react-icons/lu";
 import { BiLogoTypescript } from "react-icons/bi";
@@ -169,6 +169,7 @@ const skills = {
             icon: <FaCss3 />,
             name: 'CSS 3'
         },
+
         
         
         
@@ -183,6 +184,22 @@ const skills = {
         {
             icon: <SiPostman />,
             name: 'Postman'
+        },
+        {
+            icon: <FaNodeJs />,
+            name: 'NodeJs'
+        },
+        {
+            icon: <SiBun />,
+            name: 'Bun'
+        },
+        {
+            icon: <SiHono />,
+            name: 'Hono (Typescript)'
+        },
+        {
+            icon: <SiExpress />,
+            name: 'Express Js'
         },
         {
             icon: < RiFirebaseFill />,
