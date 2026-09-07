@@ -4,7 +4,7 @@
 export const heroCopy = {
   overline: "a personal software studio",
   wordmark: "PAMULAB",
-  straps: ["SOFTWARE ENGINEER", "MEDAN, INDONESIA", "EST. 2023"],
+  straps: ["DESIGNER", "SOFTWARE ENGINEER", "ANALYST"],
 };
 
 export const revealCopy = {

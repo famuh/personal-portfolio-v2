@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import PlaceholderPhoto from "./PlaceholderPhoto";
+import Image from "next/image"
+
 
 export default function RevealStage({ headline, caption, bodoniFont }) {
   const reduced = useReducedMotion();
@@ -43,7 +45,13 @@ export default function RevealStage({ headline, caption, bodoniFont }) {
     <section ref={ref} className="relative h-[320svh] bg-primary">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ clipPath }}>
-          <PlaceholderPhoto tone="accent" className="h-full w-full" label="photograph — pending" />
+          {/* <Image src="/assets/logo/logo-text.png" fill alt="Initial Logo" className="h-full w-full cover" /> */}
+          {/* <Link href="/"> */}
+          <div className="h-full w-full flex items-center justify-center">
+            <h1 className="text-9xl font-semibold">Pamulab<span className="text-accent-hover">.</span></h1>
+
+          </div>
+          {/* </Link> */}
         </motion.div>
 
         <motion.h2

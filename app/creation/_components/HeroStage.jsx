@@ -69,7 +69,7 @@ export default function HeroStage({ overline, wordmark, straps, bodoniFont, cave
     <section ref={ref} className="relative h-[300svh] bg-primary">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ scale: photoScale, y: photoY }}>
-          <Image src="/assets/design/lab.png" fill alt="aa" className="h-full w-full" />
+          <Image src="/assets/Lanyard/lanyard.svg" fill alt="Initial Logo" className="h-full w-full cover" />
         </motion.div>
 
         <Overlay />
