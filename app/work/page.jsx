@@ -20,7 +20,7 @@ import { TooltipContent } from "@radix-ui/react-tooltip";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-const mobile = {
+export const mobile = {
   title: 'Mobile',
   description: '-',
   projects: [
@@ -216,7 +216,7 @@ const mobile = {
   ]
 }
 
-const website = {
+export const website = {
   title: 'Website',
   description: '-',
   projects: [
@@ -503,7 +503,7 @@ const design = {
   ]
 }
 
-const others = {
+export const others = {
   title: 'Other',
   description: '',
   projects: [

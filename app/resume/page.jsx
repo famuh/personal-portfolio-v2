@@ -5,7 +5,7 @@ import { FaFlutter, FaGraduationCap,FaDartLang } from "react-icons/fa6";
 import { TbBrandKotlin } from "react-icons/tb";
 import { RiFirebaseFill, RiSupabaseFill, RiJavascriptFill, RiNextjsFill } from "react-icons/ri";
 import { VscVscode } from "react-icons/vsc";
-import { SiAndroidstudio, SiClickup, SiCanva, SiPostman, SiVercel, SiFramer, SiTailwindcss, SiBun, SiHono, SiExpress } from "react-icons/si";
+import { SiAndroidstudio, SiClickup, SiCanvas, SiPostman, SiVercel, SiFramer, SiTailwindcss, SiBun, SiHono, SiExpress } from "react-icons/si";
 import { DiMysql } from "react-icons/di";
 import { LuActivity } from "react-icons/lu";
 import { BiLogoTypescript } from "react-icons/bi";
@@ -238,7 +238,7 @@ const skills = {
             name: 'Figma'
         },
         {
-            icon: <SiCanva />,
+            icon: <SiCanvas />,
             name: 'Canva'
         },
 
