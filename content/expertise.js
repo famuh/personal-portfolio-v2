@@ -109,6 +109,7 @@ export const stack = [
 // Organisations from the CV (text only, no logos).
 export const proofStrip = [
   "Semesta Agri Solusi",
+  "Samta Cloud",
   "DNA Group",
   "BEKUP × Dicoding",
   "Bangkit Academy",

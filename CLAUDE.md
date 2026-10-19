@@ -40,4 +40,4 @@ No test suite. To add a shadcn/ui component use the shadcn CLI (`components.json
 
 **Images**: optimized WebP copies live in `public/assets/opt/` (originals in `public/assets/img|design` are unused); SVG illustrations in `public/assets/illustrations/`. Firebase Storage URLs used by the old site return HTTP 402 — don't reference them.
 
-**Legacy files (unused, safe to delete)**: `app/creation/_components/*`, `components/{StairEffect,Stair,PageTransition,Stats,Photo,ImagePreview,Social,kinetic-grid,TextHighlight}.jsx`, `components/ui/{select,tabs,scroll-area}.jsx` (these import packages that were removed), `public/assets/img/*`, `public/assets/design/*`, `public/*.svg` boilerplate.
+**Legacy files (unused, safe to delete)**: `app/creation/_components/*`, `components/{StairEffect,Stair,PageTransition,Stats,Photo,ImagePreview,Social}.jsx`, `components/ui/{select,tabs,scroll-area}.jsx` (these import packages that were removed), `public/assets/img/*`, `public/assets/design/*`, `public/*.svg` boilerplate.

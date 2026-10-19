@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 instruction.txt
+# personal notes and source material (not part of the site)
+notes.txt
+newest-project.txt
+public/assets/resume/Profile_Fadhil.pdf
