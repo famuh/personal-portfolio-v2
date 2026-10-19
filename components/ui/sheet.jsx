@@ -2,8 +2,7 @@
 
 import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
-// import { XIcon } from "lucide-react"
-import { IoMdClose } from 'react-icons/io'
+import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -39,7 +38,7 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-overlay backdrop-blur-sm",
         className
       )}
       {...props} />
@@ -58,9 +57,9 @@ function SheetContent({
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          "bg-primary data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+          "bg-canvas text-ink data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
           side === "right" &&
-            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 sm:max-w-sm",
+            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-full border-l sm:max-w-sm",
           side === "left" &&
             "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
           side === "top" &&
@@ -72,10 +71,9 @@ function SheetContent({
         {...props}>
         {children}
         <SheetPrimitive.Close
-          className=" absolute right-8 transition-opacity  outline-none">
-          {/* <XIcon className="size-4" /> */}
-          <IoMdClose  className="text-3xl text-accent-hover"/>
-          <span className="sr-only">Close</span>
+          className="absolute right-(--gutter) top-4 flex size-10 items-center justify-center rounded-chip border border-line text-ink">
+          <XIcon aria-hidden="true" className="size-4" />
+          <span className="sr-only">Close menu</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
     </SheetPortal>

@@ -4,40 +4,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal portfolio site (Fadhil Muhammad / "Famuh") built with Next.js App Router, JavaScript (`.jsx`, no TypeScript despite the `@/*` path alias in `jsconfig.json`), Tailwind CSS v4, shadcn/ui, Radix UI primitives, and Framer Motion for page/route animations.
+Personal portfolio of Fadhil Muhammad ("Famuh", studio name Pamulab), positioned as **IT Consultant / Senior Developer / Analyst**. Next.js 15 App Router, JavaScript (`.jsx`, no TypeScript despite the `@/*` alias in `jsconfig.json`), Tailwind CSS v4, shadcn/ui + Radix primitives, framer-motion, next-themes. The redesign rationale (reference analysis, sitemap, animation list) is in `docs/REDESIGN-PLAN.md`.
 
 ## Commands
 
-Package manager is **pnpm** (pinned via `packageManager` in `package.json`; `pnpm-lock.yaml` is the lockfile of record — ignore/remove any stray `package-lock.json`).
+Package manager is **pnpm** (pinned via `packageManager`; `pnpm-lock.yaml` is the lockfile of record — never commit a `package-lock.json`).
 
-- `pnpm dev` — start dev server (Turbopack) at localhost:3000
-- `pnpm build` — production build (Turbopack)
-- `pnpm start` — run the production build
-- `pnpm lint` — run ESLint (`eslint.config.mjs`, flat config extending `next/core-web-vitals`)
+- `pnpm dev` — dev server (Turbopack) at localhost:3000. Placeholder content is visibly marked here (see below).
+- `pnpm build` / `pnpm start` — production build / serve
+- `pnpm lint` — ESLint (flat config, `next/core-web-vitals`)
 
-There is no test suite/framework configured in this repo.
-
-To add a shadcn/ui component, use the shadcn CLI — config lives in `components.json` (style: `new-york`, base color: `slate`, RSC enabled, icon library: `lucide`).
+No test suite. To add a shadcn/ui component use the shadcn CLI (`components.json`: new-york, RSC, lucide).
 
 ## Architecture
 
-**Routing**: Next.js App Router under `app/`. Each route is a single self-contained page component with no shared data-fetching layer: `app/page.jsx` (home/hero), `app/work/page.jsx`, `app/resume/page.jsx`, `app/services/page.jsx`, `app/contact/page.jsx`, `app/social/page.jsx`. The nav link list (`components/Nav.jsx`) currently only exposes home/services/resume/work — `/contact` and `/social` are unlinked routes.
+**Routes** (`app/`): `/` (home story), `/work` (case studies + filterable archive + design gallery), `/work/[slug]` (static case-study pages via `generateStaticParams`), `/about`, `/contact`, plus `sitemap.js`, `robots.js`, `opengraph-image.jsx`, `icon.svg`, `not-found.jsx`. Retired routes `/resume`, `/services`, `/creation`, `/social` are 308-redirected in `next.config.mjs` (their `page.jsx` are redirect stubs). Pages stay server components so they can export `metadata`; interactivity lives in small client components.
 
-**Root layout chrome** (`app/layout.jsx`): wraps every page with `Header`, then two independent, pathname-keyed transition effects that both replay on every route change:
-- `StairEffect.jsx` / `Stair.jsx` — full-screen "stair step" wipe overlay (z-40, pointer-events-none).
-- `PageTransition.jsx` — a fading black overlay using `AnimatePresence`, keyed on `usePathname()`.
+**Content layer** — all copy and data is in `content/`, never in components:
+- `site.js` (profile, nav, socials, SEO), `projects.js` (case studies, archive, design gallery), `experience.js` (jobs, education, recognition), `expertise.js` (capabilities, process, stack, FAQ, proof strip).
+- `placeholders.js` holds **every** piece of dummy data (each marked `// TODO: ganti dengan data asli`). Case studies list which of their fields are placeholders in a `placeholders: [...]` array. Components wrap such values in `components/shared/Ph.jsx`, which draws a dashed amber underline in dev and renders nothing extra in production.
 
-Both are separate, uncoordinated `AnimatePresence` trees reacting to the same pathname — when touching route-transition behavior, changes typically need to be mirrored in both files.
+**Design system** — `app/globals.css` is the single source of design tokens: color (`--canvas`, `--surface`, `--ink`, `--ink-muted`, `--line`, `--accent`, `--accent-ink`, …) defined for `:root` (light) and `.dark`, exposed as Tailwind utilities (`bg-canvas`, `text-ink`, `text-accent-ink`…); fluid type scale (`text-display`, `text-h1..h3`, `text-statement`, `text-lead`, `eyebrow`); radius (`rounded-chip/control/card/panel`); elevation (`shadow-card/lift`); motion (`ease-out-expo`, `--dur-*`). shadcn token names are aliased to the brand palette. Use tokens — no raw hex/px in components. Look: white canvas, one sans family (Geist for headings and body, Geist Mono for small details), headings get weight/tracking from the `text-*` tokens. Extra utilities: `glass` (frosted panel), `bg-mesh` (soft mint/sky/lime gradient), and the `--mat*` tokens used by `components/shared/CuttingMat.jsx` (the cutting-mat background behind the case-study bento). Keep gradients static — animating blurred layers measurably hurt mobile performance. Copy style: plain sentences, no em-dash flourishes, no numbered section labels.
 
-**Content is hardcoded in components, not a CMS/DB.** Portfolio content (project lists, tech stacks, descriptions) lives as plain JS objects/arrays directly inside page files — most notably `app/work/page.jsx`, which defines `mobile`, `website`, `design`, and `others` objects (each with a `projects`/`photos` array) rendered into `Tabs` (Radix) panels. To add or edit a project entry, edit these objects directly; there is no separate data layer.
+**Theme**: `components/layout/Providers.jsx` — next-themes (`class` attribute, default `system`, persisted) + `LazyMotion` (features loaded async from `lib/motion-features.js`, **`strict`: use `m.*`, never `motion.*`**) + `MotionConfig reducedMotion="user"`.
 
-**Styling**: Tailwind v4 via `@theme` in `app/globals.css`. The site's actual visual identity uses a small custom token set defined there — `--color-primary` (`#1c1c22`), `--color-accent` / `--color-accent-hover` (`#00ff99` / `#00e187`) — plus custom utility classes `.h1`/`.h2`/`.h3` and `.text-outline-hover`. This is layered on top of a separate, mostly-unused shadcn/ui oklch theme token set (`--background`, `--card`, `--sidebar-*`, etc.) generated by the shadcn CLI — prefer the custom `primary`/`accent-hover` tokens and `.h1`/`.h2`/`.h3` classes for on-brand styling rather than the shadcn defaults.
+**Motion rules**: JS motion values mirror the CSS tokens in `lib/motion.js`. Above-the-fold opening animations are pure CSS (`animate-rise`, `animate-mask-up` with a `--delay` style var) so they run before hydration; never wrap above-the-fold/LCP content in `<Reveal>` (it's hidden until JS). Below the fold use `components/shared/Reveal.jsx`. A global `prefers-reduced-motion` rule in `globals.css` collapses CSS motion. Route transition is a single fade in `app/template.jsx` (skipped on first load).
 
-**Components**:
-- `components/ui/*` — shadcn/ui primitives (button, dialog, input, scroll-area, select, sheet, tabs, textarea, tooltip), generally left as generated.
-- `components/*.jsx` — site-specific components (`Header`, `Nav`, `MobileNav`, `Photo`, `Social`, `Stats`, `ImagePreview`, plus the transition components above).
-- `lib/utils.js` — single `cn()` helper (clsx + tailwind-merge), used throughout for conditional class merging.
+**Components**: `components/home/*` (homepage sections; `CaseStudyBento` + `CaseStudyCard` are shared with /work), `components/shared/*` (Reveal, SectionHeading, PageIntro, Timeline, Chip, CountUp, CopyEmail, SocialLinks, Ph, CuttingMat), `components/layout/*` (Providers, ThemeToggle, Footer), `components/Header.jsx` / `Nav.jsx` / `MobileNav.jsx`, `components/Lanyard.jsx` (3D ID card; loaded by `home/HeroCard.jsx` only on capable desktops after first user interaction, static image otherwise). `components/ui/*` are shadcn primitives restyled with tokens.
 
-**Images**: served either from `public/assets/...` or from Firebase Storage (`firebasestorage.googleapis.com`, allow-listed in `next.config.mjs` under `images.domains`). Some "demo" links point directly at Firebase-hosted video files rather than live app URLs.
+**Images**: optimized WebP copies live in `public/assets/opt/` (originals in `public/assets/img|design` are unused); SVG illustrations in `public/assets/illustrations/`. Firebase Storage URLs used by the old site return HTTP 402 — don't reference them.
 
-**Path alias**: `@/*` → repo root (`jsconfig.json`), matching the shadcn `components.json` aliases (`@/components`, `@/lib`, `@/components/ui`, `@/hooks` — note `hooks/` doesn't exist yet).
+**Legacy files (unused, safe to delete)**: `app/creation/_components/*`, `components/{StairEffect,Stair,PageTransition,Stats,Photo,ImagePreview,Social,kinetic-grid,TextHighlight}.jsx`, `components/ui/{select,tabs,scroll-area}.jsx` (these import packages that were removed), `public/assets/img/*`, `public/assets/design/*`, `public/*.svg` boilerplate.

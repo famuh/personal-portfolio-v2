@@ -1,73 +1,67 @@
-"use client"
+"use client";
 
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { usePathname } from 'next/navigation'
-import Link from 'next/link'
-import { CiMenuFries } from 'react-icons/ci'
-import Nav from './Nav'
-
-const links = [
-    {
-        name: 'home',
-        path: "/"
-    },
-    {
-        name: 'services',
-        path: "/services"
-    },
-    {
-        name: 'about',
-        path: "/resume"
-    },
-    {
-        name: 'work',
-        path: "/work"
-    },
-    {
-        name: 'creation',
-        path: "/creation"
-    },
-    // {
-    //     name: 'contact',
-    //     path: "/contact"
-    // },
-]
-
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, Download } from "lucide-react";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { navLinks, profile } from "@/content/site";
+import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
+import SocialLinks from "./shared/SocialLinks";
+import { isActive } from "./Nav";
 
 const MobileNav = () => {
-    const pathName = usePathname()
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
-    return (
-        <Sheet>
-            <SheetTitle>
-                {/* Supaya ga muncul warning */}
-            </SheetTitle>
-            <SheetTrigger className="flex justify-center items-center">
-                <CiMenuFries className="text-[32px] text-accent-hover"/>
-            </SheetTrigger>
-            <SheetContent>
-                {/* logo */}
-                <div className="mt-32 mb-40 text-center text-2xl">
-                    <Link href="/">
-                        <h1 className="text-4xl font-semibold">Pamulab<span className="text-accent-hover">.</span></h1>
-                    </Link>
-                </div>
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger
+        aria-label="Open menu"
+        className="flex size-10 items-center justify-center rounded-chip border border-line text-ink"
+      >
+        <Menu aria-hidden="true" className="size-4" />
+      </SheetTrigger>
+      <SheetContent className="flex flex-col justify-between px-(--gutter) pb-10 pt-24">
+        <SheetTitle className="sr-only">Navigation</SheetTitle>
+        <SheetDescription className="sr-only">Site pages and contact links</SheetDescription>
 
-                {/* Nav */}
-                <nav className="flex flex-col justify-center items-center gap-8">
-                    {
-                        links.map((link, index) => {
-                            return <Link href={link.path} key={index} className={`${link.path == pathName && 'text-accent-hover border-accent-hover border-b-2'} text-xl capitalize hover:text-accent-hover transition-all`}>{link.name}</Link>
+        <nav aria-label="Mobile">
+          <ul className="flex flex-col gap-2">
+            {[{ label: "Home", href: "/" }, ...navLinks].map((link, i) => {
+              const active = link.href === "/" ? pathname === "/" : isActive(pathname, link.href);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "flex items-baseline gap-4 text-h2",
+                      active ? "text-ink" : "text-ink-muted hover:text-ink"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-                        })
-                    }
-                </nav>
+        <div className="flex flex-col gap-6">
+          <Button asChild size="lg" className="w-full">
+            <a href={profile.cv} download>
+              <Download aria-hidden="true" />
+              Download CV
+            </a>
+          </Button>
+          <SocialLinks />
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+};
 
-
-
-            </SheetContent>
-        </Sheet>
-    )
-}
-
-export default MobileNav
+export default MobileNav;

@@ -1,48 +1,39 @@
+"use client";
 
-"use client"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { navLinks } from "@/content/site";
+import { cn } from "@/lib/utils";
 
-import Link from "next/link"
-import { usePathname  } from "next/navigation"
-
-const links = [
-    {
-        name: 'home',
-        path:"/"
-    },
-     {
-        name: 'services',
-        path:"/services"
-    },
-     {
-        name: 'about',
-        path:"/resume"
-    },
-     {
-        name: 'work',
-        path:"/work"
-    },
-    {
-        name: 'creation',
-        path:"/creation"
-    },
-    //  {
-    //     name: 'contact',
-    //     path:"/contact"
-    // },
-]
+export const isActive = (pathname, href) => pathname === href || pathname.startsWith(`${href}/`);
 
 const Nav = () => {
-    const pathname = usePathname()
+  const pathname = usePathname();
 
-    console.log(pathname);
-    
   return (
-    <nav className="flex gap-8">
-        {links.map((link, index) => {
-            return <Link href={link.path} key={index} className={`${link.path === pathname && "text-accent-hover border-b-2 border-accent-hover"} capitalize font-medium hover:text-accent-hover transition-all`}>{link.name}</Link>
+    <nav aria-label="Main">
+      <ul className="flex items-center gap-7">
+        {navLinks.map((link) => {
+          const active = isActive(pathname, link.href);
+          return (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "relative text-sm font-medium transition-colors duration-(--dur-base) hover:text-ink",
+                  "after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:bg-ink after:transition-transform after:duration-(--dur-base) after:ease-out-expo",
+                  active ? "text-ink after:scale-x-100" : "text-ink-muted after:scale-x-0 hover:after:scale-x-100"
+                )}
+              >
+                {link.label}
+              </Link>
+            </li>
+          );
         })}
+      </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

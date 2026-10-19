@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="t">
+  <title id="t">Illustration: a facilitator connected to pairs of learners, with weekly sessions marked on a timeline</title>
+  <rect width="1600" height="1000" fill="#ebe6da"/>
+  <circle cx="160" cy="880" r="260" fill="none" stroke="#0b6b43" stroke-opacity=".08" stroke-width="80"/>
+
+  <!-- connections -->
+  <g stroke="#17160f" stroke-opacity=".25" stroke-width="3" fill="none">
+    <path d="M800 330 C 620 380, 470 430, 360 520"/>
+    <path d="M800 330 C 720 420, 680 470, 640 560"/>
+    <path d="M800 330 C 880 420, 920 470, 960 560"/>
+    <path d="M800 330 C 980 380, 1130 430, 1240 520"/>
+  </g>
+  <!-- peer pair links -->
+  <g stroke="#3ddc97" stroke-width="6" stroke-linecap="round">
+    <line x1="310" y1="580" x2="410" y2="580"/>
+    <line x1="590" y1="620" x2="690" y2="620"/>
+    <line x1="910" y1="620" x2="1010" y2="620"/>
+    <line x1="1190" y1="580" x2="1290" y2="580"/>
+  </g>
+
+  <!-- facilitator -->
+  <circle cx="800" cy="260" r="86" fill="#17160f"/>
+  <circle cx="800" cy="236" r="28" fill="#f4f1ea"/>
+  <path d="M752 302 a48 40 0 0 1 96 0z" fill="#f4f1ea"/>
+  <circle cx="862" cy="200" r="16" fill="#3ddc97"/>
+
+  <!-- learners -->
+  <g fill="#fbfaf6" stroke="#17160f" stroke-width="3">
+    <circle cx="300" cy="580" r="48"/><circle cx="420" cy="580" r="48"/>
+    <circle cx="580" cy="620" r="48"/><circle cx="700" cy="620" r="48"/>
+    <circle cx="900" cy="620" r="48"/><circle cx="1020" cy="620" r="48"/>
+    <circle cx="1180" cy="580" r="48"/><circle cx="1300" cy="580" r="48"/>
+  </g>
+  <g fill="#17160f">
+    <circle cx="300" cy="568" r="14"/><circle cx="420" cy="568" r="14"/>
+    <circle cx="580" cy="608" r="14"/><circle cx="700" cy="608" r="14"/>
+    <circle cx="900" cy="608" r="14"/><circle cx="1020" cy="608" r="14"/>
+    <circle cx="1180" cy="568" r="14"/><circle cx="1300" cy="568" r="14"/>
+  </g>
+
+  <!-- weekly timeline -->
+  <line x1="240" y1="820" x2="1360" y2="820" stroke="#17160f" stroke-opacity=".3" stroke-width="3"/>
+  <g fill="#17160f">
+    <circle cx="240" cy="820" r="10"/><circle cx="380" cy="820" r="10"/><circle cx="520" cy="820" r="10"/>
+    <circle cx="660" cy="820" r="10"/><circle cx="800" cy="820" r="10"/><circle cx="940" cy="820" r="10"/>
+    <circle cx="1080" cy="820" r="10"/><circle cx="1220" cy="820" r="10"/>
+  </g>
+  <circle cx="1360" cy="820" r="16" fill="#3ddc97" stroke="#17160f" stroke-width="3"/>
+  <text x="240" y="880" font-family="ui-monospace, Menlo, monospace" font-size="26" letter-spacing="4" fill="#57544a">WEEKLY SESSIONS · PEER PROGRAMMING · JOURNAL REVIEW</text>
+</svg>

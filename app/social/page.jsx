@@ -1,9 +1,6 @@
-import React from 'react'
+import { permanentRedirect } from "next/navigation";
 
-const Social = () => {
-  return (
-    <div>Social</div>
-  )
+// Retired route — social links live on /contact and in the footer.
+export default function SocialRedirect() {
+  permanentRedirect("/contact");
 }
-
-export default Social
