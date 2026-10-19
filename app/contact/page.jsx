@@ -5,7 +5,6 @@ import PageIntro from "@/components/shared/PageIntro";
 import SectionHeading from "@/components/shared/SectionHeading";
 import Reveal from "@/components/shared/Reveal";
 import CopyEmail from "@/components/shared/CopyEmail";
-import Ph from "@/components/shared/Ph";
 import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata = {
@@ -20,7 +19,7 @@ export default function ContactPage() {
       <PageIntro
         eyebrow="Contact"
         title="Contact"
-        lead="Hiring for a consultant, senior developer or analyst role, or have a project in mind? A few lines is enough to start."
+        lead="A question about a system, a process that should be software, or a collaboration? A few lines is enough to start."
       >
         <CopyEmail />
       </PageIntro>
@@ -28,13 +27,13 @@ export default function ContactPage() {
       <section aria-label="Contact options" className="shell grid gap-14 pb-(--space-section) lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div className="flex flex-col gap-10">
           <Reveal className="flex flex-col gap-3 rounded-card border border-line bg-surface p-6">
-            <p className="eyebrow text-ink-muted">Availability</p>
+            <p className="eyebrow text-ink-muted">Currently</p>
             <p className="flex items-center gap-2.5 font-medium">
               <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
-              <Ph>{profile.availability.label}</Ph>
+              {profile.now}
             </p>
             <p className="text-sm text-ink-muted">
-              <Ph>{profile.availability.mode}</Ph> · {profile.timezone}
+              Not looking for a new role. Happy to talk about consulting questions and collaborations. {profile.location.split(",")[0]}, {profile.timezone}.
             </p>
           </Reveal>
 

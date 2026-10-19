@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { profile } from "@/content/site";
 import { Button } from "@/components/ui/button";
-import Ph from "@/components/shared/Ph";
 import HeroCard from "./HeroCard";
 
 // Opening sequence: badge, name (line mask), then the rest fades up. Pure CSS
@@ -17,7 +16,7 @@ export default function Hero() {
         <div className="relative z-10 flex flex-col gap-7">
           <p style={d(0)} className="animate-rise glass inline-flex w-fit items-center gap-2 rounded-chip px-3 py-1 text-sm">
             <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
-            <Ph>{profile.availability.label}</Ph>
+            {profile.now}
           </p>
 
           <h1 id="hero-title" className="text-display">
@@ -57,8 +56,8 @@ export default function Hero() {
               <dd className="font-medium">{profile.startedYear}</dd>
             </div>
             <div>
-              <dt className="text-ink-muted">Works</dt>
-              <dd className="font-medium"><Ph>{profile.availability.mode}</Ph></dd>
+              <dt className="text-ink-muted">Currently</dt>
+              <dd className="font-medium">Software Engineer</dd>
             </div>
           </dl>
         </div>

@@ -11,11 +11,11 @@ export default function FeaturedWork() {
           <SectionHeading
             id="work-title"
             eyebrow="Selected work"
-            title="Four projects, start to finish."
-            intro="A short preview of each. The case studies cover the problem, my role, the decisions and the results."
+            title="Recent work, start to finish."
+            intro="A short preview of each. The full case studies cover the problem, my role, the decisions and the results."
           />
           <Link href="/work" className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-ink-muted hover:text-ink">
-            All projects
+            All case studies
             <ArrowRight aria-hidden="true" className="size-4 transition-transform duration-(--dur-base) group-hover:translate-x-0.5" />
           </Link>
         </div>

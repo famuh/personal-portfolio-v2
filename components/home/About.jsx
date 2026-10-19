@@ -38,7 +38,7 @@ export default function About() {
             </p>
             <div className="flex flex-wrap items-end justify-between gap-4">
               <p className="measure text-sm text-ink-muted">
-                Self-ordering kiosks for a hospitality group, a purchasing and inventory platform, apps on the Play Store, and a Flutter cohort I helped teach.
+                Field and mill apps for palm oil companies, a product site for a plantation ERP, self-ordering kiosks, and a Flutter cohort I helped teach.
               </p>
               <Link href="/about" className="group inline-flex items-center gap-1.5 text-sm font-medium">
                 More about me

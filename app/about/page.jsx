@@ -10,7 +10,6 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import Reveal from "@/components/shared/Reveal";
 import Timeline from "@/components/shared/Timeline";
 import Chip from "@/components/shared/Chip";
-import Ph from "@/components/shared/Ph";
 import ScrollInkText from "@/components/home/ScrollInkText";
 
 export const metadata = {
@@ -69,13 +68,16 @@ export default function AboutPage() {
             text="I started in multimedia, studied informatics, and found that the most interesting part of software is the conversation before the code."
           />
           <Reveal as="p" index={1} className="measure text-ink-muted">
-            At DNA Group&apos;s software division I designed and built a self-ordering system for Android TV kiosks and tablets, plus attendance (face recognition, fake-GPS detection), offline POS and hotel, asset and multi-outlet management features. As a freelancer I take projects from requirement interviews and process diagrams all the way to production. The P3 purchasing, sales and inventory system is the clearest example.
+            Most of my recent work is for palm oil companies. GEMA Plantation takes estate work off paper with an offline Android app, a web CMS and an ERP integration. GEMA Factory brings mill maintenance onto phones. I also rebuilt the product website for Semesta Agro&apos;s plantation ERP.
+          </Reveal>
+          <Reveal as="p" index={1} className="measure text-ink-muted">
+            Before that, at DNA Group&apos;s software division I designed and built a self-ordering system for Android TV kiosks and tablets, plus attendance (face recognition, fake-GPS detection), offline POS and hotel, asset and multi-outlet management features. As a freelancer I take projects from requirement interviews and process diagrams all the way to production. The P3 purchasing, sales and inventory system is the clearest example.
           </Reveal>
           <Reveal as="p" index={2} className="measure text-ink-muted">
             Teaching helps too. As a Flutter facilitator for BEKUP × Dicoding, and earlier as a peer tutor and Best Graduate at Kampus Merdeka, I found that explaining a system clearly and designing it well take the same skill.
           </Reveal>
           <Reveal as="p" index={3} className="measure text-ink-muted">
-            Right now: <Ph>{profile.currentRole}</Ph>. <Ph>{profile.availability.label}</Ph>.
+            Right now I&apos;m a software engineer, and I lead GEMA Plantation and GEMA Factory: I go on site for field studies, gather requirements with clients and estate staff, estimate, present, train users, and support clients online and on site.
           </Reveal>
         </div>
       </section>
@@ -149,8 +151,8 @@ export default function AboutPage() {
               ))}
               {certifications.map((c) => (
                 <Reveal as="li" key={c.name} className="flex flex-col gap-1 py-5">
-                  <h3 className="text-lg font-semibold tracking-tight"><Ph>{c.name}</Ph></h3>
-                  <p className="text-sm text-ink-muted"><Ph>{c.issuer}, {c.year}</Ph></p>
+                  <h3 className="text-lg font-semibold tracking-tight">{c.name}</h3>
+                  <p className="text-sm text-ink-muted">{c.issuer}, {c.year}</p>
                 </Reveal>
               ))}
             </ul>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Code, Compass, Users, Workflow } from "lucide-react";
+import { ArrowRight, Code, Compass, PenTool, Users, Workflow } from "lucide-react";
 import { capabilities, stack } from "@/content/expertise";
 import { caseStudies } from "@/content/projects";
 import { cn } from "@/lib/utils";
@@ -7,12 +7,12 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import Reveal from "@/components/shared/Reveal";
 import Chip from "@/components/shared/Chip";
 
-const ICONS = { Compass, Workflow, Code, Users };
+const ICONS = { Compass, Workflow, Code, Users, PenTool };
 const proofName = (slug) => caseStudies.find((c) => c.slug === slug)?.name;
 
-// Bento: four capability tiles (the first sits on a soft gradient with a
-// glass panel) and one wide tile for the stack.
-const SPANS = ["lg:col-span-4", "lg:col-span-2", "lg:col-span-2", "lg:col-span-4"];
+// Bento: five capability tiles (4+2, then 2+2+2; the first sits on a soft
+// gradient with a glass panel) and one wide tile for the stack.
+const SPANS = ["lg:col-span-4", "lg:col-span-2", "lg:col-span-2", "lg:col-span-2", "lg:col-span-2"];
 
 function CapabilityTile({ item, featured }) {
   const Icon = ICONS[item.icon];
@@ -56,20 +56,20 @@ export default function Capabilities() {
         <SectionHeading
           id="cap-title"
           eyebrow="What I do"
-          title="Consulting, analysis and delivery, by the same person."
-          intro="Fewer hand-offs means fewer things lost between the meeting and the code."
+          title="From the field visit to the training session."
+          intro="Consulting, analysis, development and the material that explains it, by the same person. Fewer hand-offs means less gets lost."
         />
 
         <div className="grid gap-4 lg:grid-cols-6">
           {capabilities.map((item, i) => (
-            <Reveal key={item.id} index={i % 2} className={cn(SPANS[i])}>
+            <Reveal key={item.id} index={i % 3} className={cn(SPANS[i])}>
               <CapabilityTile item={item} featured={i === 0} />
             </Reveal>
           ))}
 
           <Reveal className="rounded-card border border-line p-6 lg:col-span-6">
             <h3 className="mb-5 text-sm text-ink-muted">Tools I use most</h3>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {stack.map((group) => (
                 <div key={group.domain} className="flex flex-col gap-2.5">
                   <p className="text-sm font-semibold">{group.domain}</p>

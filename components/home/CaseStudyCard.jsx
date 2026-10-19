@@ -11,11 +11,13 @@ import Ph from "@/components/shared/Ph";
 //   size="feature" → big tile, image on top
 //   size="tall"    → narrow tall tile, image on top
 //   size="wide"    → half-width tile, image beside the text
+//   size="compact" → small tile, image on top, two bullets
 export default function CaseStudyCard({ study, size = "feature", priority = false, headingLevel: H = "h3" }) {
   const result = study.results[0];
   const resultsPh = study.placeholders?.includes("results");
   const wide = size === "wide";
-  const bullets = wide ? study.preview.slice(0, 2) : study.preview;
+  const compact = size === "compact";
+  const bullets = wide || compact ? study.preview.slice(0, 2) : study.preview;
 
   return (
     <article
@@ -29,6 +31,7 @@ export default function CaseStudyCard({ study, size = "feature", priority = fals
           "relative shrink-0 overflow-hidden border-line bg-surface-2",
           size === "feature" && "aspect-[16/9] border-b",
           size === "tall" && "aspect-[4/3] border-b",
+          compact && "aspect-[16/10] border-b",
           wide && "aspect-[16/10] border-b sm:order-2 sm:aspect-auto sm:w-[42%] sm:border-b-0 sm:border-l"
         )}
       >
@@ -46,7 +49,7 @@ export default function CaseStudyCard({ study, size = "feature", priority = fals
       <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3 text-sm text-ink-muted">
           <span>{study.kind}</span>
-          <span className="font-mono text-xs">{study.name}</span>
+          <span className="whitespace-nowrap font-mono text-xs">{study.name}</span>
         </div>
 
         <H className={cn(size === "feature" ? "text-h2" : "text-h3")}>
@@ -73,7 +76,7 @@ export default function CaseStudyCard({ study, size = "feature", priority = fals
           </p>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <ul className="flex flex-wrap gap-1.5" aria-label="Stack">
-              {study.stack.slice(0, wide ? 2 : 3).map((t) => (
+              {study.stack.slice(0, wide || compact ? 2 : 3).map((t) => (
                 <li key={t}><Chip>{t}</Chip></li>
               ))}
             </ul>

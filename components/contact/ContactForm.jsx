@@ -5,7 +5,7 @@ import { Send } from "lucide-react";
 import { profile } from "@/content/site";
 import { Button } from "@/components/ui/button";
 
-const TOPICS = ["Full-time role", "Consulting / freelance project", "Speaking or mentoring", "Something else"];
+const TOPICS = ["Consulting question", "Collaboration", "Speaking or mentoring", "Something else"];
 
 const field =
   "w-full rounded-control border border-line-strong bg-surface px-4 py-3 text-ink placeholder:text-ink-muted/70 transition-colors duration-(--dur-base) focus:border-ink focus:outline-none focus-visible:outline-2 focus-visible:outline-accent-ink";

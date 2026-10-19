@@ -2,17 +2,31 @@
 // (public/assets/resume/myresume.pdf) and the previous /resume page.
 // Bullets follow "action + scope + outcome" and avoid numbers that aren't
 // on record. Anything unverified lives in content/placeholders.js.
-import { certifications, currentRole } from "./placeholders";
 
 export const experience = [
+  {
+    company: "PT Semesta Agri Solusi",
+    role: "Software Engineer",
+    period: "Dec 2025 – Present",
+    mode: "Medan · On site and with clients",
+    summary: "Builds software for the palm oil industry: the GEMA product line and the Green Harvest Plantation ERP.",
+    highlights: [
+      "Lead the company's GEMA Plantation and GEMA Factory products, with a team of usually two (up to four) developers.",
+      "Go on site to estates and mills for field studies, gather requirements with clients and field users, estimate the work, and present it.",
+      "Built GEMA Plantation end to end: offline-first Android app with on-device ripeness detection and NFC transfer, a Next.js CMS, and a .NET Core backend connected to the ERP database.",
+      "Train users and support clients online and on site, including for the company's GEMA ERP.",
+      "Took the initiative to rebuild the company website (semestaagro.com) into a product site, which now brings in demo and presentation requests.",
+      "Design product presentations, company profile decks and brochures for GEMA Plantation and GEMA Factory.",
+    ],
+    tags: ["Product lead", "Consulting", "Full-stack", "Field work"],
+  },
   {
     company: "Freelance",
     role: "Developer & System Designer",
     period: "Jul 2023 – Present",
     mode: "Remote",
-    summary: currentRole,
     highlights: [
-      "Analysed requirements for a purchasing, sales and inventory (P3) system, produced the process diagrams, wireframes and data model, then built it full-stack.",
+      "Analysed requirements for a purchasing, sales and inventory (P3) system for a POS and stock business, produced the process diagrams, wireframes and data model, then built it full-stack.",
       "Delivered a mobile attendance app for a private company with location-based validation to keep presence records accurate.",
       "Designed an integrated livestock and distributor management system in Figma: user flows, data structure and high-fidelity prototype.",
       "Prototyped a multi-role preloved-clothing marketplace to make the client's business process visible before build.",
@@ -67,7 +81,7 @@ export const education = [
     institution: "Mikroskil University",
     detail: "Bachelor of Informatics Engineering",
     period: "2020 – 2024",
-    note: "GPA 3.91 / 4.00",
+    note: "GPA 3.91 / 4.00. Thesis project: Angkutin, a waste pickup app",
   },
   {
     institution: "Bangkit Academy (Google, GoTo, Traveloka)",
@@ -95,4 +109,9 @@ export const recognition = [
   { title: "President, BITSMIKRO", context: "Student association, 2022 – 2023" },
 ];
 
-export { certifications };
+// From the CV (confirmed).
+export const certifications = [
+  { name: "Flutter Developer Expert", issuer: "Dicoding Indonesia", year: "2022", url: "" },
+  { name: "Android Developer (Jetpack Compose)", issuer: "Bangkit Academy", year: "2023", url: "" },
+  { name: "Back-End Developer (Node.js)", issuer: "Dicoding Indonesia", year: "2022", url: "" },
+];

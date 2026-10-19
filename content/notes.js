@@ -1,0 +1,38 @@
+// Short write-ups about decisions behind the work. Each note is plain data:
+// `body` is a list of blocks ({ type: "p" | "h2" | "list", ... }) rendered by
+// app/notes/[slug]/page.jsx. Facts come from the GEMA Plantation project notes.
+
+export const notes = [
+  {
+    slug: "offline-first-nfc",
+    title: "Offline first, with NFC cards as the network",
+    summary:
+      "Why GEMA Plantation saves everything on the phone first, and how harvest data moves between phones on an NFC card when there's no signal at all.",
+    date: "October 2026",
+    readingTime: "4 min read",
+    relatedCaseStudy: "gema-plantation",
+    body: [
+      { type: "p", text: "Most blocks on a palm oil estate have no internet. Field supervisors start their day there, take attendance there, and record every job there. Before GEMA Plantation, they wrote it in a notebook and a clerk typed it into the system later. The office saw yesterday's work at best." },
+      { type: "p", text: "Any app that needs a connection to save a record would simply not get used in that setting. So the first design decision was not about screens. It was about where the data lives." },
+      { type: "h2", text: "The phone is the source of truth until upload" },
+      { type: "p", text: "Everything a supervisor records is written to a local Room database first: attendance, harvest and upkeep work records (BKM), harvest collection and delivery notes (SPB), with photos and GPS. Nothing waits for the network." },
+      { type: "list", items: [
+        "Records go into an upload queue and are sent whenever the phone finds a signal.",
+        "Every work record has a unique number built from the job and the block, with separate series for harvest (PN) and upkeep (RW). That number is what makes retries safe: sending the same record twice doesn't create a duplicate.",
+        "Once a record reaches the server it is locked, so the copy on the phone and the copy in the office can't drift apart.",
+      ] },
+      { type: "h2", text: "When there's no network at all, the card is the network" },
+      { type: "p", text: "Saving offline solves one supervisor's problem. But harvest data has to move between people in the field too: the harvest supervisor collects the fruit, and transport needs to know what is being loaded, often in places where neither phone has signal." },
+      { type: "p", text: "For that, GEMA uses NFC cards (Mifare Classic 1K, NDEF). Harvest and load data, and the delivery note, are written to a card on one phone and read on another. When a paper copy is needed, the delivery note can also be printed on a Bluetooth thermal printer." },
+      { type: "list", items: [
+        "No pairing, no hotspot, no internet: tap, write, hand over, tap, read.",
+        "The data still ends up in the same upload queue, so the office sees it as soon as any phone reaches signal.",
+      ] },
+      { type: "h2", text: "What it costs" },
+      { type: "p", text: "Offline-first is more work than calling an API. Database migrations have to be handled carefully, because a phone in the field may skip several app versions. The upload queue needs retry logic that never duplicates and never silently drops a record. And a 1K card holds very little, so what goes on it has to be chosen carefully." },
+      { type: "p", text: "It is worth it. Supervisors record each job once, in the field, with a photo, a location and a number, and the chain from block to hauling to delivery note stays connected even on days when the estate has no signal at all." },
+    ],
+  },
+];
+
+export const getNote = (slug) => notes.find((n) => n.slug === slug);

@@ -1,4 +1,3 @@
-import { SITE_URL, availability, currentRole } from "./placeholders";
 
 export const profile = {
   name: "Fadhil Muhammad",
@@ -6,20 +5,21 @@ export const profile = {
   alias: "Famuh",
   studio: "Pamulab",
   roles: ["IT Consultant", "Senior Developer", "Analyst"],
-  tagline: "IT consultant, developer and analyst in Medan, Indonesia.",
+  tagline: "IT consultant and software engineer in Medan, Indonesia.",
   valueProp:
-    "I work out how a business actually runs, design the system around it, and build it. Mostly Flutter and Next.js, from the first requirements meeting to the release.",
+    "I work out how a business actually runs, design the system around it, and build it. Lately that means palm oil plantations and mills: field apps that work offline, dashboards for management, and the ERP integration in between.",
   location: "Medan, North Sumatra, Indonesia",
   timezone: "UTC+7",
   email: "fadhilmuhammad.mdev@gmail.com",
   phone: "+62 822 9457 4365",
-  startedYear: 2023,
+  startedYear: 2022,
   cv: "/assets/resume/myresume.pdf",
   portrait: "/assets/opt/portrait.webp",
   idCard: "/assets/opt/idcard.webp",
-  availability,
-  currentRole,
-  url: SITE_URL,
+  // Not looking for a new role: the hero shows what I'm building instead.
+  currentRole: "Software Engineer, leading GEMA Plantation and GEMA Factory",
+  now: "Building GEMA Plantation and GEMA Factory",
+  url: "https://pamulab.vercel.app",
 };
 
 export const socials = [
@@ -32,12 +32,13 @@ export const socials = [
 export const navLinks = [
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
+  { label: "Notes", href: "/notes" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const seo = {
   title: `${profile.name} · IT Consultant, Developer & Analyst`,
   description:
-    "Fadhil Muhammad is an IT consultant, developer and analyst in Medan, Indonesia. Requirements and system design, Flutter and Next.js apps, and team training.",
+    "Fadhil Muhammad is an IT consultant, developer and analyst in Medan, Indonesia. Requirements and system design, Android, Flutter and web apps, with recent work in palm oil plantation and mill software.",
   lastUpdated: "October 2026",
 };

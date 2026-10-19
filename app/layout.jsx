@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/layout/Footer";
 import Providers from "@/components/layout/Providers";
+import AskLauncher from "@/components/ask/AskLauncher";
 import { profile, seo, socials } from "@/content/site";
 
 // One family does everything: Geist for headings and body, Geist Mono for
@@ -85,6 +86,8 @@ export default function RootLayout({ children }) {
             {children}
           </main>
           <Footer />
+          {/* "Ask my portfolio": off unless NEXT_PUBLIC_ASK_PORTFOLIO=true (provider configured via ASK_* env vars, see lib/ask/provider.js). */}
+          {process.env.NEXT_PUBLIC_ASK_PORTFOLIO === "true" && <AskLauncher />}
         </Providers>
       </body>
     </html>

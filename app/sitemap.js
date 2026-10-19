@@ -1,9 +1,10 @@
 import { profile } from "@/content/site";
 import { caseStudies } from "@/content/projects";
+import { notes } from "@/content/notes";
 
 export default function sitemap() {
   const now = new Date();
-  const pages = ["", "/work", "/about", "/contact"].map((path) => ({
+  const pages = ["", "/work", "/about", "/notes", "/contact"].map((path) => ({
     url: `${profile.url}${path}`,
     lastModified: now,
     changeFrequency: "monthly",
@@ -15,5 +16,11 @@ export default function sitemap() {
     changeFrequency: "yearly",
     priority: 0.7,
   }));
-  return [...pages, ...studies];
+  const posts = notes.map((n) => ({
+    url: `${profile.url}/notes/${n.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
+    priority: 0.6,
+  }));
+  return [...pages, ...studies, ...posts];
 }

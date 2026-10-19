@@ -54,8 +54,8 @@ export default function Recognition() {
             <ul className="flex flex-col divide-y divide-line">
               {certifications.map((c) => (
                 <li key={c.name} className="flex flex-col gap-0.5 py-3 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                  <span className="font-semibold"><Ph>{c.name}</Ph></span>
-                  <span className="font-mono text-xs text-ink-muted"><Ph>{c.issuer}, {c.year}</Ph></span>
+                  <span className="font-semibold">{c.name}</span>
+                  <span className="font-mono text-xs text-ink-muted">{c.issuer}, {c.year}</span>
                 </li>
               ))}
             </ul>

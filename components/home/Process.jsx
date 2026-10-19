@@ -2,12 +2,16 @@
 
 import { useRef } from "react";
 import { m, useScroll, useSpring, useTransform } from "framer-motion";
-import { process } from "@/content/expertise";
+import { MapPin, NotebookPen, Presentation, Users } from "lucide-react";
+import { practice, process } from "@/content/expertise";
 import SectionHeading from "@/components/shared/SectionHeading";
 import Reveal from "@/components/shared/Reveal";
 
 // How I work: a progress line fills as the section scrolls past (horizontal
 // on desktop, vertical on mobile). The line is decorative; the steps are an <ol>.
+// Below it, "In practice" tiles describe how projects actually run.
+const ICONS = { MapPin, NotebookPen, Presentation, Users };
+
 export default function Process() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.75", "end 0.6"] });
@@ -20,8 +24,8 @@ export default function Process() {
         <SectionHeading
           id="process-title"
           eyebrow="How I work"
-          title="Six steps, each with something you can look at."
-          intro="Decisions get made early, while they're still cheap to change."
+          title="How I run a project"
+          intro="Six steps, each ending with something the client can look at, so decisions get made while they're still cheap."
         />
 
         <div ref={ref} className="relative">
@@ -48,6 +52,22 @@ export default function Process() {
               </Reveal>
             ))}
           </ol>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <h3 className="text-sm text-ink-muted">In practice</h3>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {practice.map((p, i) => {
+              const Icon = ICONS[p.icon];
+              return (
+                <Reveal as="li" key={p.title} index={i} className="flex flex-col gap-3 rounded-card border border-line bg-canvas p-5">
+                  <Icon aria-hidden="true" className="size-5 text-accent-ink" />
+                  <p className="font-semibold">{p.title}</p>
+                  <p className="text-sm text-ink-muted">{p.body}</p>
+                </Reveal>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </section>

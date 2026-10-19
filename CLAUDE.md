@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal portfolio of Fadhil Muhammad ("Famuh", studio name Pamulab), positioned as **IT Consultant / Senior Developer / Analyst**. Next.js 15 App Router, JavaScript (`.jsx`, no TypeScript despite the `@/*` alias in `jsconfig.json`), Tailwind CSS v4, shadcn/ui + Radix primitives, framer-motion, next-themes. The redesign rationale (reference analysis, sitemap, animation list) is in `docs/REDESIGN-PLAN.md`.
+Personal portfolio of Fadhil Muhammad, deployed on Vercel at https://pamulab.vercel.app ("Famuh", studio name Pamulab), positioned as **IT Consultant / Senior Developer / Analyst**. Next.js 15 App Router, JavaScript (`.jsx`, no TypeScript despite the `@/*` alias in `jsconfig.json`), Tailwind CSS v4, shadcn/ui + Radix primitives, framer-motion, next-themes. The redesign rationale (reference analysis, sitemap, animation list) is in `docs/REDESIGN-PLAN.md`.
 
 ## Commands
 
@@ -31,6 +31,10 @@ No test suite. To add a shadcn/ui component use the shadcn CLI (`components.json
 **Motion rules**: JS motion values mirror the CSS tokens in `lib/motion.js`. Above-the-fold opening animations are pure CSS (`animate-rise`, `animate-mask-up` with a `--delay` style var) so they run before hydration; never wrap above-the-fold/LCP content in `<Reveal>` (it's hidden until JS). Below the fold use `components/shared/Reveal.jsx`. A global `prefers-reduced-motion` rule in `globals.css` collapses CSS motion. Route transition is a single fade in `app/template.jsx` (skipped on first load).
 
 **Components**: `components/home/*` (homepage sections; `CaseStudyBento` + `CaseStudyCard` are shared with /work), `components/shared/*` (Reveal, SectionHeading, PageIntro, Timeline, Chip, CountUp, CopyEmail, SocialLinks, Ph, CuttingMat), `components/layout/*` (Providers, ThemeToggle, Footer), `components/Header.jsx` / `Nav.jsx` / `MobileNav.jsx`, `components/Lanyard.jsx` (3D ID card; loaded by `home/HeroCard.jsx` only on capable desktops after first user interaction, static image otherwise). `components/ui/*` are shadcn primitives restyled with tokens.
+
+**Ask my portfolio** (optional chatbot, provider-agnostic): `components/ask/AskLauncher.jsx` (floating button, lazy-loads `AskPanel.jsx`) → `app/api/ask/route.js` → `lib/ask/provider.js` (plain `fetch`, no vendor SDK) with a system prompt built by `lib/ask/context.js` from `content/` (placeholder fields are excluded). Env vars (set in Vercel): `NEXT_PUBLIC_ASK_PORTFOLIO=true` (shows the button; read at build time), `ASK_PROVIDER` (`openai` = any OpenAI-compatible API incl. Gemini/Groq/OpenRouter/Ollama, or `anthropic`), `ASK_API_KEY`, `ASK_MODEL`, optional `ASK_BASE_URL`. Without key/model the route returns 503. In-memory per-IP rate limit (20 requests / 10 min, per serverless instance).
+
+**Notes**: `content/notes.js` → `/notes` and `/notes/[slug]`; case studies can link a note via `relatedNote`.
 
 **Images**: optimized WebP copies live in `public/assets/opt/` (originals in `public/assets/img|design` are unused); SVG illustrations in `public/assets/illustrations/`. Firebase Storage URLs used by the old site return HTTP 402 — don't reference them.
 

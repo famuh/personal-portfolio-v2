@@ -13,9 +13,9 @@ export default function ClosingCta() {
         <div className="bg-mesh relative overflow-hidden rounded-panel border border-line p-3 sm:p-6">
           <div className="glass flex flex-col gap-8 rounded-card px-6 py-12 sm:px-12 sm:py-16">
             <Reveal className="flex flex-col gap-4">
-              <h2 id="cta-title" className="max-w-[20ch] text-h1">Hiring, or have a project in mind?</h2>
+              <h2 id="cta-title" className="max-w-[20ch] text-h1">Have a process that should be a system?</h2>
               <p className="measure text-ink-muted">
-                Send a short note about the role or the problem you're working on.
+                I'm not looking for a new role, but I'm always up for a conversation about a system, a process or a collaboration.
               </p>
             </Reveal>
             <Reveal index={1} className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">

@@ -19,13 +19,13 @@ export default function WorkPage() {
       <PageIntro
         eyebrow={`${projectCount} projects`}
         title="Work"
-        lead="Four case studies first. Below them: smaller client builds, design work, and the course projects I learned on."
+        lead="Case studies first, newest at the top. Below them: smaller client builds, design work, and the course projects I learned on."
       />
 
       <section aria-labelledby="cs-title" className="shell pb-(--space-section)">
         <h2 id="cs-title" className="sr-only">Case studies</h2>
         {/* First tile is above the fold here, so it renders without a reveal. */}
-        <CaseStudyBento revealFirst={false} />
+        <CaseStudyBento all revealFirst={false} />
       </section>
 
       <section aria-labelledby="archive-title" className="section-y border-t border-line bg-surface">
