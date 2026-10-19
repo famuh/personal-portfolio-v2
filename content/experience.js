@@ -1,37 +1,57 @@
-// Work history, education and recognition — sourced from the CV
-// (public/assets/resume/myresume.pdf) and the previous /resume page.
-// Bullets follow "action + scope + outcome" and avoid numbers that aren't
-// on record. Anything unverified lives in content/placeholders.js.
+// Work history, leadership & community roles, education and recognition.
+// Source of truth: the LinkedIn export (public/assets/resume/Profile_Fadhil.pdf)
+// plus details confirmed in conversation. Bullets follow "action + scope +
+// outcome" and avoid numbers that aren't on record. Entries still waiting for
+// details come from content/placeholders.js with `pending: true`; they are
+// dropped from production builds.
+import { pendingExperience, pendingActivities } from "./placeholders";
 
+const DEV = process.env.NODE_ENV !== "production";
+
+// Professional experience (paid work, newest first).
 export const experience = [
   {
-    company: "PT Semesta Agri Solusi",
+    company: "Green Harvest Solutions · PT Semesta Agri Solusi",
     role: "Software Engineer",
     period: "Dec 2025 – Present",
-    mode: "Medan · On site and with clients",
-    summary: "Builds software for the palm oil industry: the GEMA product line and the Green Harvest Plantation ERP.",
+    mode: "Medan · Full-time · On site and with clients",
+    summary:
+      "Mobile and web software for palm oil operations: the GEMA product line and the Green Harvest Plantation ERP, deployed per client with isolated servers and databases.",
     highlights: [
-      "Lead the company's GEMA Plantation and GEMA Factory products, with a team of usually two (up to four) developers.",
-      "Go on site to estates and mills for field studies, gather requirements with clients and field users, estimate the work, and present it.",
-      "Built GEMA Plantation end to end: offline-first Android app with on-device ripeness detection and NFC transfer, a Next.js CMS, and a .NET Core backend connected to the ERP database.",
-      "Train users and support clients online and on site, including for the company's GEMA ERP.",
-      "Took the initiative to rebuild the company website (semestaagro.com) into a product site, which now brings in demo and presentation requests.",
-      "Design product presentations, company profile decks and brochures for GEMA Plantation and GEMA Factory.",
+      "Lead GEMA Plantation and GEMA Factory with a team of usually two (up to four) developers, from field studies and requirement gathering to estimates, presentations and delivery.",
+      "Built GEMA Factory, a Flutter mill maintenance app: preventive maintenance, work orders, approvals, workshop activities, reporting and role management.",
+      "Develop the GEMA Plantation Android app (Kotlin/XML, offline-first, on-device ripeness detection, NFC) and its CMS in Next.js, TypeScript, Tailwind CSS and TanStack Query.",
+      "Integrated an AI chatbot that answers questions about production, maintenance and reports through API-driven access to operational data.",
+      "Build .NET Core and SQL Server APIs (documented with Swagger), and support client ERP systems on ASP.NET Web Forms, Crystal Reports and IIS.",
+      "Deploy and monitor client servers (IIS, Plesk, Prometheus, Grafana), handle production troubleshooting, and run the Git and GitHub workflow.",
+      "Train users and support clients online and on site; rebuilt the company website into a product site and design product decks and brochures.",
     ],
     tags: ["Product lead", "Consulting", "Full-stack", "Field work"],
   },
   {
-    company: "Freelance",
-    role: "Developer & System Designer",
-    period: "Jul 2023 – Present",
-    mode: "Remote",
+    company: "Samta Cloud",
+    role: "Software Engineer",
+    period: "Nov 2025 – May 2026",
+    mode: "Medan · Part-time · Project-based",
     highlights: [
-      "Analysed requirements for a purchasing, sales and inventory (P3) system for a POS and stock business, produced the process diagrams, wireframes and data model, then built it full-stack.",
-      "Delivered a mobile attendance app for a private company with location-based validation to keep presence records accurate.",
-      "Designed an integrated livestock and distributor management system in Figma: user flows, data structure and high-fidelity prototype.",
-      "Prototyped a multi-role preloved-clothing marketplace to make the client's business process visible before build.",
+      "Developed a Flutter app for hospitality and hotel maintenance operations, digitising day-to-day maintenance workflows.",
+      "Owned UI implementation, REST API integration and state management, using clean architecture to keep the app maintainable.",
+      "Worked with the development team to keep the app stable and aligned with business requirements.",
     ],
-    tags: ["Consulting", "System analysis", "Full-stack"],
+    tags: ["Flutter", "Clean architecture", "Hospitality"],
+  },
+  {
+    company: "Freelance",
+    role: "Product Engineer",
+    period: "Nov 2023 – Apr 2026",
+    mode: "Remote · Self-employed",
+    highlights: [
+      "Worked directly with clients to find the core problem and turn business needs into working software.",
+      "Analysed and built a purchasing, sales and inventory (P3) system for a POS and stock business: process diagrams, wireframes, data model, then full-stack build.",
+      "Delivered a mobile attendance app for a private company with location-based validation to keep presence records accurate.",
+      "Designed a livestock and distributor management system and a multi-role preloved marketplace in Figma, from system architecture and user flows to hi-fi prototypes.",
+    ],
+    tags: ["Consulting", "System analysis", "Full-stack", "UI/UX"],
   },
   {
     company: "BEKUP × Dicoding Indonesia",
@@ -63,22 +83,80 @@ export const experience = [
     tags: ["Product delivery", "Flutter", "Stakeholders"],
   },
   {
+    company: "Sentosa Digital Printing",
+    role: "Graphic Designer (Internship)",
+    period: "Aug 2019 – Nov 2019",
+    mode: "Medan · Vocational school field practice",
+    highlights: [
+      "Handled graphic design requests directly with clients, adapting to different client types and briefs.",
+    ],
+    tags: ["Design", "Client work"],
+  },
+  ...(DEV ? pendingExperience : []),
+];
+
+// Leadership, teaching and community roles outside paid work (newest first).
+export const activities = [
+  {
+    company: "Universitas Mikroskil",
+    role: "Master of Ceremonies",
+    period: "Nov 2023",
+    mode: "Medan",
+    highlights: [
+      "Hosted the seminar “Cerdas Emosi Raih Prestasi” (Emotional Intelligence Leads to Achievement) for an audience of university students.",
+    ],
+    tags: ["Public speaking"],
+  },
+  {
     company: "BITSMIKRO, Informatics Student Association",
     role: "President",
     period: "Sep 2022 – Sep 2023",
-    mode: "Medan",
-    summary: "Mikroskil University's informatics engineering student association.",
+    mode: "Universitas Mikroskil, Medan",
     highlights: [
-      "Led the association and its divisions for a full term.",
-      "Before that, media and information staff (Dec 2021 – Sep 2022): posters, flyers and the blog.",
+      "Led and managed the association and its divisions for a full term.",
+      "Kept a working environment where the team could perform, and made decisions through group discussion.",
     ],
     tags: ["Leadership"],
   },
+  {
+    company: "Universitas Mikroskil",
+    role: "Mentor Assistant",
+    period: "Jan 2023",
+    mode: "Medan",
+    summary: "“Workshop & Training Mobile App Development with Flutter”: an introduction to Flutter with hands-on practice.",
+    highlights: [
+      "Helped participants solve the problems they ran into during the hands-on sessions.",
+      "Supported the mentors in delivering the course material.",
+    ],
+    tags: ["Mentoring", "Flutter"],
+  },
+  {
+    company: "Kampus Merdeka × Dicoding, Studi Independen",
+    role: "Peer Tutor, Study Group",
+    period: "Aug 2022 – Dec 2022",
+    mode: "Remote",
+    highlights: [
+      "Taught and assisted fellow participants with the problems they ran into during the Flutter and back-end learning path.",
+      "Finished the programme as Best Graduate.",
+    ],
+    tags: ["Teaching"],
+  },
+  {
+    company: "BITSMIKRO, Informatics Student Association",
+    role: "Media & Information Division Staff",
+    period: "Dec 2021 – Sep 2022",
+    mode: "Universitas Mikroskil, Medan",
+    highlights: [
+      "Communicated the association's news through social media posts, flyers, thumbnails and the organisation blog.",
+    ],
+    tags: ["Design", "Communication"],
+  },
+  ...(DEV ? pendingActivities : []),
 ];
 
 export const education = [
   {
-    institution: "Mikroskil University",
+    institution: "Universitas Mikroskil",
     detail: "Bachelor of Informatics Engineering",
     period: "2020 – 2024",
     note: "GPA 3.91 / 4.00. Thesis project: Angkutin, a waste pickup app",
@@ -87,7 +165,7 @@ export const education = [
     institution: "Bangkit Academy (Google, GoTo, Traveloka)",
     detail: "Mobile Development cohort",
     period: "Feb 2023 – Aug 2023",
-    note: "Android fundamentals to Jetpack Compose, plus a capstone with ML and cloud teams",
+    note: "Kotlin, Jetpack Compose, SOLID principles and UX design, plus a capstone with ML and cloud teams",
   },
   {
     institution: "Kampus Merdeka × Dicoding, Studi Independen",
@@ -104,14 +182,24 @@ export const education = [
 
 export const recognition = [
   { title: "Best Graduate", context: "Kampus Merdeka × Dicoding, 2022" },
-  { title: "GPA 3.91 / 4.00", context: "Informatics Engineering, Mikroskil University" },
+  { title: "GPA 3.91 / 4.00", context: "Informatics Engineering, Universitas Mikroskil" },
   { title: "Bangkit Academy graduate", context: "Mobile Development, 2023 cohort" },
   { title: "President, BITSMIKRO", context: "Student association, 2022 – 2023" },
+  { title: "Peer Tutor", context: "Kampus Merdeka × Dicoding study group, 2022" },
 ];
 
-// From the CV (confirmed).
+// From the CV and the LinkedIn profile. `issuer`/`year` may be empty when the
+// source doesn't list them.
 export const certifications = [
   { name: "Flutter Developer Expert", issuer: "Dicoding Indonesia", year: "2022", url: "" },
   { name: "Android Developer (Jetpack Compose)", issuer: "Bangkit Academy", year: "2023", url: "" },
   { name: "Back-End Developer (Node.js)", issuer: "Dicoding Indonesia", year: "2022", url: "" },
+  { name: "Belajar Penerapan Machine Learning untuk Flutter", issuer: "", year: "", url: "" },
+  { name: "Learn SOLID Programming Principles", issuer: "", year: "", url: "" },
+  { name: "Learn Git Basics with GitHub", issuer: "", year: "", url: "" },
+];
+
+export const languages = [
+  { name: "Indonesian", level: "Native" },
+  { name: "English", level: "Limited working proficiency" },
 ];

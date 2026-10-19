@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 h-(--header-h) border-b transition-[background-color,border-color] duration-(--dur-base)",
+        "sticky top-0 z-40 h-(--header-h) border-b print:hidden transition-[background-color,border-color] duration-(--dur-base)",
         scrolled ? "border-line bg-canvas/70 backdrop-blur-xl backdrop-saturate-150" : "border-transparent bg-canvas/0"
       )}
     >
@@ -44,7 +44,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Button asChild size="sm">
-              <a href={profile.cv} download>
+              <a href={profile.cv} download={profile.cvFileName}>
                 <Download aria-hidden="true" />
                 CV
               </a>

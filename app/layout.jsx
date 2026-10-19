@@ -87,7 +87,11 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
           {/* "Ask my portfolio": off unless NEXT_PUBLIC_ASK_PORTFOLIO=true (provider configured via ASK_* env vars, see lib/ask/provider.js). */}
-          {process.env.NEXT_PUBLIC_ASK_PORTFOLIO === "true" && <AskLauncher />}
+          {process.env.NEXT_PUBLIC_ASK_PORTFOLIO === "true" && (
+            <div className="print:hidden">
+              <AskLauncher />
+            </div>
+          )}
         </Providers>
       </body>
     </html>

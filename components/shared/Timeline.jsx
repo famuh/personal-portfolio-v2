@@ -9,7 +9,11 @@ import Ph from "./Ph";
 // Vertical timeline whose line draws as you scroll, tying each role to the
 // reading position. `limit` trims highlights for the homepage summary.
 // Fields listed in an item's `placeholders` array are marked with <Ph>.
+// Items flagged `pending` (details not supplied yet) render in dev only.
+const SHOW_PENDING = process.env.NODE_ENV !== "production";
+
 export default function Timeline({ items, limit, headingLevel: H = "h3" }) {
+  const visible = items.filter((item) => !item.pending || SHOW_PENDING);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.8", "end 0.6"] });
   const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
@@ -21,8 +25,14 @@ export default function Timeline({ items, limit, headingLevel: H = "h3" }) {
       </div>
 
       <ol className="flex flex-col gap-14">
-        {items.map((job, i) => (
-          <Reveal as="li" key={`${job.company}-${job.period}`} index={i % 2} className="relative grid gap-3 pl-8 md:grid-cols-[12rem_1fr] md:gap-10 md:pl-0">
+        {visible.map((job, i) => (
+          <Reveal
+            as="li"
+            key={`${job.company}-${job.role}-${job.period}`}
+            index={i % 2}
+            title={job.pending ? "Placeholder — details pending, see content/placeholders.js" : undefined}
+            className={`relative grid gap-3 pl-8 md:grid-cols-[12rem_1fr] md:gap-10 md:pl-0 ${job.pending ? "rounded-control outline-2 outline-offset-8 outline-dashed outline-dev-mark" : ""}`}
+          >
             <span aria-hidden="true" className="absolute left-0 top-2 size-[11px] rounded-full border-2 border-canvas bg-accent ring-1 ring-line-strong md:left-[12rem]" />
             <div className="flex flex-col gap-1 md:pt-0.5">
               <p className="font-mono text-sm"><Ph active={job.placeholders?.includes("period")}>{job.period}</Ph></p>

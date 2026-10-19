@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { profile } from "@/content/site";
-import { experience, education, recognition, certifications } from "@/content/experience";
+import { activities, experience, education, recognition, certifications, languages } from "@/content/experience";
 import { stack, process } from "@/content/expertise";
 import { Button } from "@/components/ui/button";
 import PageIntro from "@/components/shared/PageIntro";
@@ -36,7 +36,7 @@ export default function AboutPage() {
       >
         <div className="flex flex-wrap gap-3">
           <Button asChild size="lg">
-            <a href={profile.cv} download>
+            <a href={profile.cv} download={profile.cvFileName}>
               <Download aria-hidden="true" />
               Download CV (PDF)
             </a>
@@ -102,14 +102,26 @@ export default function AboutPage() {
 
       <section id="experience" aria-labelledby="xp-title" className="section-y">
         <div className="shell flex flex-col gap-14">
-          <SectionHeading id="xp-title" eyebrow="Experience" title="Work history" />
+          <SectionHeading id="xp-title" eyebrow="Experience" title="Professional experience" />
           <Timeline items={experience} />
+        </div>
+      </section>
+
+      <section id="community" aria-labelledby="community-title" className="section-y border-t border-line">
+        <div className="shell flex flex-col gap-14">
+          <SectionHeading
+            id="community-title"
+            eyebrow="Beyond work"
+            title="Leadership & community"
+            intro="Roles outside paid work where I led, taught or represented a group."
+          />
+          <Timeline items={activities} />
         </div>
       </section>
 
       <section aria-labelledby="skills-title" className="section-y border-t border-line">
         <div className="shell flex flex-col gap-12">
-          <SectionHeading id="skills-title" eyebrow="Skills" title="Skills by area" />
+          <SectionHeading id="skills-title" eyebrow="Skills" title="Skills by area" intro={`Languages: ${languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(", ")}.`} />
           <div className="grid gap-4 md:grid-cols-2">
             {stack.map((g, i) => (
               <Reveal key={g.domain} index={i % 2} className="flex flex-col gap-4 rounded-card border border-line p-6">
@@ -152,7 +164,7 @@ export default function AboutPage() {
               {certifications.map((c) => (
                 <Reveal as="li" key={c.name} className="flex flex-col gap-1 py-5">
                   <h3 className="text-lg font-semibold tracking-tight">{c.name}</h3>
-                  <p className="text-sm text-ink-muted">{c.issuer}, {c.year}</p>
+                  {(c.issuer || c.year) && <p className="text-sm text-ink-muted">{[c.issuer, c.year].filter(Boolean).join(", ")}</p>}
                 </Reveal>
               ))}
             </ul>

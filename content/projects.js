@@ -31,7 +31,7 @@ export const caseStudies = [
     stack: ["Kotlin", "Hilt", "Room", "CameraX", "TensorFlow Lite", "YOLOv8", "NFC", "Bluetooth printing"],
     stackSecondary: {
       label: "Web CMS, backend and infrastructure",
-      items: ["Next.js", "React", "Tailwind CSS", "Motion", "Leaflet", ".NET Core", "SQL Server", "IIS", "NGINX", "GitHub Actions", "Third-party LLM"],
+      items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Motion", "Leaflet", ".NET Core", "SQL Server", "Swagger", "IIS", "NGINX", "GitHub Actions", "Third-party LLM"],
     },
     // Client app: illustration only, no real screenshots or client data.
     cover: "/assets/illustrations/gema-plantation.svg",
@@ -119,6 +119,10 @@ export const caseStudies = [
       {
         title: "Numbering that matches how the estate works",
         body: "One record per job and block, separate series for harvest and upkeep, double-booking checks, and records locked after upload. Wages and bonuses depend on it.",
+      },
+      {
+        title: "Standalone or integrated",
+        body: "Each client runs on its own server and database. The system works on its own, or syncs with the client's existing ERP when they have one.",
       },
       {
         title: "Integrate with the ERP at the database",
@@ -232,6 +236,7 @@ export const caseStudies = [
         items: [
           "QR scanner with scan line, torch and haptic feedback",
           "Issue reports with readings, a photo per reading and up to 5 general photos",
+          "Preventive maintenance, approvals and workshop activities",
           "Work orders across 11 types, status from Open to TECO to Completed",
           "A mechanic per work order item, with a searchable picker",
           "Daily inspection checklists with parameters from the API",

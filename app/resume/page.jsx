@@ -1,6 +1,6 @@
 import { permanentRedirect } from "next/navigation";
 
-// Retired route — replaced by /about. next.config.mjs redirects first.
+// Retired route — the CV now lives at /cv. next.config.mjs redirects first.
 export default function ResumeRedirect() {
-  permanentRedirect("/about");
+  permanentRedirect("/cv");
 }

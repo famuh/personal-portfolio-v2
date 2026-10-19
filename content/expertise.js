@@ -69,7 +69,7 @@ export const practice = [
   {
     icon: "NotebookPen",
     title: "Lightweight agile",
-    body: "No formal framework: short cycles, estimates up front, documentation in Notion, and Discord for day-to-day talk. ClickUp at my previous job.",
+    body: "Short cycles with estimates up front, documentation in Notion and Discord for day-to-day talk. Scrum boards in ClickUp, Jira or Trello where the team uses them.",
   },
   {
     icon: "Users",
@@ -90,15 +90,15 @@ export const stack = [
   },
   {
     domain: "Web",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Motion", "Leaflet"],
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Motion", "Leaflet"],
   },
   {
     domain: "Backend & infra",
-    items: [".NET Core", "SQL Server", "Node.js", "Prisma", "Docker", "IIS", "NGINX", "GitHub Actions"],
+    items: [".NET Core", "SQL Server", "ASP.NET Web Forms", "Crystal Reports", "Node.js", "Prisma", "Docker", "IIS", "Plesk", "NGINX", "GitHub Actions"],
   },
   {
-    domain: "AI & quality",
-    items: ["TensorFlow Lite", "YOLOv8", "LLM APIs", "Crashlytics", "Sentry", "Postman", "Swagger"],
+    domain: "AI & monitoring",
+    items: ["TensorFlow Lite", "YOLOv8", "LLM APIs", "Prometheus", "Grafana", "Sentry", "Crashlytics", "Postman", "Swagger"],
   },
   {
     domain: "Analysis & design",

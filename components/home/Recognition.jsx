@@ -55,7 +55,7 @@ export default function Recognition() {
               {certifications.map((c) => (
                 <li key={c.name} className="flex flex-col gap-0.5 py-3 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
                   <span className="font-semibold">{c.name}</span>
-                  <span className="font-mono text-xs text-ink-muted">{c.issuer}, {c.year}</span>
+                  <span className="font-mono text-xs text-ink-muted">{[c.issuer, c.year].filter(Boolean).join(", ")}</span>
                 </li>
               ))}
             </ul>

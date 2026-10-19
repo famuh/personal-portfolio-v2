@@ -16,6 +16,13 @@ export const caseStudyMeta = {
   "semesta-agro": { stack: ["Next.js", "React", "Tailwind CSS"] },
 };
 
+// Pengalaman yang detailnya belum ada (saat ini kosong). Tambahkan entri
+// dengan `pending: true`; entri ini HANYA tampil di `pnpm dev`. Setelah
+// detailnya ada, pindahkan ke content/experience.js.
+export const pendingExperience = [];
+
+export const pendingActivities = [];
+
 // TODO: ganti dengan data asli — artefak & foto yang belum diunggah. Slot ini
 // HANYA tampil di `pnpm dev` (bingkai putus-putus di halaman case study) dan
 // tidak muncul di production. Simpan file ke public/assets/opt/work/, lalu

@@ -52,7 +52,7 @@ const MobileNav = () => {
 
         <div className="flex flex-col gap-6">
           <Button asChild size="lg" className="w-full">
-            <a href={profile.cv} download>
+            <a href={profile.cv} download={profile.cvFileName}>
               <Download aria-hidden="true" />
               Download CV
             </a>

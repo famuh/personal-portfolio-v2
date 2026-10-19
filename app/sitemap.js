@@ -4,7 +4,7 @@ import { notes } from "@/content/notes";
 
 export default function sitemap() {
   const now = new Date();
-  const pages = ["", "/work", "/about", "/notes", "/contact"].map((path) => ({
+  const pages = ["", "/work", "/about", "/notes", "/cv", "/contact"].map((path) => ({
     url: `${profile.url}${path}`,
     lastModified: now,
     changeFrequency: "monthly",

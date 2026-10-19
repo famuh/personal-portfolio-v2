@@ -297,6 +297,45 @@
 }
 
 /* ==========================================================================
+   PRINT — used by /cv (exported to PDF). Always light, A4, no site chrome
+   (Header/Footer/chat carry print:hidden), and entries never split across pages.
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 14mm;
+  }
+
+  :root,
+  .dark {
+    --canvas: #ffffff;
+    --surface: #ffffff;
+    --ink: #0b0b0c;
+    --ink-muted: #4a4a46;
+    --line: #dcdcd7;
+    color-scheme: light;
+  }
+
+  /* rem-based sizes scale from here: ~2 A4 pages for the CV */
+  html {
+    font-size: 12.5px;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .cv-item,
+  .cv-section > h2 {
+    break-inside: avoid;
+  }
+
+  .cv-section > h2 {
+    break-after: avoid;
+  }
+}
+
+/* ==========================================================================
    REDUCED MOTION — global kill-switch for CSS motion. Framer-motion is
    handled separately by <MotionConfig reducedMotion="user"> in Providers.
    ========================================================================== */

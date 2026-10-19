@@ -7,7 +7,7 @@ const linkedin = socials.find((s) => s.id === "linkedin");
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-surface">
+    <footer className="border-t border-line bg-surface print:hidden">
       <div className="shell grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="flex flex-col gap-5">
           <p className="text-h3">{profile.name}</p>
@@ -34,7 +34,7 @@ export default function Footer() {
                 <Link href={l.href} className="hover:text-accent-ink">{l.label}</Link>
               </li>
             ))}
-            <li><a href={profile.cv} download className="hover:text-accent-ink">Download CV (PDF)</a></li>
+            <li><a href={profile.cv} download={profile.cvFileName} className="hover:text-accent-ink">Download CV (PDF)</a></li>
           </ul>
         </nav>
 
