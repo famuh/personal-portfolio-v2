@@ -232,6 +232,7 @@ export const caseStudies = [
     gallery: [
       { src: "/assets/opt/work/gemafactory_1.webp", alt: "App screens. Demo Data" },
       { src: "/assets/illustrations/gema-factory-mobile.svg", alt: "App screens in flow order: dashboard with work orders and pending issues, scanning a machine QR code, machine details with work order history, and a role-based profile. Demo data." },
+      { src: "/assets/opt/design/gemafactory_brochure.webp", alt: "GEMA Factory product brochure. Demo data." },
     ],
     problem:
       "A mill runs dozens to hundreds of machines. Breakdown reports came in late or went missing, machine history wasn't recorded, inspection readings weren't documented, and supervisors couldn't see progress in the field. Paper work orders were easy to lose, and assigning mechanics was slow.",
@@ -902,6 +903,7 @@ export const archiveGroups = ["Web", "Mobile", "Design", "Others"];
 
 // Visual design work (posters, brochures, templates), mostly for BITSMIKRO.
 export const designGallery = [
+  { src: "/assets/opt/design/gemafactory_brochure.webp", alt: "GEMA Factory brochure", w: 1600, h: 1200 },
   { src: "/assets/opt/design/rekruitmen-bits.webp", alt: "BITSMIKRO recruitment banner", w: 1600, h: 533 },
   { src: "/assets/opt/design/brosur-alpha.webp", alt: "Alpha Coffee brochure", w: 1600, h: 2263 },
   { src: "/assets/opt/design/pengabdian.webp", alt: "Community service programme poster", w: 1080, h: 1080 },

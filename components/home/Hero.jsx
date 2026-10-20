@@ -11,7 +11,7 @@ const d = (ms) => ({ "--delay": `${ms}ms` });
 
 export default function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative overflow-hidden">
+    <section aria-labelledby="hero-title" className="relative overflow-x-clip">
       <div className="shell grid min-h-[calc(100svh-var(--header-h))] items-center gap-8 pb-14 pt-6 lg:grid-cols-[1.2fr_0.8fr] lg:gap-4 lg:pb-16">
         <div className="relative z-10 flex flex-col gap-7">
           <p style={d(0)} className="animate-rise glass inline-flex w-fit items-center gap-2 rounded-chip px-3 py-1 text-sm">
@@ -62,7 +62,7 @@ export default function Hero() {
           </dl>
         </div>
 
-        <div style={d(200)} className="animate-rise relative h-[400px] sm:h-[460px] lg:-mt-(--header-h) lg:h-svh lg:max-h-[820px]">
+        <div style={d(200)} className="animate-rise relative z-20 h-[400px] sm:h-[460px] lg:-mt-(--header-h) lg:h-svh lg:max-h-[820px]">
           {/* soft, static gradient light behind the card (animating blurred layers cost ~8 Lighthouse points on mobile) */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-[-20%] top-[15%] bottom-[5%]">
             <div className="absolute left-[10%] top-[10%] size-[60%] rounded-full bg-grad-mint blur-3xl" />

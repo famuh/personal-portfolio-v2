@@ -296,6 +296,17 @@
   animation: sway 6s var(--ease-in-out-quart) infinite;
 }
 
+/* Slow bob for the AI logo bubbles; offset each with style={{ "--delay": "-2s" }}. */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@utility animate-float {
+  animation: float 7s var(--ease-in-out-quart) infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
 /* ==========================================================================
    PRINT — used by /cv (exported to PDF). Always light, A4, no site chrome
    (Header/Footer/chat carry print:hidden), and entries never split across pages.

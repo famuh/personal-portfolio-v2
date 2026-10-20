@@ -83,6 +83,43 @@ export const practice = [
   },
 ];
 
+// Working with AI: how AI fits into the work, written for a non-technical
+// reader. Plain claims only, no productivity numbers that were never measured.
+// The homepage shows intro, illustration and tools; `uses` and `mine` feed
+// the "Ask my portfolio" chatbot.
+export const aiCollaboration = {
+  intro:
+    "I work alongside AI every day to think things through, learn faster and get first drafts done sooner. Understanding the business, deciding what to build and answering for the result stay with me.",
+  uses: [
+    { title: "Think out loud", body: "Brainstorming and talking through an idea, a problem or a plan before committing to it." },
+    { title: "Choose the right tools", body: "Comparing technologies and their trade-offs before a technical decision." },
+    { title: "Learn faster", body: "Getting up to speed on a new library, tool or business domain." },
+    { title: "Draft and build", body: "First drafts of requirements, diagrams, copy and screens, and help with code, tests and debugging." },
+  ],
+  mine: [
+    "Understanding how the business actually runs",
+    "Deciding what to build, and how",
+    "Reviewing everything before it ships",
+    "Answering to the client for the result",
+  ],
+  illustration: {
+    src: "/assets/opt/home/ai-bust.webp",
+    alt: "Roman Sculpture style bust of a person, half in marble and half in wireframe, with AI logos floating around it",
+  },
+  // `logo` is a key in components/shared/AiLogo.jsx
+  tools: [
+    { name: "Claude", logo: "claude" },
+    { name: "Claude Code", logo: "claudeCode" },
+    { name: "ChatGPT", logo: "openai" },
+    { name: "Codex", logo: "codex" },
+    { name: "Gemini", logo: "gemini" },
+    { name: "Antigravity", logo: "antigravity" },
+    { name: "GitHub Copilot", logo: "githubCopilot" },
+    { name: "Cursor", logo: "cursor" },
+    { name: "Perplexity", logo: "perplexity" },
+  ],
+};
+
 export const stack = [
   {
     domain: "Mobile",
@@ -94,7 +131,7 @@ export const stack = [
   },
   {
     domain: "Backend & infra",
-    items: [".NET Core", "SQL Server", "MySQL", "Firestore", "ASP.NET Web Forms", "Crystal Reports", "Node.js", "Prisma", "Docker", "IIS", "Plesk", "NGINX", "GitHub Actions"],
+    items: [".NET Core", "SQL Server", "MySQL", "Firestore", "ASP.NET Web Forms", "Crystal Reports", "Node.js", "Prisma", "Docker", "IIS", "Vercel", "Plesk", "NGINX", "GitHub Actions"],
   },
   {
     domain: "AI integration & monitoring",
@@ -113,7 +150,7 @@ export const proofStrip = [
   "DNA Group (DMB App)",
   "Freelance",
   "BEKUP × Dicoding",
-  "Bangkit Academy",
+  "Bangkit Academy by Google, GoTo, and Traveloka.",
   "Kampus Merdeka",
   "Mikroskil University",
   "BITSMIKRO",

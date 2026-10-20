@@ -38,12 +38,20 @@ export default function Lanyard({
   imageFit = 'cover',
   lanyardImage = null,
   lanyardWidth = 1,
+  // Optional: the element whose box the card is framed in. The canvas can then
+  // be larger than that box (so the card can be dragged past it) while the
+  // card keeps the size and resting spot it would have inside the box.
+  frameRef = null,
+  // Optional: element that receives pointer events instead of the canvas, so
+  // an oversized canvas doesn't block the page underneath it.
+  eventSource,
   onReady
 }) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
   const containerRef = useRef(null);
   const glRef = useRef(null);
   const cameraRef = useRef(null);
+  const applySizeRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -56,7 +64,10 @@ export default function Lanyard({
   // stale (small) size even though its container is the correct size again.
   // Watching the container directly and re-applying gl/camera size whenever
   // it changes (mount included) keeps it in sync regardless of when that
-  // internal resize handling misses a beat.
+  // internal resize handling misses a beat. It also runs from onCreated:
+  // the renderer is created asynchronously, so on a remount (navigating back
+  // to the page) the first calls here can happen before gl/camera exist, and
+  // without a later resize the camera would keep its unframed defaults.
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -67,23 +78,57 @@ export default function Lanyard({
       if (!gl || !camera || w === 0 || h === 0) return;
       gl.setSize(w, h);
       camera.aspect = w / h;
+      // Frame the scene on frameRef: scale the vertical fov by canvas/frame
+      // height and shift the camera so world x=0 sits on the frame's centre.
+      const frame = frameRef?.current;
+      let fovNow = fov, dx = 0, dy = 0;
+      if (frame && frame.offsetHeight > 0) {
+        const c = el.getBoundingClientRect();
+        const fr = frame.getBoundingClientRect();
+        const t = Math.tan(THREE.MathUtils.degToRad(fov / 2));
+        fovNow = THREE.MathUtils.radToDeg(2 * Math.atan((t * c.height) / fr.height));
+        const unitsPerPx = (2 * position[2] * t) / fr.height;
+        dx = -(fr.left + fr.width / 2 - (c.left + c.width / 2)) * unitsPerPx;
+        dy = (fr.top + fr.height / 2 - (c.top + c.height / 2)) * unitsPerPx;
+      }
+      camera.fov = fovNow;
+      camera.position.set(position[0] + dx, position[1] + dy, position[2]);
       camera.updateProjectionMatrix();
     };
+    applySizeRef.current = applySize;
     const ro = new ResizeObserver(applySize);
     ro.observe(el);
+    if (frameRef?.current) ro.observe(frameRef.current);
     applySize();
-    return () => ro.disconnect();
+    return () => {
+      ro.disconnect();
+      applySizeRef.current = null;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div ref={containerRef} className="relative h-full w-full flex justify-center items-center">
       <Canvas
-        camera={{ position: position, fov: fov }}
+        camera={{ position: position, fov: fov, rotation: [0, 0, 0] }}
+        eventSource={eventSource}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
-        onCreated={({ gl, camera }) => {
+        onCreated={({ gl, camera, setEvents }) => {
           glRef.current = gl;
           cameraRef.current = camera;
+          applySizeRef.current?.();
+          // With an outside event source, measure the pointer against the
+          // canvas itself (R3F's default uses offsetX of whatever was hit).
+          if (eventSource) {
+            setEvents({
+              compute: (event, state) => {
+                const r = state.gl.domElement.getBoundingClientRect();
+                state.pointer.set(((event.clientX - r.left) / r.width) * 2 - 1, -((event.clientY - r.top) / r.height) * 2 + 1);
+                state.raycaster.setFromCamera(state.pointer, state.camera);
+              }
+            });
+          }
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1);
         }}
       >
@@ -241,11 +286,23 @@ function Band({
     }
   }, [hovered, dragged]);
 
+  // Shared by pointerdown/up so the same listener is added and removed.
+  const swallowClick = useMemo(() => ev => { ev.preventDefault(); ev.stopPropagation(); }, []);
+
+  // The card can be dragged over text; don't select it on the way.
+  useEffect(() => {
+    if (!dragged) return;
+    document.body.style.userSelect = 'none';
+    return () => void (document.body.style.userSelect = '');
+  }, [dragged]);
+
   useFrame((state, delta) => {
     if (dragged) {
+      // Pointer ray hits the z=0 plane the card hangs in (the camera may be
+      // shifted off-axis by frameRef, so don't assume it sits on the z axis).
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
-      vec.add(dir.multiplyScalar(state.camera.position.length()));
+      vec.copy(state.camera.position).add(dir.multiplyScalar(-state.camera.position.z / dir.z));
       [card, j1, j2, j3, fixed].forEach(ref => ref.current?.wakeUp());
       card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z });
     }
@@ -305,11 +362,15 @@ function Band({
             onPointerOut={() => hover(false)}
             onPointerDown={e => {
               e.target.setPointerCapture(e.pointerId);
+              // The card can sit over links; swallow the click that follows
+              // this press so releasing the card doesn't follow a link.
+              window.addEventListener('click', swallowClick, true);
               pointerDownRef.current = { x: e.clientX, y: e.clientY };
               drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
             }}
             onPointerUp={e => {
               e.target.releasePointerCapture(e.pointerId);
+              setTimeout(() => window.removeEventListener('click', swallowClick, true), 0);
               drag(false);
               const start = pointerDownRef.current;
               pointerDownRef.current = null;
