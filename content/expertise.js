@@ -86,18 +86,18 @@ export const practice = [
 export const stack = [
   {
     domain: "Mobile",
-    items: ["Kotlin", "Hilt", "Room", "CameraX", "NFC", "Flutter", "Provider", "Dio", "Freezed"],
+    items: ["Flutter", "Provider", "Dio", "Freezed", "Kotlin", "Hilt", "Room", "CameraX", "NFC", "Bluetooth", "TensorFlow Lite"],
   },
   {
     domain: "Web",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Motion", "Leaflet"],
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Redux", "Motion", "Leaflet"],
   },
   {
     domain: "Backend & infra",
-    items: [".NET Core", "SQL Server", "ASP.NET Web Forms", "Crystal Reports", "Node.js", "Prisma", "Docker", "IIS", "Plesk", "NGINX", "GitHub Actions"],
+    items: [".NET Core", "SQL Server", "MySQL", "Firestore", "ASP.NET Web Forms", "Crystal Reports", "Node.js", "Prisma", "Docker", "IIS", "Plesk", "NGINX", "GitHub Actions"],
   },
   {
-    domain: "AI & monitoring",
+    domain: "AI integration & monitoring",
     items: ["TensorFlow Lite", "YOLOv8", "LLM APIs", "Prometheus", "Grafana", "Sentry", "Crashlytics", "Postman", "Swagger"],
   },
   {
@@ -108,13 +108,15 @@ export const stack = [
 
 // Organisations from the CV (text only, no logos).
 export const proofStrip = [
-  "Semesta Agri Solusi",
+  "Semesta Agri Solusi (GEMA)",
   "Samta Cloud",
-  "DNA Group",
+  "DNA Group (DMB App)",
+  "Freelance",
   "BEKUP × Dicoding",
   "Bangkit Academy",
   "Kampus Merdeka",
   "Mikroskil University",
+  "BITSMIKRO",
 ];
 
 export const faq = [

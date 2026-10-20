@@ -14,7 +14,7 @@ import Ph from "@/components/shared/Ph";
 //   size="compact" → small tile, image on top, two bullets
 export default function CaseStudyCard({ study, size = "feature", priority = false, headingLevel: H = "h3" }) {
   const result = study.results[0];
-  const resultsPh = study.placeholders?.includes("results");
+  const resultsPh = Boolean(study.placeholders?.includes("results"));
   const wide = size === "wide";
   const compact = size === "compact";
   const bullets = wide || compact ? study.preview.slice(0, 2) : study.preview;

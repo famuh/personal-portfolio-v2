@@ -5,6 +5,8 @@ import { m, useScroll, useSpring } from "framer-motion";
 import Reveal from "./Reveal";
 import Chip from "./Chip";
 import Ph from "./Ph";
+import Link from "next/link";
+
 
 // Vertical timeline whose line draws as you scroll, tying each role to the
 // reading position. `limit` trims highlights for the homepage summary.
@@ -50,6 +52,17 @@ export default function Timeline({ items, limit, headingLevel: H = "h3" }) {
                     <span>{h}</span>
                   </li>
                 ))}
+                {limit && job.highlights.length > limit && (
+                  <li key="more" className="measure flex gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.7em] h-px w-3 shrink-0 bg-line-strong"
+                    />
+                    <Link href="/about#experience">
+                      <span className="text-accent-ink hover:underline">…and {job.highlights.length - limit} more.</span>
+                    </Link>
+                  </li>
+                )}
               </ul>
               {job.tags && (
                 <ul className="flex flex-wrap gap-2 pt-1" aria-label="Focus areas">

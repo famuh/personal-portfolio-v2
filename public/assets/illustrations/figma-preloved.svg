@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="t">
+  <title id="t">Placeholder presentation board for the preloved marketplace prototype: four mobile screens from browsing to checkout and a seller view, connected by a flow</title>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#0b0b0c" fill-opacity=".08"/>
+    </pattern>
+    <filter id="sh" x="-15%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0b0b0c" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="#f6f3ef"/>
+  <rect width="1600" height="1000" fill="url(#dots)"/>
+
+  <text x="80" y="92" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="#0b0b0c">Preloved marketplace</text>
+  <text x="80" y="128" font-family="Inter, Arial, sans-serif" font-size="18" fill="#5d5d58">Buyer flow · seller flow · transaction flow</text>
+
+  <!-- connectors -->
+  <g fill="none" stroke="#0b0b0c" stroke-opacity=".3" stroke-width="2.5" stroke-dasharray="6 6">
+    <path d="M370 470 H 430"/><path d="M710 470 H 770"/><path d="M1050 470 H 1110"/>
+  </g>
+  <g fill="none" stroke="#0b0b0c" stroke-opacity=".3" stroke-width="2.5">
+    <path d="M424 462 L434 470 L424 478"/><path d="M764 462 L774 470 L764 478"/><path d="M1104 462 L1114 470 L1104 478"/>
+  </g>
+
+  <!-- screen 1: browse -->
+  <text x="90" y="208" font-family="Inter, Arial, sans-serif" font-size="15" fill="#5d5d58">01 Browse</text>
+  <g filter="url(#sh)"><rect x="90" y="220" width="270" height="560" rx="32" fill="#ffffff"/></g>
+  <rect x="112" y="252" width="140" height="14" rx="7" fill="#0b0b0c"/>
+  <rect x="112" y="282" width="226" height="38" rx="19" fill="#f6f3ef"/>
+  <g fill="#e9e1d6">
+    <rect x="112" y="340" width="108" height="130" rx="14"/><rect x="230" y="340" width="108" height="130" rx="14"/>
+    <rect x="112" y="520" width="108" height="130" rx="14"/><rect x="230" y="520" width="108" height="130" rx="14"/>
+  </g>
+  <g fill="#0b0b0c"><rect x="112" y="480" width="70" height="8" rx="4"/><rect x="230" y="480" width="80" height="8" rx="4"/><rect x="112" y="660" width="60" height="8" rx="4"/><rect x="230" y="660" width="76" height="8" rx="4"/></g>
+  <g fill="#047857"><rect x="112" y="496" width="44" height="8" rx="4"/><rect x="230" y="496" width="44" height="8" rx="4"/><rect x="112" y="676" width="44" height="8" rx="4"/><rect x="230" y="676" width="44" height="8" rx="4"/></g>
+
+  <!-- screen 2: product detail -->
+  <text x="430" y="208" font-family="Inter, Arial, sans-serif" font-size="15" fill="#5d5d58">02 Product detail</text>
+  <g filter="url(#sh)"><rect x="430" y="220" width="270" height="560" rx="32" fill="#ffffff"/></g>
+  <rect x="430" y="220" width="270" height="260" rx="32" fill="#e9e1d6"/>
+  <rect x="430" y="440" width="270" height="40" fill="#e9e1d6"/>
+  <rect x="452" y="500" width="160" height="14" rx="7" fill="#0b0b0c"/>
+  <rect x="452" y="526" width="80" height="12" rx="6" fill="#047857"/>
+  <g fill="#5d5d58" fill-opacity=".4"><rect x="452" y="560" width="220" height="8" rx="4"/><rect x="452" y="580" width="200" height="8" rx="4"/><rect x="452" y="600" width="170" height="8" rx="4"/></g>
+  <g><rect x="452" y="630" width="60" height="26" rx="13" fill="#f6f3ef"/><rect x="520" y="630" width="60" height="26" rx="13" fill="#f6f3ef"/></g>
+  <rect x="452" y="712" width="226" height="46" rx="23" fill="#0b0b0c"/>
+  <rect x="525" y="730" width="80" height="10" rx="5" fill="#34d399"/>
+
+  <!-- screen 3: checkout -->
+  <text x="770" y="208" font-family="Inter, Arial, sans-serif" font-size="15" fill="#5d5d58">03 Checkout</text>
+  <g filter="url(#sh)"><rect x="770" y="220" width="270" height="560" rx="32" fill="#ffffff"/></g>
+  <rect x="792" y="252" width="120" height="14" rx="7" fill="#0b0b0c"/>
+  <rect x="792" y="286" width="226" height="90" rx="14" fill="#f6f3ef"/>
+  <rect x="808" y="302" width="58" height="58" rx="10" fill="#e9e1d6"/>
+  <g fill="#0b0b0c"><rect x="878" y="312" width="100" height="9" rx="4"/></g>
+  <g fill="#047857"><rect x="878" y="332" width="50" height="9" rx="4"/></g>
+  <g fill="#e8e8e4"><rect x="792" y="396" width="226" height="44" rx="10"/><rect x="792" y="450" width="226" height="44" rx="10"/><rect x="792" y="504" width="226" height="44" rx="10"/></g>
+  <rect x="792" y="580" width="226" height="1" fill="#e8e8e4"/>
+  <g fill="#5d5d58" fill-opacity=".45"><rect x="792" y="600" width="80" height="9" rx="4"/><rect x="792" y="624" width="100" height="9" rx="4"/></g>
+  <rect x="948" y="620" width="70" height="14" rx="7" fill="#0b0b0c"/>
+  <rect x="792" y="712" width="226" height="46" rx="23" fill="#047857"/>
+  <rect x="865" y="730" width="80" height="10" rx="5" fill="#ffffff"/>
+
+  <!-- screen 4: seller dashboard -->
+  <text x="1110" y="208" font-family="Inter, Arial, sans-serif" font-size="15" fill="#5d5d58">04 Seller dashboard</text>
+  <g filter="url(#sh)"><rect x="1110" y="220" width="400" height="560" rx="24" fill="#ffffff"/></g>
+  <rect x="1134" y="252" width="150" height="14" rx="7" fill="#0b0b0c"/>
+  <g>
+    <rect x="1134" y="286" width="170" height="80" rx="12" fill="#f6f3ef"/><rect x="1316" y="286" width="170" height="80" rx="12" fill="#f6f3ef"/>
+    <g fill="#5d5d58" fill-opacity=".45"><rect x="1150" y="304" width="70" height="8" rx="4"/><rect x="1332" y="304" width="60" height="8" rx="4"/></g>
+    <g fill="#0b0b0c"><rect x="1150" y="326" width="90" height="20" rx="6"/><rect x="1332" y="326" width="70" height="20" rx="6"/></g>
+  </g>
+  <rect x="1134" y="384" width="352" height="160" rx="12" fill="#f6f3ef"/>
+  <g fill="#34d399"><rect x="1160" y="480" width="26" height="44" rx="4"/><rect x="1200" y="450" width="26" height="74" rx="4"/><rect x="1240" y="466" width="26" height="58" rx="4"/><rect x="1280" y="424" width="26" height="100" rx="4"/><rect x="1320" y="440" width="26" height="84" rx="4"/><rect x="1360" y="410" width="26" height="114" rx="4"/><rect x="1400" y="432" width="26" height="92" rx="4"/></g>
+  <g fill="#e8e8e4"><rect x="1134" y="562" width="352" height="48" rx="10"/><rect x="1134" y="620" width="352" height="48" rx="10"/><rect x="1134" y="678" width="352" height="48" rx="10"/></g>
+  <g fill="#e9e1d6"><rect x="1146" y="572" width="28" height="28" rx="6"/><rect x="1146" y="630" width="28" height="28" rx="6"/><rect x="1146" y="688" width="28" height="28" rx="6"/></g>
+
+  <text x="80" y="900" font-family="Inter, Arial, sans-serif" font-size="16" fill="#5d5d58">Figma · 4 key screens in flow order</text>
+</svg>

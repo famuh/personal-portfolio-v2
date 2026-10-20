@@ -10,12 +10,6 @@
 //  Cara cek sisa placeholder:  grep -rn "TODO: ganti" content/
 // ============================================================================
 
-// TODO: ganti dengan data asli — stack website semestaagro.com (belum
-// dikonfirmasi; yang tercantum hanya tebakan).
-export const caseStudyMeta = {
-  "semesta-agro": { stack: ["Next.js", "React", "Tailwind CSS"] },
-};
-
 // Pengalaman yang detailnya belum ada (saat ini kosong). Tambahkan entri
 // dengan `pending: true`; entri ini HANYA tampil di `pnpm dev`. Setelah
 // detailnya ada, pindahkan ke content/experience.js.
@@ -27,9 +21,13 @@ export const pendingActivities = [];
 // HANYA tampil di `pnpm dev` (bingkai putus-putus di halaman case study) dan
 // tidak muncul di production. Simpan file ke public/assets/opt/work/, lalu
 // pindahkan ke field `gallery` di content/projects.js.
+// Gambar placeholder di archive (ditandai `imagePlaceholder: true` di
+// content/projects.js, ada badge oranye di `pnpm dev`):
+//   - Livestock & distributor system → public/assets/illustrations/figma-livestock.svg
+// TODO: ganti dengan export board Figma. Panduan: docs/figma-screenshots.md
 export const artefactSlots = {
-  "gema-plantation": ["ERD (disamarkan)", "User flow: RKH → BKM → SPB", "Wireframe aplikasi mandor", "Foto di lapangan / saat pelatihan"],
-  "gema-factory": ["User flow: scan → issue → work order", "Screenshot aplikasi (disamarkan)", "Brosur produk GEMA Factory"],
+  "gema-plantation": ["Confidential — user flows, wireframes, data models, and API specifications are protected under a client NDA and cannot be shared publicly."],
+  "gema-factory": ["Confidential — user flows, wireframes, data models, and API specifications are protected under a client NDA and cannot be shared publicly."],
   "p3-system": ["ERD", "Diagram proses pembelian–penjualan–stok"],
 };
 

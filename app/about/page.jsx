@@ -68,7 +68,7 @@ export default function AboutPage() {
             text="I started in multimedia, studied informatics, and found that the most interesting part of software is the conversation before the code."
           />
           <Reveal as="p" index={1} className="measure text-ink-muted">
-            Most of my recent work is for palm oil companies. GEMA Plantation takes estate work off paper with an offline Android app, a web CMS and an ERP integration. GEMA Factory brings mill maintenance onto phones. I also rebuilt the product website for Semesta Agro&apos;s plantation ERP.
+            Most of my recent work is for palm oil companies. GEMA Plantation takes estate work off paper with an offline Android app, a web CMS and an ERP integration. GEMA Factory brings mill maintenance onto phones. I also rebuilt the product website for Semesta Agro&apos;s company website.
           </Reveal>
           <Reveal as="p" index={1} className="measure text-ink-muted">
             Before that, at DNA Group&apos;s software division I designed and built a self-ordering system for Android TV kiosks and tablets, plus attendance (face recognition, fake-GPS detection), offline POS and hotel, asset and multi-outlet management features. As a freelancer I take projects from requirement interviews and process diagrams all the way to production. The P3 purchasing, sales and inventory system is the clearest example.

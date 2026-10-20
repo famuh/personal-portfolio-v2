@@ -19,7 +19,11 @@ export default function WorkPage() {
       <PageIntro
         eyebrow={`${projectCount} projects`}
         title="Work"
-        lead="Case studies first, newest at the top. Below them: smaller client builds, design work, and the course projects I learned on."
+        lead={
+          <>
+            <strong className="font-semibold text-ink bg-accent">Case studies first, </strong>newest at the top. Below them: smaller client builds, design work, and the course projects I learned on.
+          </>
+        }
       />
 
       <section aria-labelledby="cs-title" className="shell pb-(--space-section)">

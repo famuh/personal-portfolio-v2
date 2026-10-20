@@ -1,6 +1,5 @@
 // Single source of truth for every project shown on the site (home, /work,
 // /work/[slug]). Plain data only; components decide how to render it.
-import { caseStudyMeta } from "./placeholders";
 
 // ---------------------------------------------------------------------------
 // Case studies, in display order. The first four (`HOME_COUNT`) appear in the
@@ -25,7 +24,7 @@ export const caseStudies = [
     ],
     role: "Software engineer and product lead: Android app, web CMS and backend",
     period: "Dec 2025 – Present",
-    team: "I lead 2–4 developers (usually 2)",
+    team: "I lead 2–4 developers (usually 2) and coordinate with implementators and clients",
     scale: "In pilot with a plantation client, development continuing",
     status: "Piloting",
     stack: ["Kotlin", "Hilt", "Room", "CameraX", "TensorFlow Lite", "YOLOv8", "NFC", "Bluetooth printing"],
@@ -36,6 +35,11 @@ export const caseStudies = [
     // Client app: illustration only, no real screenshots or client data.
     cover: "/assets/illustrations/gema-plantation.svg",
     coverAlt: "Illustration of a field app with a harvest work record and on-device fruit ripeness detection, an NFC card, and a web dashboard with production charts and a map",
+    gallery: [
+      { src: "/assets/opt/work/gemaplantation_1.webp", alt: "GEMA Plantation cover. Demo data." },
+      { src: "/assets/illustrations/gema-mobile.svg", alt: "Android app screens in flow order: daily work plan, attendance by face, work records, on-device ripeness detection, and harvest collection with an NFC delivery note. Demo data." },
+      { src: "/assets/illustrations/gema-cms.svg", alt: "Web CMS: analytics dashboard with harvest KPIs and trends, the GapAI assistant, and the uncollected fruit view in dark mode. Demo data." },
+    ],
     problem:
       "Field supervisors wrote everything in notebooks and clerks typed it into the system later, so the office saw yesterday's work at best. Paid work days were hard to verify without photos or locations. Mistakes, duplicates and buddy-punching affected wages and bonuses. Most blocks have no internet, and the gap between fruit harvested and fruit hauled was hard to trace.",
     solution:
@@ -144,8 +148,7 @@ export const caseStudies = [
   },
   {
     slug: "semesta-agro",
-    placeholders: ["stack"],
-    title: "A product website for a palm oil ERP",
+    title: "Company website for a palm oil IT-Consultant Company",
     name: "SEMESTA AGRO",
     kind: "Web · B2B",
     summary:
@@ -160,7 +163,7 @@ export const caseStudies = [
     team: "In-house initiative at PT Semesta Agri Solusi",
     status: "Live",
     liveUrl: "https://semestaagro.com/",
-    stack: caseStudyMeta["semesta-agro"].stack,
+    stack: ["Next.js", "React", "Tailwind CSS", "Motion", "Plesk"],
     cover: "/assets/opt/work/semesta-hero.webp",
     coverAlt: "Semesta Agro homepage: headline about managing plantation and mill from one platform, next to a grid of ERP modules",
     gallery: [{ src: "/assets/opt/work/semesta-scope.webp", alt: "Operational scope section: estate, mill, bulking and head office, with field photos" }],
@@ -221,11 +224,15 @@ export const caseStudies = [
     ],
     role: "Software engineer and product lead (Flutter): architecture, UI system and features",
     period: "2026 – Present",
-    team: "The GEMA team I lead (2–4 developers)",
+    team: "The GEMA team I lead (2–4 developers) and implementators, plus the client mill staff",
     status: "In active development",
     stack: ["Flutter", "Dart", "Provider", "Dio", "Freezed", "dartz", "mobile_scanner", "REST API"],
     cover: "/assets/illustrations/gema-factory.svg",
     coverAlt: "Illustration of a maintenance app scanning a machine QR code, an issue form with readings marked normal, warning and critical, and a list of work orders",
+    gallery: [
+      { src: "/assets/opt/work/gemafactory_1.webp", alt: "App screens. Demo Data" },
+      { src: "/assets/illustrations/gema-factory-mobile.svg", alt: "App screens in flow order: dashboard with work orders and pending issues, scanning a machine QR code, machine details with work order history, and a role-based profile. Demo data." },
+    ],
     problem:
       "A mill runs dozens to hundreds of machines. Breakdown reports came in late or went missing, machine history wasn't recorded, inspection readings weren't documented, and supervisors couldn't see progress in the field. Paper work orders were easy to lose, and assigning mechanics was slow.",
     solution:
@@ -359,6 +366,7 @@ export const caseStudies = [
     solution:
       "After requirement interviews, process diagrams and wireframes, I built one platform where every purchase and sale updates stock automatically. A typed API (Bun, Hono, Zod, Prisma) sits behind a Next.js front end, so validation rules are written once.",
     responsibilities: [
+      "I own the product :)",
       "Ran the requirement sessions and mapped the current and target process.",
       "Produced the wireframes, process diagrams and data model.",
       "Built the front end (Next.js, TypeScript, Zustand, TanStack).",
@@ -384,6 +392,185 @@ export const caseStudies = [
       "The diagrams turned out to be the most useful thing I delivered. They settled arguments before there was any code to argue about, so I now start every client project with a one-page process map.",
   },
   {
+    // Everything here comes from the use case and class diagrams, nothing more.
+    slug: "dapur360",
+    title: "Ordering, kitchen and stock for a vegan restaurant",
+    name: "Dapur360",
+    kind: "System analysis",
+    summary:
+      "A restaurant system designed around the table QR code: customers order from their phone, the cashier confirms, the kitchen works a queue, and every sale draws ingredients from stock through the menu's recipe.",
+    preview: [
+      "Orders, kitchen and ingredient stock tracked in different places",
+      "Use cases for four roles and a 14-entity data model",
+      "Stock moves through recipes and purchase batches",
+    ],
+    role: "Systems analyst: use case diagram and class diagram",
+    status: "Design and analysis",
+    stack: ["System analysis", "Use case diagram", "Class diagram", "POS", "QR self-ordering"],
+    cover: "/assets/illustrations/dapur360.svg",
+    coverAlt: "Dapur360 design board: customer, cashier, kitchen and owner with their use cases, the core data model linking tables, orders, menu recipes, ingredients and stock, and the order status from created to done",
+    gallery: [
+      { src: "/assets/opt/work/dapur360_usecase.webp", alt: "Use case diagram of Dapur360: the customer scans the table QR, orders, edits and pays; the cashier confirms orders and forwards them to the kitchen; the kitchen sees the queue and updates status; the owner manages purchasing, inventory, menu data, reports and users.", fit: "contain", ratio: "4168 / 3048" },
+      { src: "/assets/opt/work/dapur360_erd.webp", alt: "Class diagram of Dapur360 with 14 classes: table, user, order, order item, transaction, menu category, menu, recipe, ingredient, supplier, purchase, purchase item, stock in and stock out.", fit: "contain", ratio: "3 / 4" },
+    ],
+    problem:
+      "In a restaurant, orders, payments, kitchen work and ingredient stock easily end up in separate places. Dapur360 is a design for keeping them in one system, so the owner can see what each sale uses and what needs restocking.",
+    solution:
+      "One system for four roles. Each table has its own QR code, so customers open the menu, order, edit and pay without an account. The cashier confirms the order and forwards it to the kitchen, which works through a queue and marks each order done. Behind the menu, every item has a recipe of ingredients, so sales draw stock automatically, while purchases from suppliers come in as stock batches.",
+    workflow: {
+      title: "From table to stock",
+      steps: [
+        { title: "Scan the table", body: "The QR code carries the table's token, so the order is tied to the table without a login." },
+        { title: "Order and pay", body: "The customer builds the order, can still edit it, and pays. The transaction stores the payment method and prints a receipt." },
+        { title: "Confirm", body: "The cashier accepts and confirms the order, or cancels it." },
+        { title: "Kitchen queue", body: "Confirmed orders are forwarded to the kitchen, which updates each one until it's done." },
+        { title: "Stock out", body: "Each order item draws its ingredients through the menu's recipe, taken from a specific stock-in batch." },
+        { title: "Restock", body: "The owner records purchases from suppliers and uploads the receipt; purchased ingredients come in as stock in." },
+      ],
+    },
+    scope: [
+      {
+        title: "Roles and use cases",
+        items: [
+          "Customer: scan the QR and view the menu, place, edit and pay for an order",
+          "Cashier: accept and confirm orders, forward them to the kitchen",
+          "Kitchen: see the order queue, update order status",
+          "Owner: purchasing, inventory, menu data, reports and user accounts",
+        ],
+      },
+      {
+        title: "Data model",
+        items: [
+          "Tables with a generated QR token",
+          "Orders, order items and transactions with payment method",
+          "Menu categories, menus with availability, and recipes",
+          "Ingredients with a minimum stock level",
+          "Suppliers, purchases with receipts, and purchase items",
+          "Stock in and stock out, linked by batch",
+        ],
+      },
+    ],
+    rules: [
+      "Customers have no account in the data model; staff and the owner sign in, and each user has a role.",
+      "An order moves from created to confirmed, to the kitchen, to done, and can be cancelled along the way.",
+      "A menu item can be switched off and has an availability check.",
+      "Each ingredient has a minimum stock level that the system checks.",
+      "Stock out always points to the stock-in batch it was taken from, and a batch is marked empty when it runs out.",
+      "Purchases keep the receipt and are checked for price changes.",
+    ],
+    decisions: [
+      {
+        title: "The table is the customer's identity",
+        body: "There is no customer account in the data model. The order carries the table, which keeps self-ordering to one scan and nothing to sign up for.",
+      },
+      {
+        title: "Recipes connect sales to stock",
+        body: "Menus don't hold stock. A recipe lists the ingredients and quantities per menu item, so one sale can reduce several ingredients without anyone counting by hand.",
+      },
+      {
+        title: "Stock is tracked by batch",
+        body: "Every purchase line becomes a stock-in batch, and every stock-out record points back to one. So every unit that leaves stock can be traced to the purchase it came from.",
+      },
+      {
+        title: "Orders and payments are separate",
+        body: "An order describes what the table wants; a transaction records the payment, the cashier who handled it and the payment method.",
+      },
+    ],
+    responsibilities: [
+      "Defined the roles and use cases for customer, cashier, kitchen and owner.",
+      "Designed the class diagram: 14 classes with their attributes, operations and relationships.",
+      "Modelled the order status flow and the stock rules behind recipes and batches.",
+    ],
+    results: [
+      { value: "4", label: "roles: customer, cashier, kitchen, owner" },
+      { value: "14", label: "use cases, sign-in included" },
+      { value: "14", label: "classes in the data model" },
+    ],
+    resultsNote: "The deliverables are the use case diagram and the class diagram, so there are no usage numbers.",
+  },
+  {
+    // Everything here comes from the data flow diagram and the Figma screens.
+    slug: "p3-grosir",
+    title: "Sales, purchasing and stock for a wholesale shop",
+    name: "P3 Grosir",
+    kind: "System analysis + UI design",
+    summary:
+      "A data flow diagram of how a wholesale shop sells, buys, keeps stock and reports, and the admin screens designed in Figma from it: cashier, master items with minimum stock, stock adjustments, purchase requests, suppliers and reports.",
+    preview: [
+      "Sales, purchasing and stock as four connected processes",
+      "Minimum stock on every item, on the dashboard and in a report",
+      "Admin screens designed in Figma from the data flow diagram",
+    ],
+    role: "Systems analyst and UI designer: data flow diagram and Figma screens",
+    status: "Design and analysis",
+    stack: ["System analysis", "Data flow diagram", "Figma", "UI design", "Web"],
+    cover: "/assets/illustrations/p3-grosir.svg",
+    coverAlt: "P3 Grosir admin screens designed in Figma: dashboard with a sales chart, best sellers and items at minimum stock, the master item list, and a sales report preview. Demo data.",
+    gallery: [
+      { src: "/assets/opt/work/P3grosir_dfd.webp", alt: "Data flow diagram of P3 Grosir: admin, customer, supplier and owner around four processes (sales, purchasing, inventory management and reporting) with the item and supplier data stores.", fit: "contain", ratio: "16 / 15" },
+    ],
+    problem:
+      "A wholesale shop sells to customers, buys from suppliers and has to know what is left on the shelf. When those are handled separately, stock figures drift and the owner has no single place to see sales, purchases and items running low. P3 Grosir maps how the three connect before any screen is drawn.",
+    solution:
+      "Four processes share one item store. Sales and purchasing both update item records, inventory management combines them with the owner's stock adjustments, and a reporting process turns everything into five reports for the owner. The admin screens follow the same split: cashier and transaction history, master items, stock adjustments, purchase requests, purchasing, suppliers, users and reports.",
+    workflow: {
+      title: "The four processes",
+      steps: [
+        { title: "1.0 Sales", body: "A customer's purchase is recorded against the item data, the customer gets a sales invoice, and item records are updated." },
+        { title: "2.0 Purchasing", body: "The owner's purchase list goes to purchasing; the supplier's data and purchase invoice are recorded, and the supplier gets the purchase details." },
+        { title: "3.0 Inventory", body: "Sales and purchase records, plus the owner's stock adjustments, update the item data." },
+        { title: "4.0 Reports", body: "Sales, purchase, inventory and adjustment records become reports for the owner." },
+      ],
+    },
+    scope: [
+      {
+        title: "Admin screens (Figma)",
+        items: [
+          "Dashboard: sales chart, best-selling items and items at minimum stock",
+          "Cashier and transaction history",
+          "Master item: buying price, unit price, stock and minimum stock",
+          "Stock adjustment",
+          "Purchase request, purchasing and suppliers",
+          "User manager",
+          "Reports with preview, share and download",
+        ],
+      },
+      {
+        title: "Data flow diagram",
+        items: [
+          "External entities: admin, customer, supplier, owner",
+          "Processes: sales, purchasing, inventory management, reporting",
+          "Data stores: item data and suppliers",
+          "Reports: purchasing, sales, inventory, minimum stock, stock adjustment",
+        ],
+      },
+    ],
+    decisions: [
+      {
+        title: "Stock changes go through a process",
+        body: "Item data is written by sales, purchasing and inventory management. A manual correction is a stock adjustment from the owner, with its own record and its own report.",
+      },
+      {
+        title: "Minimum stock is part of every item",
+        body: "Each item has a minimum stock value next to its stock. The dashboard lists the items that reached it, and the owner gets a minimum stock report.",
+      },
+      {
+        title: "Request before purchase",
+        body: "The owner's purchase list is an input to purchasing, and the screens keep purchase requests apart from recorded purchases.",
+      },
+    ],
+    responsibilities: [
+      "Mapped the shop's processes in a data flow diagram: four processes, four external entities and two data stores.",
+      "Designed the admin screens in Figma, from the dashboard to the reports.",
+    ],
+    results: [
+      { value: "4", label: "processes: sales, purchasing, inventory, reporting" },
+      { value: "5", label: "reports for the owner" },
+      { value: "10", label: "admin menus designed in Figma" },
+    ],
+    resultsNote: "The deliverables are the data flow diagram and the Figma screens, so there are no usage numbers.",
+  },
+  {
     slug: "angkutin",
     title: "A waste pickup app for residents and collectors",
     name: "Angkutin",
@@ -399,7 +586,7 @@ export const caseStudies = [
     period: "2024",
     team: "Undergraduate thesis project",
     status: "Thesis project",
-    stack: ["Flutter", "Dart", "Firebase", "Firestore", "Crashlytics", "OpenStreetMap"],
+    stack: ["Flutter", "Dart", "Firebase", "Firestore", "Crashlytics", "OpenStreetMap", "Real-time"],
     cover: "/assets/opt/work/angkutin-prev.webp",
     coverAlt: "Angkutin mobile screens: waste report form, map of pickup points and request status",
     gallery: [{ src: "/assets/opt/work/angkutin-admin.webp", alt: "Angkutin admin dashboard summarising reports, users and pickup requests" }],
@@ -446,7 +633,7 @@ export const caseStudies = [
     period: "Jul 2025 – Nov 2025",
     team: "Facilitators with Dicoding instructors",
     status: "Programme completed",
-    stack: ["Flutter", "Dart", "Pair programming", "Learning design"],
+    stack: ["Flutter", "Dart", "Pair programming", "Git & GitHub", "AI Model Integration", "Others design"],
     cover: "/assets/illustrations/bekup-cohort.svg",
     coverAlt: "Illustration of a facilitator connected to pairs of learners, with weekly sessions on a timeline",
     problem:
@@ -475,13 +662,113 @@ export const caseStudies = [
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Archive — other shipped work, experiments and learning projects.
-// ---------------------------------------------------------------------------
+// Archive — the complete list of projects, newest first. Projects that also
+// have a case study link to it via `caseStudy` (slug). Optional fields:
+// `year`, `status`, `href` + `linkLabel` (external link), `image`.
 // TODO: demo video Food Recognizer & Gemini chatbot dulu di Firebase Storage
 // (sekarang HTTP 402). Upload ulang (mis. YouTube/Drive) lalu isi `href` +
 // `linkLabel: "Demo video"` pada entri terkait.
 export const archive = [
+  {
+    name: "GEMA Plantation",
+    group: "Mobile",
+    year: "2025 – now",
+    status: "Piloting",
+    caseStudy: "gema-plantation",
+    description:
+      "Plantation operations off paper: an offline-first Android app for field supervisors (attendance, harvest and upkeep records, delivery notes, NFC transfer, on-device ripeness detection) and a web CMS with dashboards, reports, a GIS map and an AI assistant, synced with the company ERP.",
+    stack: ["Kotlin", "Room", "TensorFlow Lite", "ONNX", "NFC",  "Offline-first", "Bluetooth printing", "Location Tracking"],
+    image: "/assets/illustrations/gema-mobile.svg",
+  },
+  {
+    name: "Content Management System GEMA Plantation",
+    group: "Web",
+    year: "2025 – now",
+    status: "Piloting",
+    caseStudy: "gema-plantation",
+    description:
+      "Web CMS for estate offices and management: production dashboards with period comparisons, daily plans and work records, uncollected fruit with an age indicator, hauling and delivery notes, 9 reports in PDF and Excel, a Leaflet map of supervisors, role-based access, and GapAI, an assistant on a third-party LLM. Syncs master data, daily plans and purchase orders from the ERP.",
+    stack: ["LLM Integration", "Cross-platform sync", "Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Leaflet", ".NET Core", "SQL Server"],
+    image: "/assets/illustrations/gema-cms.svg",
+  },
+  {
+    name: "GEMA Factory Mobile",
+    group: "Mobile",
+    year: "2026 – now",
+    status: "In development",
+    caseStudy: "gema-factory",
+    description:
+      "Mill maintenance app: scan a machine's QR code, report issues with readings flagged Normal, Warning or Critical, run preventive maintenance and approvals, and track work orders across 11 types.",
+    stack: ["Flutter", "Provider", "Dio", "Freezed", "REST API"],
+    image: "/assets/illustrations/gema-factory-mobile.svg",
+  },
+  {
+    name: "Semesta Agro company website",
+    group: "Web",
+    year: "2026",
+    status: "Live",
+    caseStudy: "semesta-agro",
+    description:
+      "Rebuilt the website of PT Semesta Agri Solusi from a single logo page into a full product site for Green Harvest Plantation, an ERP for palm oil estates, mills and head offices.",
+    stack: ["Next.js", "React", "Tailwind CSS", "Motion", "Plesk"],
+    image: "/assets/opt/work/semesta-hero.webp",
+    href: "https://semestaagro.com/",
+    linkLabel: "Live site",
+  },
+  {
+    name: "Samta Hospitality",
+    group: "Mobile",
+    year: "2025 – 2026",
+    description:
+      "Flutter app for hospitality and hotel maintenance operations. I owned the UI, REST API integration and state management, built on clean architecture.",
+    stack: ["Flutter", "REST API", "Clean architecture"],
+    image: "/assets/illustrations/maintenance-app.svg",
+  },
+  {
+    name: "Pamulab portfolio",
+    group: "Web",
+    year: "2026",
+    status: "Live",
+    description:
+      "This site: case studies, notes, a CV generated from the same content, an optional AI assistant, and an interactive 3D ID card.",
+    stack: ["Next.js", "Tailwind CSS", "Motion", "Three.js", "Vercel"],
+    image: "/assets/opt/work/pamulab.webp",
+    href: "https://pamulab.vercel.app/",
+    linkLabel: "Live site",
+  },
+  {
+    name: "DMB self-ordering kiosk",
+    group: "Mobile",
+    year: "2024 – 2025",
+    status: "Piloted in one outlet",
+    caseStudy: "dmb-kiosk",
+    description:
+      "Self-ordering app for Android TV kiosks and tablets in DNA Group's food and beverage outlets: one Flutter codebase, layouts per screen size, connected to the group's ordering and POS APIs.",
+    stack: ["Flutter", "Dart", "REST API", "Sentry", "Andoid TV", "Tablet"],
+    image: "/assets/illustrations/dmb-kiosk.svg",
+  },
+  {
+    name: "P3: purchasing, sales and inventory",
+    group: "Web",
+    year: "2025",
+    status: "Built, not in use yet",
+    caseStudy: "p3-system",
+    description:
+      "For a business in POS and stock management, I mapped how purchasing, sales and stock were handled, then built one web app to replace the spreadsheets. Process diagrams first, API last.",
+    stack: ["Next.js", "TypeScript", "Zustand", "TanStack", "Tailwind CSS", "shadcn/ui", "Bun", "Hono", "Prisma", "Zod", "MySQL", "Docker", "GitHub Actions"],
+    image: "/assets/opt/work/p3.webp",
+  },
+  {
+    name: "Angkutin",
+    group: "Mobile",
+    year: "2024",
+    status: "Undergraduate thesis",
+    caseStudy: "angkutin",
+    description:
+      "Waste pickup platform: separate apps for residents and collectors plus a Flutter web admin panel, with real-time status through Firestore and locations on OpenStreetMap.",
+    stack: ["Flutter", "Firebase", "Firestore", "Crashlytics", "OpenStreetMap", "Real-time"],
+    image: "/assets/opt/work/angkutin-prev.webp",
+  },
   {
     name: "Alpha Coffee Medan",
     group: "Web",
@@ -522,58 +809,96 @@ export const archive = [
     stack: ["Flutter"],
     image: "/assets/opt/work/alquranapp.webp",
   },
+    {
+    name: "GEMA Factory",
+    group: "Design",
+    description:
+      "An App that replaces paper work orders in a palm oil mill: scan a machine's QR code, report an issue with readings and photos, assign mechanics, and track the job to completion. Role based access for technicians, supervisors, managers and management.",
+    stack: ["Web", "Mobile", "Prototype", "UX Research", "Requirements analysis", "System design","UI Design", "Figma", ],
+    image: "/assets/illustrations/figma-gema-factory.svg",
+  },
+    {
+    name: "Dapur360 - Vegan Restaurant Management System",
+    group: "Design",
+    caseStudy: "dapur360",
+    description: "Vegan Restaurant Integrated POS, QR self-ordering, purchasing & inventory for F&B businesses",
+    stack: ["Web", "Mobile", "POS", "Self-Ordering","System Analysis", "Figma", "System design"],
+    image: "/assets/illustrations/dapur360.svg",
+  },
+    {
+    name: "P3: Penjualan, Pembelian & Persediaan Grosir",
+    group: "Design",
+    caseStudy: "p3-grosir",
+    description:
+      "Sales, purchasing and inventory for a wholesale shop, designed in Figma: cashier and transaction history, master items with minimum-stock alerts, stock adjustments, purchase requests, suppliers, user roles and sales reports.",
+    stack: [ "Web", "System design", "System Analysis","Figma",],
+    image: "/assets/illustrations/p3-grosir.svg",
+  },
   {
     name: "Livestock & distributor system",
     group: "Design",
     description:
       "Integrated livestock and distributor management designed in Figma: user flows, data structure and a high-fidelity prototype.",
-    stack: ["Figma", "System design"],
+    stack: ["Web", "Mobile","Figma", "System design", "UI Design"],
+    image: "/assets/illustrations/figma-livestock.svg",
+    imagePlaceholder: true,
   },
   {
     name: "Preloved marketplace prototype",
     group: "Design",
-    description: "Multi-role thrifting platform prototype covering seller, buyer and transaction flows.",
-    stack: ["Figma", "UX research"],
+    description:
+      "Admin panel for a multi-role thrift platform, designed and prototyped in Figma: review submitted clothes and send each to sale or recycling, verify buyers, sellers and recycle staff, and manage the catalogue.",
+    stack: ["Web","Figma", "UX research", "UI Design"],
+    image: "/assets/illustrations/preloved-admin.svg",
   },
   {
     name: "Diatrofi",
-    group: "Learning",
+    group: "Others",
     description: "Food-intake tracker with healthy recipes and health articles.",
     stack: ["Flutter"],
     image: "/assets/opt/work/diatrofi-preview.webp",
   },
   {
     name: "Movies",
-    group: "Learning",
+    group: "Others",
     description: "Now showing, upcoming and top-rated films with search, built on TMDB with CI via Codemagic.",
     stack: ["Flutter", "TMDB", "Codemagic", "Firebase"],
     image: "/assets/opt/work/watch-prev.webp",
   },
   {
     name: "ThreadHub",
-    group: "Learning",
+    group: "Others",
     description: "Discussion forum with threads and replies.",
     stack: ["React", "Redux", "ESLint"],
     image: "/assets/opt/work/thread-web.webp",
   },
-  { name: "StorySpot", group: "Learning", description: "Photo stories with a map of nearby posts.", stack: ["Kotlin"] },
-  { name: "GitLookup", group: "Learning", description: "Search GitHub users and browse profiles.", stack: ["Kotlin", "GitHub API"] },
+  { name: "StorySpot", group: "Others", description: "Photo stories with a map of nearby posts.", stack: ["Kotlin"] },
+  { name: "GitLookup", group: "Others", description: "Search GitHub users and browse profiles.", stack: ["Kotlin", "GitHub API"] },
   {
     name: "User management module",
-    group: "Learning",
+    group: "Others",
     description: "CRUD module for user data and profiles.",
     stack: ["React", "Express", "Bulma", "Axios", "MySQL"],
   },
   {
+    name: "First personal portfolio",
+    group: "Others",
+    description: "My first portfolio site, hand-written in HTML, CSS and JavaScript.",
+    stack: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    image: "/assets/opt/work/porto.webp",
+    href: "https://famuh.github.io/web-portfolio/",
+    linkLabel: "Live site",
+  },
+  {
     name: "Covid-19 world tracker",
-    group: "Learning",
+    group: "Others",
     description: "Pandemic numbers from public health sources.",
     stack: ["HTML", "CSS", "Express"],
     image: "/assets/opt/work/web-covid-preview.webp",
   },
 ];
 
-export const archiveGroups = ["Web", "Mobile", "Design", "Learning"];
+export const archiveGroups = ["Web", "Mobile", "Design", "Others"];
 
 // Visual design work (posters, brochures, templates), mostly for BITSMIKRO.
 export const designGallery = [
@@ -590,6 +915,6 @@ export const designGallery = [
 export const HOME_COUNT = 4;
 export const featuredCaseStudies = caseStudies.slice(0, HOME_COUNT);
 
-export const projectCount = caseStudies.length + archive.length;
+export const projectCount = archive.length;
 
 export const getCaseStudy = (slug) => caseStudies.find((c) => c.slug === slug);

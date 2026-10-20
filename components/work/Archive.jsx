@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, m } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { archive, archiveGroups } from "@/content/projects";
 import { DUR, EASE_OUT_EXPO } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import Chip from "@/components/shared/Chip";
 
 const FILTERS = ["All", ...archiveGroups];
+const SHOW_PLACEHOLDERS = process.env.NODE_ENV !== "production";
 
 // Filterable archive. Filters are real buttons with aria-pressed; the list
 // re-flows with a short layout animation.
@@ -61,6 +63,11 @@ export default function Archive() {
                     sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
                     className="object-cover object-top transition-transform duration-(--dur-slow) ease-out-expo group-hover:scale-[1.04]"
                   />
+                  {p.imagePlaceholder && SHOW_PLACEHOLDERS && (
+                    <span className="absolute left-3 top-3 rounded-chip bg-dev-mark px-2.5 py-1 text-xs font-medium text-white">
+                      Placeholder image
+                    </span>
+                  )}
                 </div>
               )}
               <div className="flex flex-1 flex-col gap-3 p-5">
@@ -68,23 +75,40 @@ export default function Archive() {
                   <h3 className="text-lg font-semibold tracking-tight">{p.name}</h3>
                   <span className="eyebrow shrink-0 pt-1 text-ink-muted">{p.group}</span>
                 </div>
+                {(p.year || p.status) && (
+                  <p className="-mt-2 text-xs text-ink-muted">{[p.year, p.status].filter(Boolean).join(" · ")}</p>
+                )}
                 <p className="text-sm text-ink-muted">{p.description}</p>
                 <ul className="mt-auto flex flex-wrap gap-1.5 pt-2" aria-label="Stack">
                   {p.stack.map((t) => (
                     <li key={t}><Chip>{t}</Chip></li>
                   ))}
                 </ul>
-                {p.href && (
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-fit items-center gap-1 text-sm font-medium underline decoration-line-strong underline-offset-4 hover:decoration-accent-ink"
-                  >
-                    {p.linkLabel}
-                    <span className="sr-only"> for {p.name} (opens in a new tab)</span>
-                    <ArrowUpRight aria-hidden="true" className="size-3.5" />
-                  </a>
+                {(p.caseStudy || p.href) && (
+                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                    {p.caseStudy && (
+                      <Link
+                        href={`/work/${p.caseStudy}`}
+                        className="inline-flex w-fit items-center gap-1 text-sm font-medium underline decoration-line-strong underline-offset-4 hover:decoration-accent-ink"
+                      >
+                        Case study
+                        <span className="sr-only"> for {p.name}</span>
+                        <ArrowRight aria-hidden="true" className="size-3.5" />
+                      </Link>
+                    )}
+                    {p.href && (
+                      <a
+                        href={p.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex w-fit items-center gap-1 text-sm font-medium underline decoration-line-strong underline-offset-4 hover:decoration-accent-ink"
+                      >
+                        {p.linkLabel}
+                        <span className="sr-only"> for {p.name} (opens in a new tab)</span>
+                        <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </m.li>

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal portfolio of Fadhil Muhammad, deployed on Vercel at https://pamulab.vercel.app ("Famuh", studio name Pamulab), positioned as **IT Consultant / Senior Developer / Analyst**. Next.js 15 App Router, JavaScript (`.jsx`, no TypeScript despite the `@/*` alias in `jsconfig.json`), Tailwind CSS v4, shadcn/ui + Radix primitives, framer-motion, next-themes. The redesign rationale (reference analysis, sitemap, animation list) is in `docs/REDESIGN-PLAN.md`.
+Personal portfolio of Fadhil Muhammad, deployed on Vercel at https://pamulab.vercel.app ("Famuh", studio name Pamulab), positioned as **IT Consultant / Senior Developer / Lead Programmer / Analyst**. Next.js 15 App Router, JavaScript (`.jsx`, no TypeScript despite the `@/*` alias in `jsconfig.json`), Tailwind CSS v4, shadcn/ui + Radix primitives, framer-motion, next-themes. The redesign rationale (reference analysis, sitemap, animation list) is in `docs/REDESIGN-PLAN.md`.
 
 ## Commands
 

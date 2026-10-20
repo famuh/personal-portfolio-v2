@@ -4,7 +4,7 @@ export const profile = {
   shortName: "Fadhil",
   alias: "Famuh",
   studio: "Pamulab",
-  roles: ["IT Consultant", "Senior Developer", "Analyst"],
+  roles: ["IT Consultant", "Lead Programmer", "Analyst"],
   tagline: "Software engineer and IT consultant digitising palm oil operations, from field to office.",
   valueProp:
     "I work out how a business actually runs, design the system around it, and build it. Lately that means palm oil plantations and mills: field apps that work offline, dashboards for management, and the ERP integration in between.",
@@ -12,7 +12,7 @@ export const profile = {
   timezone: "UTC+7",
   email: "fadhilmuhammad.mdev@gmail.com",
   phone: "+62 822 9457 4365",
-  startedYear: 2022,
+  startedYear: 2023,
   cv: "/assets/resume/myresume.pdf", // exported from /cv
   cvFileName: "Fadhil-Muhammad-CV.pdf", // name the download is saved as
   portrait: "/assets/opt/portrait.webp",

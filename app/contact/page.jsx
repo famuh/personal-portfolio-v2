@@ -9,7 +9,7 @@ import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata = {
   title: "Contact",
-  description: "Get in touch with Fadhil Muhammad about IT consulting, senior developer or analyst roles, or a project.",
+  description: "Get in touch with Fadhil Muhammad about IT consulting, lead programmer or analyst roles, or a project.",
   alternates: { canonical: "/contact" },
 };
 

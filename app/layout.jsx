@@ -30,7 +30,7 @@ export const metadata = {
   description: seo.description,
   applicationName: profile.name,
   authors: [{ name: profile.name, url: profile.url }],
-  keywords: ["IT Consultant", "Senior Developer", "System Analyst", "Business Analyst", "Flutter", "Next.js", "Medan", "Indonesia", profile.name],
+  keywords: ["IT Consultant", "Lead Programmer", "System Analyst", "Business Analyst", "Flutter", "Next.js", "Medan", "Indonesia", profile.name],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

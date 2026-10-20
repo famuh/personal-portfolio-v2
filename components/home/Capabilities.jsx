@@ -32,10 +32,13 @@ function CapabilityTile({ item, featured }) {
             <li key={d}><Chip>{d}</Chip></li>
           ))}
         </ul>
-        <Link href={`/work/${item.proof}`} className="group/proof inline-flex items-center gap-1 text-sm font-medium text-ink-muted hover:text-ink">
-          Example: {proofName(item.proof)}
-          <ArrowRight aria-hidden="true" className="size-3.5 transition-transform duration-(--dur-base) group-hover/proof:translate-x-0.5" />
-        </Link>
+        {/* Only link to a case study that exists (a slug may point to one not written yet). */}
+        {proofName(item.proof) && (
+          <Link href={`/work/${item.proof}`} className="group/proof inline-flex items-center gap-1 text-sm font-medium text-ink-muted hover:text-ink">
+            Example: {proofName(item.proof)}
+            <ArrowRight aria-hidden="true" className="size-3.5 transition-transform duration-(--dur-base) group-hover/proof:translate-x-0.5" />
+          </Link>
+        )}
       </div>
     </>
   );

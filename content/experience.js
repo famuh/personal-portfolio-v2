@@ -18,7 +18,7 @@ export const experience = [
     summary:
       "Mobile and web software for palm oil operations: the GEMA product line and the Green Harvest Plantation ERP, deployed per client with isolated servers and databases.",
     highlights: [
-      "Lead GEMA Plantation and GEMA Factory with a team of usually two (up to four) developers, from field studies and requirement gathering to estimates, presentations and delivery.",
+      "Lead GEMA Plantation and GEMA Factory with a team of developers and implementators, from field studies and requirement gathering to estimates, presentations and delivery.",
       "Built GEMA Factory, a Flutter mill maintenance app: preventive maintenance, work orders, approvals, workshop activities, reporting and role management.",
       "Develop the GEMA Plantation Android app (Kotlin/XML, offline-first, on-device ripeness detection, NFC) and its CMS in Next.js, TypeScript, Tailwind CSS and TanStack Query.",
       "Integrated an AI chatbot that answers questions about production, maintenance and reports through API-driven access to operational data.",
@@ -132,7 +132,7 @@ export const activities = [
   },
   {
     company: "Kampus Merdeka × Dicoding, Studi Independen",
-    role: "Peer Tutor, Study Group",
+    role: "Peer Tutor Study Group",
     period: "Aug 2022 – Dec 2022",
     mode: "Remote",
     highlights: [
@@ -192,7 +192,7 @@ export const recognition = [
 // source doesn't list them.
 export const certifications = [
   { name: "Flutter Developer Expert", issuer: "Dicoding Indonesia", year: "2022", url: "" },
-  { name: "Android Developer (Jetpack Compose)", issuer: "Bangkit Academy", year: "2023", url: "" },
+  { name: "Android Developer (Kotlin, Xml)", issuer: "Bangkit Academy", year: "2023", url: "" },
   { name: "Back-End Developer (Node.js)", issuer: "Dicoding Indonesia", year: "2022", url: "" },
   { name: "Belajar Penerapan Machine Learning untuk Flutter", issuer: "", year: "", url: "" },
   { name: "Learn SOLID Programming Principles", issuer: "", year: "", url: "" },

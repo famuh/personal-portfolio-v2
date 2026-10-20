@@ -63,7 +63,7 @@ export default async function CaseStudyPage({ params }) {
 
   const idx = caseStudies.indexOf(study);
   const next = caseStudies[(idx + 1) % caseStudies.length];
-  const isPh = (field) => study.placeholders?.includes(field);
+  const isPh = (field) => Boolean(study.placeholders?.includes(field));
   const note = study.relatedNote && getNote(study.relatedNote);
 
   const meta = [
@@ -234,11 +234,29 @@ export default async function CaseStudyPage({ params }) {
 
         {(study.gallery?.length > 0 || pendingArtefacts.length > 0) && (
           <Block eyebrow="Artefacts">
-            {study.gallery?.map((g) => (
-              <div key={g.src} className="relative aspect-[16/10] overflow-hidden rounded-card border border-line bg-surface-2">
-                <Image src={g.src} alt={g.alt} fill sizes="(min-width: 1024px) 900px, 100vw" className="object-cover object-top" />
-              </div>
-            ))}
+            {/* `fit: "contain"` + `ratio` show a whole diagram, linked to the full-size file */}
+            {study.gallery?.map((g) =>
+              g.fit === "contain" ? (
+                <a
+                  key={g.src}
+                  href={g.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ aspectRatio: g.ratio }}
+                  className="group relative block overflow-hidden rounded-card border border-line bg-white"
+                >
+                  <Image src={g.src} alt={g.alt} fill sizes="(min-width: 1024px) 900px, 100vw" className="object-contain p-4" />
+                  <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-chip bg-ink px-3 py-1 text-xs text-canvas opacity-80 transition-opacity duration-(--dur-base) group-hover:opacity-100">
+                    Open full size
+                    <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                  </span>
+                </a>
+              ) : (
+                <div key={g.src} className="relative aspect-[16/10] overflow-hidden rounded-card border border-line bg-surface-2">
+                  <Image src={g.src} alt={g.alt} fill sizes="(min-width: 1024px) 900px, 100vw" className="object-cover object-top" />
+                </div>
+              )
+            )}
             {pendingArtefacts.length > 0 && (
               <ul className="grid gap-3 sm:grid-cols-2">
                 {pendingArtefacts.map((label) => (
