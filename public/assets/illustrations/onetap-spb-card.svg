@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="t">
+  <title id="t">How OneTap-SPB turns the text on an NFC card into data: tap, read, parse, check and save; the card text split into a header and harvest rows, saved as one header and its detail rows in a single transaction. Demo data.</title>
+  <defs>
+    <linearGradient id="bgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e1f33"/><stop offset="1" stop-color="#08131f"/></linearGradient>
+    <radialGradient id="glowB"><stop offset="0" stop-color="#3b82f6" stop-opacity=".2"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".05"/></pattern>
+    <filter id="sh" x="-20%" y="-10%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000" flood-opacity=".45"/></filter>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f80ed"/><stop offset="1" stop-color="#1747a6"/></linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d58a"/><stop offset="1" stop-color="#c49a3c"/></linearGradient>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#60a5fa"/></marker>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bgG)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <ellipse cx="800" cy="80" rx="900" ry="380" fill="url(#glowB)"/>
+
+  <!-- Pipeline -->
+  <g font-family="Inter, Arial, sans-serif">
+    <g fill="#ffffff" fill-opacity=".06" stroke="#ffffff" stroke-opacity=".14">
+      <rect x="80" y="64" width="236" height="76" rx="16"/><rect x="368" y="64" width="236" height="76" rx="16"/><rect x="656" y="64" width="236" height="76" rx="16"/><rect x="944" y="64" width="236" height="76" rx="16"/><rect x="1232" y="64" width="288" height="76" rx="16" fill="#16a34a" fill-opacity=".18" stroke="#22c55e" stroke-opacity=".5"/>
+    </g>
+    <g fill="#60a5fa" font-size="12" font-weight="700" letter-spacing="1.5">
+      <text x="102" y="94">1 · TAP</text><text x="390" y="94">2 · READ</text><text x="678" y="94">3 · PARSE</text><text x="966" y="94">4 · CHECK</text><text x="1254" y="94" fill="#4ade80">5 · SAVE</text>
+    </g>
+    <g fill="#fff" font-size="15" font-weight="600">
+      <text x="102" y="120">Reader sees the card</text><text x="390" y="120">UID and card memory</text><text x="678" y="120">NDEF text record</text><text x="966" y="120">Fields and numbers</text><text x="1254" y="120">Header + rows, 1 transaction</text>
+    </g>
+    <g stroke="#60a5fa" stroke-width="2.5" marker-end="url(#ar)">
+      <path d="M322 102h38"/><path d="M610 102h38"/><path d="M898 102h38"/><path d="M1186 102h38"/>
+    </g>
+  </g>
+
+  <!-- Card -->
+  <g transform="translate(96 236) rotate(-7)">
+    <g filter="url(#sh)"><rect width="270" height="170" rx="18" fill="url(#card)"/></g>
+    <rect x="24" y="28" width="42" height="32" rx="6" fill="url(#chip)"/>
+    <path d="M24 44h42M45 28v32" stroke="#a37a26" stroke-width="1.2"/>
+    <g fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round">
+      <path d="M216 32a10 10 0 0 1 0 14"/><path d="M222 27a17 17 0 0 1 0 24"/><path d="M228 22a24 24 0 0 1 0 34"/>
+    </g>
+    <text x="24" y="106" font-family="Inter, Arial, sans-serif" font-size="24" fill="#fff" font-weight="800">Kartu SPB</text>
+    <text x="24" y="134" font-family="Consolas, 'Geist Mono', monospace" font-size="14" fill="#fff" fill-opacity=".85">UID 04A1B2C3</text>
+  </g>
+  <path d="M396 320h40" stroke="#60a5fa" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <!-- Raw text on the card -->
+  <g filter="url(#sh)"><rect x="456" y="190" width="680" height="270" rx="18" fill="#0b1220" stroke="#ffffff" stroke-opacity=".12"/></g>
+  <text x="484" y="226" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" font-weight="700" letter-spacing="1.5">TEXT ON THE CARD</text>
+  <g font-family="Consolas, 'Geist Mono', monospace" font-size="24">
+    <text x="484" y="278"><tspan fill="#93c5fd">BK 8812 XA</tspan><tspan fill="#fbbf24" font-weight="700">|</tspan><tspan fill="#93c5fd">SPB/KBN/211026/0001</tspan><tspan fill="#f472b6" font-weight="700">#</tspan></text>
+    <text x="484" y="326" fill="#e5e7eb">A12<tspan fill="#fbbf24" font-weight="700">|</tspan>2011<tspan fill="#fbbf24" font-weight="700">|</tspan>DV01<tspan fill="#fbbf24" font-weight="700">|</tspan><tspan fill="#86efac">3.2</tspan><tspan fill="#fbbf24" font-weight="700">|</tspan><tspan fill="#86efac">0.2</tspan><tspan fill="#c084fc" font-weight="700">&amp;</tspan></text>
+    <text x="484" y="370" fill="#e5e7eb">B07<tspan fill="#fbbf24" font-weight="700">|</tspan>2009<tspan fill="#fbbf24" font-weight="700">|</tspan>DV01<tspan fill="#fbbf24" font-weight="700">|</tspan><tspan fill="#86efac">5.6</tspan><tspan fill="#fbbf24" font-weight="700">|</tspan><tspan fill="#86efac">0.4</tspan><tspan fill="#c084fc" font-weight="700">&amp;</tspan></text>
+    <text x="484" y="414" fill="#e5e7eb">C21<tspan fill="#fbbf24" font-weight="700">|</tspan>2013<tspan fill="#fbbf24" font-weight="700">|</tspan>DV02<tspan fill="#fbbf24" font-weight="700">|</tspan><tspan fill="#86efac">2.4</tspan><tspan fill="#fbbf24" font-weight="700">|</tspan><tspan fill="#86efac">0.1</tspan></text>
+  </g>
+
+  <!-- Legend -->
+  <g font-family="Inter, Arial, sans-serif" font-size="15" fill="#cbd5e1">
+    <g font-family="Consolas, 'Geist Mono', monospace" font-size="22" font-weight="700">
+      <text x="1180" y="246" fill="#f472b6">#</text><text x="1180" y="296" fill="#c084fc">&amp;</text><text x="1180" y="346" fill="#fbbf24">|</text>
+    </g>
+    <text x="1212" y="244">ends the header</text>
+    <text x="1212" y="294">separates harvest rows</text>
+    <text x="1212" y="344">separates columns</text>
+    <text x="1180" y="400" fill="#94a3b8" font-size="13.5">Block · planting year · division ·</text>
+    <text x="1180" y="420" fill="#94a3b8" font-size="13.5">harvest · loose fruit (brondolan)</text>
+  </g>
+
+  <!-- Arrows down to tables -->
+  <g stroke="#60a5fa" stroke-width="2.5" fill="none" marker-end="url(#ar)">
+    <path d="M620 470 C 620 510, 420 500, 420 540"/>
+    <path d="M900 470 C 900 510, 1080 500, 1080 540"/>
+  </g>
+
+  <!-- dbo.Spb -->
+  <g font-family="Inter, Arial, sans-serif">
+    <g filter="url(#sh)"><rect x="80" y="552" width="620" height="296" rx="18" fill="#ffffff"/></g>
+    <text x="108" y="590" font-size="18" fill="#111" font-weight="700">dbo.Spb</text>
+    <text x="196" y="590" font-size="13" fill="#6b7280">header, one per note</text>
+    <g font-size="13.5">
+      <rect x="100" y="606" width="580" height="34" rx="6" fill="#eff6ff"/>
+      <text x="116" y="628" fill="#1d4ed8" font-weight="700">NoSpb</text><text x="300" y="628" fill="#111">SPB/KBN/211026/0001</text><text x="664" y="628" fill="#1d4ed8" font-size="11.5" font-weight="700" text-anchor="end">PRIMARY KEY</text>
+      <text x="116" y="666" fill="#4b5563">NoPolisi</text><text x="300" y="666" fill="#111">BK 8812 XA</text>
+      <text x="116" y="700" fill="#4b5563">UidKartu</text><text x="300" y="700" fill="#111">04A1B2C3</text>
+      <text x="116" y="734" fill="#4b5563">WaktuBaca</text><text x="300" y="734" fill="#111">2026-10-21 08:14:06</text>
+      <text x="116" y="768" fill="#4b5563">DiubahPada</text><text x="300" y="768" fill="#9ca3af">NULL</text>
+      <text x="116" y="802" fill="#4b5563">LastUpdateBy</text><text x="300" y="802" fill="#111">1024</text>
+      <text x="664" y="802" fill="#6b7280" font-size="11.5" text-anchor="end">operator NIK</text>
+    </g>
+  </g>
+
+  <!-- dbo.SpbDetail -->
+  <g font-family="Inter, Arial, sans-serif">
+    <g filter="url(#sh)"><rect x="740" y="552" width="780" height="296" rx="18" fill="#ffffff"/></g>
+    <text x="768" y="590" font-size="18" fill="#111" font-weight="700">dbo.SpbDetail</text>
+    <text x="900" y="590" font-size="13" fill="#6b7280">one row per block</text>
+    <rect x="760" y="606" width="740" height="34" rx="6" fill="#f3f4f6"/>
+    <g font-size="12.5" fill="#111" font-weight="700">
+      <text x="776" y="628">Urutan</text><text x="856" y="628">Blok</text><text x="946" y="628">TahunTanam</text><text x="1080" y="628">Divisi</text><text x="1340" y="628" text-anchor="end">Hasil</text><text x="1484" y="628" text-anchor="end">Brondolan</text>
+    </g>
+    <g font-size="13.5" fill="#222">
+      <text x="776" y="672">1</text><text x="856" y="672">A12</text><text x="946" y="672">2011</text><text x="1080" y="672">DV01</text><text x="1340" y="672" text-anchor="end">3.200</text><text x="1484" y="672" text-anchor="end">0.200</text>
+      <rect x="760" y="686" width="740" height="1" fill="#eceef1"/>
+      <text x="776" y="712">2</text><text x="856" y="712">B07</text><text x="946" y="712">2009</text><text x="1080" y="712">DV01</text><text x="1340" y="712" text-anchor="end">5.600</text><text x="1484" y="712" text-anchor="end">0.400</text>
+      <rect x="760" y="726" width="740" height="1" fill="#eceef1"/>
+      <text x="776" y="752">3</text><text x="856" y="752">C21</text><text x="946" y="752">2013</text><text x="1080" y="752">DV02</text><text x="1340" y="752" text-anchor="end">2.400</text><text x="1484" y="752" text-anchor="end">0.100</text>
+    </g>
+    <text x="776" y="806" font-size="12" fill="#6b7280">Key: NoSpb + Urutan · CHECK Hasil, Brondolan ≥ 0 · cascades with the header</text>
+  </g>
+  <rect x="704" y="490" width="112" height="32" rx="16" fill="#16a34a"/>
+  <text x="760" y="511" font-family="Inter, Arial, sans-serif" font-size="12.5" fill="#fff" font-weight="700" text-anchor="middle">1 transaction</text>
+
+  <!-- Checks -->
+  <g font-family="Inter, Arial, sans-serif" font-size="15" fill="#e2e8f0">
+    <g fill="#22c55e"><circle cx="96" cy="910" r="10"/><circle cx="556" cy="910" r="10"/><circle cx="1050" cy="910" r="10"/></g>
+    <g fill="none" stroke="#08131f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M91 910l3.5 3.5 6-6.5"/><path d="M551 910l3.5 3.5 6-6.5"/><path d="M1045 910l3.5 3.5 6-6.5"/></g>
+    <text x="116" y="915">Exactly five columns in every row</text>
+    <text x="576" y="915">Harvest and loose fruit are numbers ≥ 0</text>
+    <text x="1070" y="915">Same note twice? Compare, then decide</text>
+  </g>
+</svg>

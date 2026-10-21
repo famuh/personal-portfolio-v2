@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="t">
+  <title id="t">OneTap-SPB history tab with search, date filters, a list of delivery notes and the selected note's details, and a dialog comparing a duplicate card with the saved data. Demo data.</title>
+  <defs>
+    <linearGradient id="bgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e1f33"/><stop offset="1" stop-color="#08131f"/></linearGradient>
+    <radialGradient id="glowB"><stop offset="0" stop-color="#3b82f6" stop-opacity=".22"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".05"/></pattern>
+    <filter id="sh" x="-20%" y="-10%" width="140%" height="140%"><feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#000" flood-opacity=".45"/></filter>
+    <clipPath id="win"><rect width="1080" height="880" rx="18"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bgG)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <ellipse cx="560" cy="120" rx="760" ry="420" fill="url(#glowB)"/>
+
+  <!-- App window: Riwayat tab -->
+  <g transform="translate(70 60)">
+    <g filter="url(#sh)"><rect width="1080" height="880" rx="18" fill="#f3f4f6"/></g>
+    <g clip-path="url(#win)" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+      <rect width="1080" height="880" fill="#f3f4f6"/>
+      <rect width="1080" height="36" fill="#ffffff"/>
+      <rect x="14" y="10" width="16" height="16" rx="3" fill="#2563eb"/>
+      <text x="22" y="22.5" font-size="11" fill="#fff" font-weight="700" text-anchor="middle">F</text>
+      <text x="40" y="23" font-size="12" fill="#333">OneTap-SPB - One Tap SPB with NFC Card</text>
+      <path d="M976 18h12" stroke="#333" stroke-width="1.3"/>
+      <rect x="1009" y="12" width="11" height="11" fill="none" stroke="#333" stroke-width="1.3"/>
+      <path d="M1044 12l11 11M1055 12l-11 11" stroke="#333" stroke-width="1.3"/>
+      <rect y="36" width="1080" height="90" fill="#ffffff"/>
+      <rect y="125" width="1080" height="1" fill="#e5e7eb"/>
+      <rect x="24" y="52" width="56" height="56" rx="12" fill="#2563eb"/>
+      <text x="52" y="90" font-size="26" fill="#fff" font-weight="700" text-anchor="middle">F</text>
+      <text x="96" y="78" font-size="22" fill="#111" font-weight="700">OneTap-SPB</text>
+      <text x="96" y="100" font-size="12.5" fill="#555">One Tap SPB with NFC Card</text>
+      <circle cx="738" cy="70" r="4.5" fill="#16a34a"/>
+      <text x="750" y="74" font-size="12" fill="#444">Reader: ACS ACR122U</text>
+      <circle cx="738" cy="96" r="4.5" fill="#16a34a"/>
+      <text x="750" y="100" font-size="12" fill="#444">Database: SQL Server</text>
+      <text x="1056" y="64" font-size="13" fill="#111" font-weight="700" text-anchor="end">Operator</text>
+      <text x="1056" y="82" font-size="11" fill="#2563eb" text-anchor="end">NIK 1024</text>
+      <rect x="966" y="92" width="90" height="26" rx="6" fill="#e5e7eb"/>
+      <text x="1011" y="109" font-size="12" fill="#222" text-anchor="middle">Keluar</text>
+
+      <rect x="20" y="140" width="162" height="30" rx="6" fill="#e5e7eb"/>
+      <rect x="103" y="143" width="76" height="24" rx="4" fill="#ffffff"/>
+      <text x="62" y="160" font-size="12" fill="#333" font-weight="600" text-anchor="middle">Baca Kartu</text>
+      <text x="141" y="160" font-size="12" fill="#111" font-weight="700" text-anchor="middle">Riwayat</text>
+
+      <rect x="20" y="184" width="360" height="36" rx="8" fill="#ffffff" stroke="#c7cbd1"/>
+      <text x="34" y="207" font-size="12.5" fill="#9ca3af">Cari No. SPB / No. Polisi...</text>
+      <rect x="394" y="184" width="250" height="36" rx="8" fill="#e5e7eb"/>
+      <rect x="398" y="188" width="62" height="28" rx="6" fill="#ffffff"/>
+      <g font-size="12" fill="#222" text-anchor="middle">
+        <text x="429" y="207">Hari ini</text><text x="490" y="207">7 hari</text><text x="547" y="207">30 hari</text><text x="606" y="207">Semua</text>
+      </g>
+      <rect x="658" y="184" width="118" height="36" rx="8" fill="#3b82f6"/>
+      <text x="717" y="207" font-size="12.5" fill="#fff" text-anchor="middle">Muat ulang</text>
+      <text x="1060" y="207" font-size="12.5" fill="#4b5563" text-anchor="end">5 SPB ditemukan</text>
+
+      <rect x="20" y="234" width="1040" height="226" rx="6" fill="#ffffff" stroke="#9ca3af"/>
+      <g font-size="12" fill="#111" font-weight="700">
+        <text x="32" y="258">Waktu Baca</text><text x="200" y="258">No. SPB</text><text x="370" y="258">No. Polisi</text><text x="530" y="258" text-anchor="end">Baris</text><text x="650" y="258" text-anchor="end">Total Hasil</text><text x="790" y="258" text-anchor="end">Total Brondolan</text><text x="820" y="258">Diubah</text><text x="980" y="258">Oleh</text>
+      </g>
+      <rect x="21" y="268" width="1038" height="30" fill="#dbeafe"/>
+      <g font-size="12" fill="#222">
+        <text x="32" y="288">21-10-2026 08:14:06</text><text x="200" y="288">SPB/KBN/211026/0001</text><text x="370" y="288">BK 8812 XA</text><text x="530" y="288" text-anchor="end">3</text><text x="650" y="288" text-anchor="end">11.2</text><text x="790" y="288" text-anchor="end">0.7</text><text x="820" y="288">-</text><text x="980" y="288">1024</text>
+        <text x="32" y="318">21-10-2026 08:06:51</text><text x="200" y="318">SPB/KBN/211026/0002</text><text x="370" y="318">BK 3307 RD</text><text x="530" y="318" text-anchor="end">4</text><text x="650" y="318" text-anchor="end">14.8</text><text x="790" y="318" text-anchor="end">1.1</text><text x="820" y="318">-</text><text x="980" y="318">1024</text>
+        <text x="32" y="348">21-10-2026 08:02:17</text><text x="200" y="348">SPB/AFD/211026/0004</text><text x="370" y="348">BK 9054 KL</text><text x="530" y="348" text-anchor="end">2</text><text x="650" y="348" text-anchor="end">7.5</text><text x="790" y="348" text-anchor="end">0.3</text><text x="820" y="348">-</text><text x="980" y="348">1024</text>
+        <text x="32" y="378">21-10-2026 07:51:40</text><text x="200" y="378">SPB/KBN/201026/0007</text><text x="370" y="378">BK 1290 TF</text><text x="530" y="378" text-anchor="end">2</text><text x="650" y="378" text-anchor="end">9.1</text><text x="790" y="378" text-anchor="end">0.6</text><text x="820" y="378">21-10 08:09</text><text x="980" y="378">1031</text>
+        <text x="32" y="408">21-10-2026 07:38:12</text><text x="200" y="408">SPB/AFD/211026/0003</text><text x="370" y="408">BK 4471 MN</text><text x="530" y="408" text-anchor="end">3</text><text x="650" y="408" text-anchor="end">12.0</text><text x="790" y="408" text-anchor="end">0.9</text><text x="820" y="408">-</text><text x="980" y="408">1031</text>
+      </g>
+
+      <text x="20" y="492" font-size="13" fill="#111" font-weight="700">Detail SPB</text>
+      <rect x="20" y="504" width="1040" height="356" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+      <g font-size="12">
+        <text x="40" y="536" fill="#6b7280">No. Polisi</text><text x="118" y="536" fill="#111" font-weight="700">BK 8812 XA</text>
+        <text x="300" y="536" fill="#6b7280">No. SPB</text><text x="374" y="536" fill="#111" font-weight="700">SPB/KBN/211026/0001</text>
+        <text x="40" y="562" fill="#6b7280">Disimpan</text><text x="118" y="562" fill="#111" font-weight="700">21-10-2026 08:14:07</text>
+        <text x="300" y="562" fill="#6b7280">Dibaca</text><text x="374" y="562" fill="#111" font-weight="700">21-10-2026 08:14:06</text>
+        <text x="40" y="588" fill="#6b7280">Diubah</text><text x="118" y="588" fill="#111" font-weight="700">-</text>
+        <text x="300" y="588" fill="#6b7280">Oleh</text><text x="374" y="588" fill="#111" font-weight="700">1024</text>
+        <text x="40" y="614" fill="#6b7280">UID Kartu</text><text x="118" y="614" fill="#111" font-weight="700">04A1B2C3</text>
+      </g>
+      <rect x="40" y="630" width="1000" height="156" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+      <rect x="41" y="631" width="998" height="28" fill="#eef0f3"/>
+      <g font-size="12" fill="#111" font-weight="700">
+        <text x="62" y="650">No</text><text x="92" y="650">Blok</text><text x="300" y="650">Tahun Tanam</text><text x="540" y="650">Divisi</text><text x="880" y="650" text-anchor="end">Hasil</text><text x="1024" y="650" text-anchor="end">Brondolan</text>
+      </g>
+      <rect x="41" y="689" width="998" height="30" fill="#f8f9fb"/>
+      <rect x="41" y="749" width="998" height="30" fill="#f1f3f6"/>
+      <g font-size="12" fill="#222">
+        <text x="74" y="678" text-anchor="end">1</text><text x="92" y="678">A12</text><text x="300" y="678">2011</text><text x="540" y="678">DV01</text><text x="880" y="678" text-anchor="end">3.2</text><text x="1024" y="678" text-anchor="end">0.2</text>
+        <text x="74" y="708" text-anchor="end">2</text><text x="92" y="708">B07</text><text x="300" y="708">2009</text><text x="540" y="708">DV01</text><text x="880" y="708" text-anchor="end">5.6</text><text x="1024" y="708" text-anchor="end">0.4</text>
+        <text x="74" y="738" text-anchor="end">3</text><text x="92" y="738">C21</text><text x="300" y="738">2013</text><text x="540" y="738">DV02</text><text x="880" y="738" text-anchor="end">2.4</text><text x="1024" y="738" text-anchor="end">0.1</text>
+      </g>
+      <g font-size="12" fill="#111" font-weight="700">
+        <text x="92" y="768">TOTAL</text><text x="880" y="768" text-anchor="end">11.2</text><text x="1024" y="768" text-anchor="end">0.7</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Duplicate dialog -->
+  <g transform="translate(930 330)" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+    <g filter="url(#sh)"><rect width="600" height="500" rx="18" fill="#ffffff"/></g>
+    <rect x="28" y="28" width="44" height="44" rx="12" fill="#fef3c7"/>
+    <path d="M50 38l13 23h-26z" fill="none" stroke="#d97706" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M50 47v6" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="88" y="48" font-size="18" fill="#111" font-weight="700">SPB sudah ada di database</text>
+    <text x="88" y="68" font-size="12.5" fill="#6b7280">SPB/KBN/201026/0007 · bandingkan sebelum mengubah</text>
+
+    <rect x="28" y="96" width="544" height="34" rx="8" fill="#f3f4f6"/>
+    <g font-size="12" fill="#4b5563" font-weight="700">
+      <text x="44" y="118">Kolom</text><text x="250" y="118">Tersimpan</text><text x="420" y="118">Di kartu</text>
+    </g>
+    <g font-size="13">
+      <text x="44" y="162" fill="#6b7280">No. Polisi</text><text x="250" y="162" fill="#111">BK 1290 TF</text><text x="420" y="162" fill="#111">BK 1290 TF</text>
+      <rect x="28" y="178" width="544" height="1" fill="#eceef1"/>
+      <rect x="28" y="182" width="544" height="38" rx="6" fill="#fffbeb"/>
+      <text x="44" y="206" fill="#6b7280">Baris</text><text x="250" y="206" fill="#111">2</text><text x="420" y="206" fill="#b45309" font-weight="700">3</text>
+      <rect x="28" y="224" width="544" height="38" rx="6" fill="#fffbeb"/>
+      <text x="44" y="248" fill="#6b7280">Total Hasil</text><text x="250" y="248" fill="#111">9.1</text><text x="420" y="248" fill="#b45309" font-weight="700">12.4</text>
+      <rect x="28" y="266" width="544" height="38" rx="6" fill="#fffbeb"/>
+      <text x="44" y="290" fill="#6b7280">Total Brondolan</text><text x="250" y="290" fill="#111">0.6</text><text x="420" y="290" fill="#b45309" font-weight="700">0.8</text>
+      <text x="44" y="334" fill="#6b7280">UID Kartu</text><text x="250" y="334" fill="#111">04C7E219</text><text x="420" y="334" fill="#111">04C7E219</text>
+      <rect x="28" y="350" width="544" height="1" fill="#eceef1"/>
+      <text x="44" y="376" fill="#6b7280">Disimpan oleh</text><text x="250" y="376" fill="#111">1031 · 07:51</text><text x="420" y="376" fill="#9ca3af">-</text>
+    </g>
+    <text x="28" y="420" font-size="12" fill="#6b7280">Update mengganti header dan semua baris dengan isi kartu.</text>
+    <rect x="352" y="440" width="100" height="38" rx="8" fill="#e5e7eb"/>
+    <text x="402" y="464" font-size="13" fill="#222" text-anchor="middle" font-weight="600">Batal</text>
+    <rect x="464" y="440" width="108" height="38" rx="8" fill="#2563eb"/>
+    <text x="518" y="464" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">Update</text>
+  </g>
+</svg>

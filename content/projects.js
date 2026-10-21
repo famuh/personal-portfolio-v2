@@ -294,6 +294,109 @@ export const caseStudies = [
     resultsNote: "Still in development, so there are no usage numbers yet.",
   },
   {
+    // Facts from the project description. Screenshots in illustrations/material
+    // are source material only; the published images are redrawn with demo data.
+    slug: "onetap-spb",
+    title: "One tap from NFC card to database at the mill weighbridge",
+    name: "OneTap-SPB",
+    kind: "Desktop app + NFC",
+    summary:
+      "A Windows app at the mill weighbridge that reads a delivery note (SPB) from the NFC card the truck driver brings from the estate, checks it, and saves it to the company database in one tap. No re-typing.",
+    preview: [
+      "Delivery notes were re-typed while trucks queued at the weighbridge",
+      "Tap the card on the reader, the data is checked and saved",
+      "Duplicates are caught and shown side by side before anything changes",
+    ],
+    role: "Built it end to end: card reading, data layer, desktop UI and packaging",
+    period: "2026",
+    status: "Ready to deploy",
+    stack: ["Python", "CustomTkinter", "PC/SC", "NFC", "ACR122U", "SQL Server", "pyodbc", "PyInstaller"],
+    placeholders: ["role", "period", "status"],
+    cover: "/assets/illustrations/onetap-spb.svg",
+    coverAlt: "Illustration of an NFC delivery card tapped on a USB reader at the weighbridge, a palm fruit truck, and the OneTap-SPB window showing the card's delivery note saved to the database. Demo data.",
+    gallery: [
+      { src: "/assets/illustrations/onetap-spb-history.svg", alt: "OneTap-SPB history tab: delivery notes filtered by date and searched by note number or plate, with the selected note's blocks, harvest and loose fruit, and a dialog comparing a duplicate card with the saved data. Demo data." },
+      { src: "/assets/illustrations/onetap-spb-card.svg", alt: "How the text on the card becomes data: the plate and note number as the header, then one row per block with planting year, division, harvest and loose fruit, saved as a header and detail rows in one transaction. Demo data." },
+    ],
+    problem:
+      "Every truck of palm fruit leaves the estate with a delivery note (SPB): the truck's plate, the note number and a summary of the harvest per block. The estate writes it to an NFC card and the driver carries it to the mill. At the mill, someone had to get that data into the company system while trucks queued at the weighbridge. Typing it by hand is slow, numbers get mistyped, the same note can be entered twice, and nobody can tell later who entered or changed what.",
+    solution:
+      "OneTap-SPB runs on the weighbridge PC with a USB NFC reader. The operator signs in with their employee ID, and when a truck arrives they tap the driver's card. The app reads the card, checks every field, and saves the note to SQL Server. If the note is already in the database, it shows the saved data next to the card's data and lets the operator update or keep it. A history tab finds any note by date, note number or plate.",
+    workflow: {
+      title: "From estate to database",
+      steps: [
+        { title: "Estate", body: "The delivery note is issued and its text is written to an NFC card. That part runs in another system." },
+        { title: "Haul", body: "The driver carries the fruit and the card to the mill." },
+        { title: "Tap", body: "At the weighbridge, the operator taps the card on the reader. The app notices the card on its own." },
+        { title: "Check", body: "The card is read and parsed. A card with a wrong field is rejected with every error listed at once." },
+        { title: "Save", body: "Header and harvest rows are saved in one transaction, stamped with the operator's ID and the time." },
+        { title: "Find", body: "Staff search the history by date, note number or plate and open the details." },
+      ],
+    },
+    scope: [
+      {
+        title: "Weighbridge app",
+        items: [
+          "Sign in with the client's own employee table, configured per client",
+          "Live reader and database status in the header",
+          "Read card: card UID, card type, plate, note number and harvest per block with totals",
+          "Duplicate dialog comparing saved data with the card, with Update or Cancel",
+          "Session log of every card read, saved, rejected or skipped",
+          "History with search and Today, 7 days, 30 days or All",
+        ],
+      },
+      {
+        title: "Card and data",
+        items: [
+          "MIFARE Ultralight and NTAG, MIFARE Classic, and NFC Forum Type 4 cards",
+          "NDEF text record parsed into a header and a list of harvest rows",
+          "Header and detail tables in SQL Server, with SQL scripts for new installs and migration",
+          "PCs without a reader can still open the history",
+        ],
+      },
+    ],
+    rules: [
+      "The note number is the key. The same note is never saved twice.",
+      "Each harvest row has exactly five fields, and harvest and loose fruit must be numbers of zero or more.",
+      "An invalid card is not saved at all.",
+      "Changing a saved note needs the operator's confirmation, and records who did it and when.",
+      "Only registered employees can use the app.",
+    ],
+    decisions: [
+      {
+        title: "Talk to the reader directly",
+        body: "The app calls the Windows smart card API (PC/SC) through ctypes, with no third-party NFC library. It watches the reader for cards, reads each card type the right way, and reconnects on its own if the reader is unplugged.",
+      },
+      {
+        title: "Let the database catch duplicates",
+        body: "The note number is the primary key. A save that hits it opens a comparison instead of failing, so two weighbridge PCs can never create the same note twice.",
+      },
+      {
+        title: "The screen never freezes",
+        body: "Card reading and queries run on background threads that report to the UI through a queue. Each thread has its own database connection that reconnects when the network drops.",
+      },
+      {
+        title: "Configure per client, not per build",
+        body: "The database connection and the employee table used for sign-in live in a config file next to the app. A new client or a new server needs an edited file, not a new build.",
+      },
+    ],
+    responsibilities: [
+      "Mapped the flow from estate to weighbridge and the scope of the app.",
+      "Built card reading over PC/SC for three card families, and the NDEF parser.",
+      "Designed the delivery note format check and the SQL Server schema, with install and migration scripts.",
+      "Built the save, duplicate and update logic in single transactions with parameterised queries.",
+      "Built the desktop UI: sign in, read card, history, duplicate dialog and session log.",
+      "Packaged it as a Windows app with PyInstaller, plus a command-line version for diagnosis.",
+    ],
+    results: [
+      { value: "1", label: "tap to move a delivery note from card to database" },
+      { value: "0", label: "fields typed by hand at the weighbridge" },
+      { value: "3", label: "card families supported by the same reader" },
+    ],
+    relatedNote: "why-nfc-for-delivery-notes",
+    resultsNote: "The app is ready for the weighbridge, so there are no usage numbers yet. What it guarantees is structural: no re-typing, no duplicate notes, and a name and time on every change.",
+  },
+  {
     slug: "dmb-kiosk",
     title: "A self-ordering kiosk for a hospitality group",
     name: "DMB Kiosk",
@@ -704,6 +807,16 @@ export const archive = [
     image: "/assets/illustrations/gema-factory-mobile.svg",
   },
   {
+    name: "OneTap-SPB",
+    group: "Devices",
+    year: "2026",
+    caseStudy: "onetap-spb",
+    description:
+      "Windows app for the mill weighbridge: tap the truck's NFC card on an ACR122U reader and the delivery note is checked and saved to SQL Server, with duplicate comparison, a session log and searchable history.",
+    stack: ["Desktop", "NFC","NFC Reader", "Python", "CustomTkinter", "PC/SC", "SQL Server"],
+    image: "/assets/illustrations/onetap-spb.svg",
+  },
+  {
     name: "Semesta Agro company website",
     group: "Web",
     year: "2026",
@@ -739,13 +852,13 @@ export const archive = [
   },
   {
     name: "DMB self-ordering kiosk",
-    group: "Mobile",
+    group: "Devices",
     year: "2024 – 2025",
     status: "Piloted in one outlet",
     caseStudy: "dmb-kiosk",
     description:
       "Self-ordering app for Android TV kiosks and tablets in DNA Group's food and beverage outlets: one Flutter codebase, layouts per screen size, connected to the group's ordering and POS APIs.",
-    stack: ["Flutter", "Dart", "REST API", "Sentry", "Andoid TV", "Tablet"],
+    stack: ["Android TV", "Tablet","Flutter", "Dart", "REST API", "Sentry", ],
     image: "/assets/illustrations/dmb-kiosk.svg",
   },
   {
@@ -899,7 +1012,7 @@ export const archive = [
   },
 ];
 
-export const archiveGroups = ["Web", "Mobile", "Design", "Others"];
+export const archiveGroups = ["Web", "Mobile", "Devices", "Design", "Others"];
 
 // Visual design work (posters, brochures, templates), mostly for BITSMIKRO.
 export const designGallery = [
