@@ -28,7 +28,6 @@ export const pendingActivities = [];
 export const artefactSlots = {
   "gema-plantation": ["Confidential — user flows, wireframes, data models, and API specifications are protected under a client NDA and cannot be shared publicly."],
   "gema-factory": ["Confidential — user flows, wireframes, data models, and API specifications are protected under a client NDA and cannot be shared publicly."],
-  "p3-system": ["ERD", "Diagram proses pembelian–penjualan–stok"],
 };
 
 // TODO: ganti dengan data asli — testimoni (minta 2–3 kalimat via LinkedIn

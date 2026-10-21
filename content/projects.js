@@ -452,11 +452,11 @@ export const caseStudies = [
     name: "P3 System",
     kind: "Analysis + full-stack",
     summary:
-      "For a business in POS and stock management, I mapped how purchasing, sales and stock were handled, then built one web app to replace the spreadsheets. Process diagrams first, API last.",
+      "For a retail business with several outlets, I mapped how purchasing, sales and stock were handled, then built one web app to replace the spreadsheets. Each outlet sees its own stock, and stock only changes through a sale, a purchase or a stock opname.",
     preview: [
-      "Spreadsheets that never agreed on stock levels",
-      "Requirement sessions, process maps and a data model before any code",
-      "Stock is calculated from transactions instead of typed in",
+      "Spreadsheets that never agreed on stock, across several outlets",
+      "Sales take stock out, purchases put it in, opname corrects it with a numbered record",
+      "A minimum stock per item flags what needs reordering",
     ],
     role: "Systems analyst and full-stack developer (freelance)",
     period: "2025",
@@ -464,22 +464,77 @@ export const caseStudies = [
     stack: ["Next.js", "TypeScript", "Zustand", "TanStack", "Tailwind CSS", "shadcn/ui", "Bun", "Hono", "Prisma", "Zod", "MySQL", "Docker", "GitHub Actions"],
     cover: "/assets/opt/work/p3.webp",
     coverPosition: "left top",
-    coverAlt: "P3 system dashboard with purchasing, sales and inventory summary cards and a transactions table",
+    coverAlt: "P3 admin dashboard: the sales list filtered by date, with the menu for cashier, sale, products, minimum stock, opname, purchase requests, buying, users and suppliers",
+    gallery: [
+      { src: "/assets/illustrations/p3-stock-flow.svg", alt: "How stock moves in P3: one company with several outlets, a stock card for one item at the active outlet where a purchase adds stock, sales take it out and an opname corrects it, and the minimum stock list with an item whose minimum is switched off. Demo data." },
+      { src: "/assets/illustrations/p3-opname.svg", alt: "A numbered stock opname record for one outlet: system quantity, counted quantity and the difference per item, with the resulting stock adjustment up or down. Demo data." },
+    ],
     problem:
-      "Purchasing, sales and stock were tracked in separate spreadsheets. Stock counts drifted, the same transaction got typed twice, and nobody could say with confidence what was on the shelf.",
+      "Purchasing, sales and stock were tracked in separate spreadsheets, and the business runs more than one outlet. Stock counts drifted, the same transaction got typed twice, each outlet's numbers lived in a different file, and nobody could say with confidence what was on the shelf, or why the shelf and the spreadsheet disagreed.",
     solution:
-      "After requirement interviews, process diagrams and wireframes, I built one platform where every purchase and sale updates stock automatically. A typed API (Bun, Hono, Zod, Prisma) sits behind a Next.js front end, so validation rules are written once.",
+      "After requirement interviews, process diagrams and wireframes, I built one platform for the whole company. Every screen is scoped to an outlet. A sale at the cashier takes stock out, a purchase from a supplier puts it in, and items that reach their minimum stock show up on their own list. When the count in the warehouse doesn't match the system, a stock opname records both numbers and adjusts the difference under its own document number.",
+    workflow: {
+      title: "How stock moves",
+      steps: [
+        { title: "Add the item", body: "Each product gets a minimum stock when it's added. It can be changed later, or switched off for items that are always in supply." },
+        { title: "Buy", body: "Purchase requests become purchases from a supplier. Receiving them adds stock at the outlet." },
+        { title: "Sell", body: "Each sale at the cashier takes the sold quantity out of the outlet's stock." },
+        { title: "Watch the minimum", body: "Items at or below their minimum appear on the minimum stock list, so reordering starts before the shelf is empty." },
+        { title: "Count", body: "A stock opname shows the system quantity per item. Staff enter what they actually counted and see the difference." },
+        { title: "Adjust", body: "Posting the opname creates a numbered record and moves stock up or down by the difference." },
+      ],
+    },
+    scope: [
+      {
+        title: "Modules",
+        items: [
+          "Cashier and sales history",
+          "Purchase requests, purchases and suppliers",
+          "Products with minimum stock",
+          "Minimum stock list",
+          "Stock opname with numbered adjustment records",
+          "Dashboard and user management",
+        ],
+      },
+      {
+        title: "Multi-outlet",
+        items: [
+          "One company, any number of outlets",
+          "Stock is kept per item per outlet",
+          "Lists, numbers and reports show the active outlet's data",
+        ],
+      },
+    ],
+    rules: [
+      "Stock changes only through a sale (out), a purchase (in) or a stock opname (in or out).",
+      "Each outlet has its own stock; data is always shown for one outlet.",
+      "Minimum stock is set when an item is added, can be edited, and can be switched off for items that are always available.",
+      "Every opname gets its own number and keeps the system quantity, the counted quantity and the difference per item.",
+    ],
     responsibilities: [
       "I own the product :)",
       "Ran the requirement sessions and mapped the current and target process.",
-      "Produced the wireframes, process diagrams and data model.",
+      "Produced the wireframes, process diagrams and data model, with stock kept per outlet.",
+      "Designed the stock rules: sales, purchases, minimum stock and stock opname.",
       "Built the front end (Next.js, TypeScript, Zustand, TanStack).",
       "Built the API and database (Bun, Hono, Prisma, MySQL).",
     ],
     decisions: [
       {
         title: "Stock is calculated, never typed",
-        body: "Stock levels come from purchase and sale records instead of being edited by hand. That removes the most common spreadsheet mistake entirely.",
+        body: "Stock levels come from sale, purchase and opname records instead of being edited by hand. That removes the most common spreadsheet mistake entirely.",
+      },
+      {
+        title: "Corrections are documents too",
+        body: "Real shelves drift from the system: breakage, expiry, miscounts. Instead of letting someone overwrite a number, an opname records what the system said, what was counted and the difference, under its own number. Every correction can be traced later.",
+      },
+      {
+        title: "The outlet is part of every query",
+        body: "Stock, sales and purchases all belong to an outlet, so one company can add outlets without mixing their numbers, and each outlet only sees its own data.",
+      },
+      {
+        title: "A minimum that can be switched off",
+        body: "Not every item needs a reorder alert. Items that are always in supply have their minimum switched off, so the minimum stock list only shows what actually needs action.",
       },
       {
         title: "Shared validation with Zod",
@@ -487,9 +542,9 @@ export const caseStudies = [
       },
     ],
     results: [
-      { value: "3", label: "processes in one system: purchasing, sales, inventory" },
-      { value: "1", label: "set of validation schemas shared by front and back end" },
-      { value: "0", label: "stock fields edited by hand: stock comes from transactions" },
+      { value: "3", label: "ways stock can change: sale, purchase, opname" },
+      { value: "1", label: "numbered record for every stock correction" },
+      { value: "0", label: "stock fields edited by hand" },
     ],
     resultsNote: "The system is built and documented, but the business hasn't started using it yet.",
     lessons:
@@ -847,7 +902,7 @@ export const archive = [
       "This site: case studies, notes, a CV generated from the same content, an optional AI assistant, and an interactive 3D ID card.",
     stack: ["Next.js", "Tailwind CSS", "Motion", "Three.js", "Vercel"],
     image: "/assets/opt/work/pamulab.webp",
-    href: "https://pamulab.vercel.app/",
+    href: "https://www.pamulab.my.id/",
     linkLabel: "Live site",
   },
   {
@@ -868,7 +923,7 @@ export const archive = [
     status: "Built, not in use yet",
     caseStudy: "p3-system",
     description:
-      "For a business in POS and stock management, I mapped how purchasing, sales and stock were handled, then built one web app to replace the spreadsheets. Process diagrams first, API last.",
+      "Multi-outlet purchasing, sales and inventory for a retail business: sales take stock out, purchases put it in, minimum stock flags what to reorder, and stock opname corrects the count under a numbered record. Process diagrams first, API last.",
     stack: ["Next.js", "TypeScript", "Zustand", "TanStack", "Tailwind CSS", "shadcn/ui", "Bun", "Hono", "Prisma", "Zod", "MySQL", "Docker", "GitHub Actions"],
     image: "/assets/opt/work/p3.webp",
   },

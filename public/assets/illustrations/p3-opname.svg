@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="t">
+  <title id="t">A numbered stock opname record for one outlet: system quantity, counted quantity and the difference per item, with the resulting stock adjustment up or down. Demo data.</title>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#0b0b0c" fill-opacity=".08"/></pattern>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0b0b0c" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="1600" height="1000" fill="#f2f4f7"/>
+  <rect width="1600" height="1000" fill="url(#dots)"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="80" y="92" font-size="28" font-weight="600" fill="#0b0b0c">Stock opname</text>
+    <text x="80" y="126" font-size="17" fill="#5d5d58">Count the shelf, compare with the system, adjust the difference under one number</text>
+
+    <!-- Record -->
+    <g filter="url(#sh)"><rect x="80" y="170" width="1440" height="740" rx="20" fill="#fff"/></g>
+    <rect x="80" y="170" width="1440" height="8" rx="4" fill="#7c5cf0"/>
+    <text x="120" y="232" font-size="13" fill="#7c5cf0" font-weight="700" letter-spacing="1.5">OPNAME RECORD</text>
+    <text x="120" y="272" font-size="30" fill="#0b0b0c" font-weight="700">OPN/PST/2511/0007</text>
+    <rect x="1340" y="228" width="140" height="40" rx="20" fill="#e3f6ea"/>
+    <text x="1410" y="254" font-size="15" fill="#1f8a4c" font-weight="700" text-anchor="middle">Posted</text>
+    <g font-size="15">
+      <text x="120" y="320" fill="#6b6b70">Outlet</text><text x="200" y="320" fill="#0b0b0c" font-weight="600">Outlet Pusat</text>
+      <text x="440" y="320" fill="#6b6b70">Date</text><text x="500" y="320" fill="#0b0b0c" font-weight="600">26 Nov 2025, 21:40</text>
+      <text x="780" y="320" fill="#6b6b70">Counted by</text><text x="880" y="320" fill="#0b0b0c" font-weight="600">Admin gudang</text>
+    </g>
+
+    <rect x="120" y="356" width="1360" height="48" rx="10" fill="#f6f5fb"/>
+    <g font-size="14" fill="#3a3a40" font-weight="700">
+      <text x="144" y="386">Product</text><text x="700" y="386" text-anchor="end">In system</text><text x="880" y="386" text-anchor="end">Counted</text><text x="1060" y="386" text-anchor="end">Difference</text><text x="1180" y="386">Adjustment</text>
+    </g>
+    <g font-size="17" fill="#222">
+      <text x="144" y="454">Kopi sachet</text><text x="700" y="454" text-anchor="end">41</text>
+      <rect x="806" y="428" width="84" height="38" rx="8" fill="#fff" stroke="#c9c2f5" stroke-width="1.5"/><text x="874" y="454" text-anchor="end" font-weight="600">38</text>
+      <text x="1060" y="454" fill="#c43c3c" font-weight="700" text-anchor="end">−3</text>
+      <rect x="1180" y="430" width="120" height="34" rx="17" fill="#fde8e8"/><text x="1240" y="453" font-size="14" fill="#c43c3c" font-weight="700" text-anchor="middle">Stock −3</text>
+      <rect x="120" y="486" width="1360" height="1" fill="#eeeef2"/>
+
+      <text x="144" y="530">Sambal botol</text><text x="700" y="530" text-anchor="end">9</text>
+      <rect x="806" y="504" width="84" height="38" rx="8" fill="#fff" stroke="#c9c2f5" stroke-width="1.5"/><text x="874" y="530" text-anchor="end" font-weight="600">9</text>
+      <text x="1060" y="530" fill="#9a9aa2" text-anchor="end">0</text>
+      <text x="1180" y="530" font-size="14" fill="#9a9aa2">No change</text>
+      <rect x="120" y="562" width="1360" height="1" fill="#eeeef2"/>
+
+      <text x="144" y="606">Mayonaise</text><text x="700" y="606" text-anchor="end">6</text>
+      <rect x="806" y="580" width="84" height="38" rx="8" fill="#fff" stroke="#c9c2f5" stroke-width="1.5"/><text x="874" y="606" text-anchor="end" font-weight="600">7</text>
+      <text x="1060" y="606" fill="#1f8a4c" font-weight="700" text-anchor="end">+1</text>
+      <rect x="1180" y="582" width="120" height="34" rx="17" fill="#e3f6ea"/><text x="1240" y="605" font-size="14" fill="#1f8a4c" font-weight="700" text-anchor="middle">Stock +1</text>
+      <rect x="120" y="638" width="1360" height="1" fill="#eeeef2"/>
+
+      <text x="144" y="682">Beras 10 kg</text><text x="700" y="682" text-anchor="end">4</text>
+      <rect x="806" y="656" width="84" height="38" rx="8" fill="#fff" stroke="#c9c2f5" stroke-width="1.5"/><text x="874" y="682" text-anchor="end" font-weight="600">4</text>
+      <text x="1060" y="682" fill="#9a9aa2" text-anchor="end">0</text>
+      <text x="1180" y="682" font-size="14" fill="#9a9aa2">No change</text>
+    </g>
+
+    <rect x="120" y="736" width="1360" height="134" rx="16" fill="#f6f5fb"/>
+    <g font-size="15" fill="#3a3a40">
+      <text x="148" y="776" font-weight="700" fill="#0b0b0c">4 items counted · 2 adjusted</text>
+      <text x="148" y="806">Stock goes down by 3 and up by 1. Each change points back to this record,</text>
+      <text x="148" y="830">so the stock card shows why the number moved.</text>
+    </g>
+    <rect x="1180" y="770" width="268" height="64" rx="12" fill="#7c5cf0"/>
+    <text x="1314" y="809" font-size="16" fill="#fff" font-weight="700" text-anchor="middle">Adjustment posted</text>
+  </g>
+</svg>

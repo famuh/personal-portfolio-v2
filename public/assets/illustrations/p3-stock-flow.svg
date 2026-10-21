@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="t">
+  <title id="t">How stock moves in P3: one company with several outlets, a stock card for one item at the active outlet where a purchase adds stock, sales take it out and an opname corrects it, and the minimum stock list. Demo data.</title>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#0b0b0c" fill-opacity=".08"/></pattern>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0b0b0c" flood-opacity=".12"/></filter>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7c5cf0"/></marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#f2f4f7"/>
+  <rect width="1600" height="1000" fill="url(#dots)"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="80" y="92" font-size="28" font-weight="600" fill="#0b0b0c">Stock per outlet</text>
+    <text x="80" y="126" font-size="17" fill="#5d5d58">Stock only changes through a sale, a purchase or a stock opname</text>
+
+    <!-- Company and outlets -->
+    <g filter="url(#sh)"><rect x="80" y="180" width="380" height="96" rx="16" fill="#fff"/></g>
+    <rect x="102" y="204" width="48" height="48" rx="12" fill="#efeafe"/>
+    <path d="M114 244v-26l12-7 12 7v26M120 244v-8h12v8M118 224h4M130 224h4M118 232h4M130 232h4" fill="none" stroke="#7c5cf0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="166" y="224" font-size="18" fill="#0b0b0c" font-weight="700">Demo Retail Co.</text>
+    <text x="166" y="248" font-size="14" fill="#6b6b70">1 company · 3 outlets</text>
+
+    <path d="M120 276v356M120 346h40M120 446h40M120 546h40" fill="none" stroke="#c9c2f5" stroke-width="2"/>
+    <rect x="160" y="316" width="300" height="60" rx="14" fill="#7c5cf0"/>
+    <circle cx="186" cy="346" r="6" fill="#fff"/>
+    <text x="204" y="342" font-size="16" fill="#fff" font-weight="700">Outlet Pusat</text>
+    <text x="204" y="362" font-size="12.5" fill="#fff" fill-opacity=".85">Active outlet</text>
+    <rect x="160" y="416" width="300" height="60" rx="14" fill="#fff" stroke="#e4e4ea"/>
+    <circle cx="186" cy="446" r="6" fill="#c9c2f5"/>
+    <text x="204" y="451" font-size="16" fill="#3a3a40" font-weight="600">Outlet Binjai</text>
+    <rect x="160" y="516" width="300" height="60" rx="14" fill="#fff" stroke="#e4e4ea"/>
+    <circle cx="186" cy="546" r="6" fill="#c9c2f5"/>
+    <text x="204" y="551" font-size="16" fill="#3a3a40" font-weight="600">Outlet Tembung</text>
+    <text x="160" y="632" font-size="14" fill="#6b6b70">Every list and number shows</text>
+    <text x="160" y="652" font-size="14" fill="#6b6b70">the active outlet's data</text>
+
+    <path d="M470 346h50" stroke="#7c5cf0" stroke-width="2.5" marker-end="url(#ar)"/>
+
+    <!-- Stock card -->
+    <g filter="url(#sh)"><rect x="530" y="180" width="560" height="560" rx="18" fill="#fff"/></g>
+    <text x="558" y="222" font-size="13" fill="#7c5cf0" font-weight="700" letter-spacing="1.5">STOCK CARD · OUTLET PUSAT</text>
+    <text x="558" y="258" font-size="24" fill="#0b0b0c" font-weight="700">Kopi sachet</text>
+    <text x="1062" y="252" font-size="40" fill="#0b0b0c" font-weight="700" text-anchor="end">38</text>
+    <text x="1062" y="274" font-size="13" fill="#6b6b70" text-anchor="end">in stock · minimum 20</text>
+    <rect x="558" y="300" width="504" height="34" rx="8" fill="#f6f5fb"/>
+    <g font-size="12.5" fill="#3a3a40" font-weight="700">
+      <text x="574" y="322">Date</text><text x="664" y="322">Document</text><text x="824" y="322">Type</text><text x="980" y="322" text-anchor="end">Qty</text><text x="1046" y="322" text-anchor="end">Balance</text>
+    </g>
+    <g font-size="14" fill="#222">
+      <text x="574" y="372">24 Nov</text><text x="664" y="372">BUY/PST/0112</text>
+      <rect x="824" y="356" width="52" height="24" rx="12" fill="#e3f6ea"/><text x="850" y="373" font-size="12" fill="#1f8a4c" font-weight="700" text-anchor="middle">Buy</text>
+      <text x="980" y="372" fill="#1f8a4c" font-weight="700" text-anchor="end">+48</text><text x="1046" y="372" text-anchor="end">48</text>
+      <rect x="558" y="392" width="504" height="1" fill="#eeeef2"/>
+      <text x="574" y="428">25 Nov</text><text x="664" y="428">SALE/PST/0871</text>
+      <rect x="824" y="412" width="52" height="24" rx="12" fill="#fde8e8"/><text x="850" y="429" font-size="12" fill="#c43c3c" font-weight="700" text-anchor="middle">Sale</text>
+      <text x="980" y="428" fill="#c43c3c" font-weight="700" text-anchor="end">−2</text><text x="1046" y="428" text-anchor="end">46</text>
+      <rect x="558" y="448" width="504" height="1" fill="#eeeef2"/>
+      <text x="574" y="484">25 Nov</text><text x="664" y="484">SALE/PST/0874</text>
+      <rect x="824" y="468" width="52" height="24" rx="12" fill="#fde8e8"/><text x="850" y="485" font-size="12" fill="#c43c3c" font-weight="700" text-anchor="middle">Sale</text>
+      <text x="980" y="484" fill="#c43c3c" font-weight="700" text-anchor="end">−5</text><text x="1046" y="484" text-anchor="end">41</text>
+      <rect x="558" y="504" width="504" height="1" fill="#eeeef2"/>
+      <text x="574" y="540">26 Nov</text><text x="664" y="540">OPN/PST/0007</text>
+      <rect x="824" y="524" width="76" height="24" rx="12" fill="#efeafe"/><text x="862" y="541" font-size="12" fill="#6a48e0" font-weight="700" text-anchor="middle">Opname</text>
+      <text x="980" y="540" fill="#6a48e0" font-weight="700" text-anchor="end">−3</text><text x="1046" y="540" text-anchor="end" font-weight="700">38</text>
+    </g>
+    <rect x="558" y="580" width="504" height="132" rx="14" fill="#f6f5fb"/>
+    <g font-size="14.5" fill="#3a3a40">
+      <circle cx="584" cy="612" r="7" fill="#1f8a4c"/><text x="602" y="617"><tspan font-weight="700">Buy</tspan> adds stock when a purchase is received</text>
+      <circle cx="584" cy="646" r="7" fill="#c43c3c"/><text x="602" y="651"><tspan font-weight="700">Sale</tspan> takes stock out at the cashier</text>
+      <circle cx="584" cy="680" r="7" fill="#7c5cf0"/><text x="602" y="685"><tspan font-weight="700">Opname</tspan> corrects it up or down, with a number</text>
+    </g>
+
+    <path d="M1100 346h50" stroke="#7c5cf0" stroke-width="2.5" marker-end="url(#ar)"/>
+
+    <!-- Minimum stock list -->
+    <g filter="url(#sh)"><rect x="1160" y="180" width="360" height="560" rx="18" fill="#fff"/></g>
+    <text x="1188" y="222" font-size="13" fill="#c43c3c" font-weight="700" letter-spacing="1.5">MINIMUM STOCK</text>
+    <text x="1188" y="256" font-size="20" fill="#0b0b0c" font-weight="700">3 items to reorder</text>
+    <g font-size="15">
+      <rect x="1182" y="282" width="316" height="72" rx="12" fill="#fff5f5" stroke="#f6d4d4"/>
+      <text x="1200" y="312" fill="#0b0b0c" font-weight="600">Beras 10 kg</text><text x="1200" y="336" font-size="13" fill="#6b6b70">Minimum 5</text>
+      <text x="1480" y="324" fill="#c43c3c" font-weight="700" text-anchor="end">4 left</text>
+      <rect x="1182" y="366" width="316" height="72" rx="12" fill="#fff5f5" stroke="#f6d4d4"/>
+      <text x="1200" y="396" fill="#0b0b0c" font-weight="600">Mayonaise</text><text x="1200" y="420" font-size="13" fill="#6b6b70">Minimum 10</text>
+      <text x="1480" y="408" fill="#c43c3c" font-weight="700" text-anchor="end">7 left</text>
+      <rect x="1182" y="450" width="316" height="72" rx="12" fill="#fff5f5" stroke="#f6d4d4"/>
+      <text x="1200" y="480" fill="#0b0b0c" font-weight="600">Sambal botol</text><text x="1200" y="504" font-size="13" fill="#6b6b70">Minimum 12</text>
+      <text x="1480" y="492" fill="#c43c3c" font-weight="700" text-anchor="end">9 left</text>
+      <rect x="1182" y="548" width="316" height="72" rx="12" fill="#f7f7f9" stroke="#e7e7ec" stroke-dasharray="5 4"/>
+      <text x="1200" y="578" fill="#3a3a40" font-weight="600">Gula 1 kg</text><text x="1200" y="602" font-size="13" fill="#6b6b70">Always in supply</text>
+      <rect x="1398" y="568" width="84" height="28" rx="14" fill="#e9e9ee"/><text x="1440" y="587" font-size="12" fill="#5d5d63" font-weight="700" text-anchor="middle">Min off</text>
+    </g>
+    <text x="1188" y="664" font-size="13.5" fill="#6b6b70">Set when the item is added.</text>
+    <text x="1188" y="686" font-size="13.5" fill="#6b6b70">Editable, or switched off for</text>
+    <text x="1188" y="708" font-size="13.5" fill="#6b6b70">items that are always available.</text>
+  </g>
+</svg>
