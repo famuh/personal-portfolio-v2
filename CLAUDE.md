@@ -34,6 +34,8 @@ No test suite. To add a shadcn/ui component use the shadcn CLI (`components.json
 
 **Ask my portfolio** (optional chatbot, provider-agnostic): `components/ask/AskLauncher.jsx` (floating button, lazy-loads `AskPanel.jsx`) → `app/api/ask/route.js` → `lib/ask/provider.js` (plain `fetch`, no vendor SDK) with a system prompt built by `lib/ask/context.js` from `content/` (placeholder fields are excluded). Env vars (set in Vercel): `NEXT_PUBLIC_ASK_PORTFOLIO=true` (shows the button; read at build time), `ASK_PROVIDER` (`openai` = any OpenAI-compatible API incl. Gemini/Groq/OpenRouter/Ollama, or `anthropic`), `ASK_API_KEY`, `ASK_MODEL`, optional `ASK_BASE_URL`. Without key/model the route returns 503. In-memory per-IP rate limit (20 requests / 10 min, per serverless instance).
 
+**Analytics**: Vercel Web Analytics via `<Analytics />` (`@vercel/analytics/next`) in `app/layout.jsx`. It only reports on Vercel deployments and has to be enabled in the project's Analytics tab.
+
 **Notes**: `content/notes.js` → `/notes` and `/notes/[slug]`; case studies can link a note via `relatedNote`.
 
 **CV**: `/cv` renders the CV from `content/` (single column, A4 print styles under `@media print` in globals.css; Header/Footer/chat carry `print:hidden`). The downloadable file `public/assets/resume/myresume.pdf` (linked via `profile.cv`, saved as `Fadhil-Muhammad-CV.pdf` through `profile.cvFileName`) is exported from that page: open `/cv` in Chrome/Edge → Print → Save as PDF (A4, margins default, background graphics on), and keep it at 2 pages. Re-export whenever experience or skills change. `/resume` redirects to `/cv`.
