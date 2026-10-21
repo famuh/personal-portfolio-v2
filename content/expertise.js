@@ -120,26 +120,33 @@ export const aiCollaboration = {
   ],
 };
 
+// Skills by area, strongest first within each group (Flutter before Kotlin).
+// Used by the home bento (3 columns), /about (2 columns) and the CV, so keep
+// it at six groups and use the names recruiters and ATS search for.
 export const stack = [
   {
     domain: "Mobile",
-    items: ["Flutter", "Provider", "Dio", "Freezed", "Kotlin", "Hilt", "Room", "CameraX", "NFC", "Bluetooth", "TensorFlow Lite"],
+    items: ["Flutter", "Dart", "Provider", "Dio", "Freezed", "Clean architecture", "Offline-first", "Kotlin", "Jetpack (Hilt, Room, CameraX)", "Google Play release"],
   },
   {
     domain: "Web",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Redux", "Motion", "Leaflet"],
+    items: ["React", "Next.js", "TypeScript", "Redux", "TanStack Query", "Tailwind CSS", "Motion", "Leaflet"],
   },
   {
     domain: "Backend & infra",
-    items: [".NET Core", "SQL Server", "MySQL", "Firestore", "ASP.NET Web Forms", "Crystal Reports", "Node.js", "Prisma", "Docker", "IIS", "Vercel", "Plesk", "NGINX", "GitHub Actions"],
+    items: [".NET Core", "Node.js", "Express", "Hono", "Python", "REST API", "Swagger", "SQL Server", "MySQL", "Prisma", "Firestore", "ASP.NET Web Forms", "Crystal Reports", "Docker", "IIS", "NGINX", "Plesk", "Vercel", "GitHub Actions"],
   },
   {
-    domain: "AI integration & monitoring",
-    items: ["TensorFlow Lite", "YOLOv8", "LLM APIs", "Prometheus", "Grafana", "Sentry", "Crashlytics", "Postman", "Swagger"],
+    domain: "Integrations & hardware",
+    items: ["ERP integration", "Third-party APIs & SDKs", "Google Maps API", "Firebase", "NFC (Android, PC/SC)", "Bluetooth thermal printing", "Android TV kiosks"],
+  },
+  {
+    domain: "AI & monitoring",
+    items: ["TensorFlow Lite", "Google ML Kit", "YOLOv8", "LLM APIs", "Prometheus", "Grafana", "Sentry", "Crashlytics"],
   },
   {
     domain: "Analysis & design",
-    items: ["User flows", "ERD", "Wireframes", "Figma", "Canva", "Photoshop", "Notion"],
+    items: ["Requirement gathering", "Business process analysis", "Use case diagram", "Data flow diagram (DFD)", "ERD", "Class diagram", "User flows", "Wireframes", "Figma"],
   },
 ];
 

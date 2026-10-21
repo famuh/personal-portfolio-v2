@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Download } from "lucide-react";
+import { Menu, FileText } from "lucide-react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { navLinks, profile } from "@/content/site";
+import { navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import SocialLinks from "./shared/SocialLinks";
@@ -52,10 +52,10 @@ const MobileNav = () => {
 
         <div className="flex flex-col gap-6">
           <Button asChild size="lg" className="w-full">
-            <a href={profile.cv} download={profile.cvFileName}>
-              <Download aria-hidden="true" />
-              Download CV
-            </a>
+            <Link href="/cv" onClick={() => setOpen(false)}>
+              <FileText aria-hidden="true" />
+              View CV
+            </Link>
           </Button>
           <SocialLinks />
         </div>

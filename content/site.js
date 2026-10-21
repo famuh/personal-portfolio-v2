@@ -15,12 +15,15 @@ export const profile = {
   startedYear: 2023,
   cv: "/assets/resume/myresume.pdf", // exported from /cv
   cvFileName: "Fadhil-Muhammad-CV.pdf", // name the download is saved as
+  cvId: "/assets/resume/myresume-id.pdf", // exported from /cv/id
+  cvIdFileName: "Fadhil-Muhammad-CV-ID.pdf",
   portrait: "/assets/opt/portrait.webp",
   idCard: "/assets/opt/idcard.webp",
   // Not looking for a new role: the hero shows what I'm building instead.
   currentRole: "Software Engineer, leading GEMA Plantation and GEMA Factory",
   now: "Building GEMA Plantation and GEMA Factory",
-  url: "https://pamulab.vercel.app",
+  // No trailing slash: sitemap, robots and the CV append paths to it.
+  url: "https://www.pamulab.my.id",
 };
 
 export const socials = [

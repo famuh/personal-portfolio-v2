@@ -35,6 +35,7 @@ export default function Footer() {
               </li>
             ))}
             <li><a href={profile.cv} download={profile.cvFileName} className="hover:text-accent-ink">Download CV (PDF)</a></li>
+            <li><a href={profile.cvId} download={profile.cvIdFileName} hrefLang="id" className="hover:text-accent-ink">CV Bahasa Indonesia (PDF)</a></li>
           </ul>
         </nav>
 

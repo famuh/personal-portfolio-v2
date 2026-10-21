@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal portfolio of Fadhil Muhammad, deployed on Vercel at https://pamulab.vercel.app ("Famuh", studio name Pamulab), positioned as **IT Consultant / Senior Developer / Lead Programmer / Analyst**. Next.js 15 App Router, JavaScript (`.jsx`, no TypeScript despite the `@/*` alias in `jsconfig.json`), Tailwind CSS v4, shadcn/ui + Radix primitives, framer-motion, next-themes. The redesign rationale (reference analysis, sitemap, animation list) is in `docs/REDESIGN-PLAN.md`.
+Personal portfolio of Fadhil Muhammad, deployed on Vercel at https://pamulab.vercel.app ("Famuh", studio name Pamulab) and DNS at https://www.pamulab.my.id/, positioned as **IT Consultant / Senior Developer / Lead Programmer / Analyst**. Next.js 15 App Router, JavaScript (`.jsx`, no TypeScript despite the `@/*` alias in `jsconfig.json`), Tailwind CSS v4, shadcn/ui + Radix primitives, framer-motion, next-themes. The redesign rationale (reference analysis, sitemap, animation list) is in `docs/REDESIGN-PLAN.md`.
 
 ## Commands
 
@@ -38,7 +38,7 @@ No test suite. To add a shadcn/ui component use the shadcn CLI (`components.json
 
 **Notes**: `content/notes.js` → `/notes` and `/notes/[slug]`; case studies can link a note via `relatedNote`.
 
-**CV**: `/cv` renders the CV from `content/` (single column, A4 print styles under `@media print` in globals.css; Header/Footer/chat carry `print:hidden`). The downloadable file `public/assets/resume/myresume.pdf` (linked via `profile.cv`, saved as `Fadhil-Muhammad-CV.pdf` through `profile.cvFileName`) is exported from that page: open `/cv` in Chrome/Edge → Print → Save as PDF (A4, margins default, background graphics on), and keep it at 2 pages. Re-export whenever experience or skills change. `/resume` redirects to `/cv`.
+**CV**: `/cv` renders the CV from `content/` (single column, A4 print styles under `@media print` in globals.css; Header/Footer/chat carry `print:hidden`). The downloadable file `public/assets/resume/myresume.pdf` (linked via `profile.cv`, saved as `Fadhil-Muhammad-CV.pdf` through `profile.cvFileName`) is exported from that page: open `/cv` in Chrome/Edge → Print → Save as PDF (A4, margins default, background graphics on), and keep it at 2 pages. Re-export whenever experience or skills change. `/resume` redirects to `/cv`. `/cv/id` is the Indonesian version (`public/assets/resume/myresume-id.pdf`, `profile.cvId`); both pages render `components/cv/CvSheet.jsx`, and the CV wording plus Indonesian translations live in `content/cv.js` (matched to `experience.js` entries by `company|period`, so update both when experience changes). Headless export works too: `pnpm build && pnpm start`, then `msedge --headless=new --no-pdf-header-footer --print-to-pdf=<file> http://localhost:3000/cv` (and `/cv/id`).
 
 **Images**: optimized WebP copies live in `public/assets/opt/` (originals in `public/assets/img|design` are unused); SVG illustrations in `public/assets/illustrations/`. Firebase Storage URLs used by the old site return HTTP 402 — don't reference them.
 

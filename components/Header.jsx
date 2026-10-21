@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Download } from "lucide-react";
+import { FileText } from "lucide-react";
 import { profile } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
@@ -44,10 +44,10 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Button asChild size="sm">
-              <a href={profile.cv} download={profile.cvFileName}>
-                <Download aria-hidden="true" />
+              <Link href="/cv">
+                <FileText aria-hidden="true" />
                 CV
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

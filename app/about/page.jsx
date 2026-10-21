@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import { profile } from "@/content/site";
 import { activities, experience, education, recognition, certifications, languages } from "@/content/experience";
 import { stack, process } from "@/content/expertise";
@@ -36,10 +36,10 @@ export default function AboutPage() {
       >
         <div className="flex flex-wrap gap-3">
           <Button asChild size="lg">
-            <a href={profile.cv} download={profile.cvFileName}>
-              <Download aria-hidden="true" />
-              Download CV (PDF)
-            </a>
+            <Link href="/cv">
+              <FileText aria-hidden="true" />
+              View CV
+            </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
             <Link href="/contact">
