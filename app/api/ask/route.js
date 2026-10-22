@@ -6,10 +6,44 @@ import { chat, getConfig, ProviderError } from "@/lib/ask/provider";
 // The widget itself is shown only when NEXT_PUBLIC_ASK_PORTFOLIO=true.
 export const runtime = "nodejs";
 
-const MAX_TURNS = 8; // history sent per request
+const MAX_TURNS = 6; // history sent per request
 const MAX_CHARS = 600; // per visitor message
+const MAX_ANSWER_CHARS = 1200; // per earlier assistant answer kept in history
 
-const SYSTEM = buildSystemPrompt();
+// Compact mode builds a smaller prompt per request from the visitor's recent
+// questions (see lib/ask/context.js); full mode builds it once.
+const COMPACT = process.env.ASK_CONTEXT === "compact";
+const FULL_SYSTEM = COMPACT ? null : buildSystemPrompt();
+const systemFor = (messages) =>
+  FULL_SYSTEM ??
+  buildSystemPrompt({
+    compact: true,
+    query: messages.filter((m) => m.role === "user").slice(-3).map((m) => m.content).join("\n"),
+  });
+
+// Answers to opening questions (usually the suggestion chips) are reused for a
+// day, so repeat questions don't spend tokens. Per instance, like the limiter.
+const CACHE_MS = 24 * 60 * 60 * 1000;
+const CACHE_MAX = 100;
+const answers = new Map();
+const cacheKey = (messages) =>
+  messages.length === 1 ? messages[0].content.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim() : null;
+
+function cachedAnswer(key) {
+  const hit = key && answers.get(key);
+  if (!hit) return null;
+  if (Date.now() - hit.at > CACHE_MS) {
+    answers.delete(key);
+    return null;
+  }
+  return hit.answer;
+}
+
+function remember(key, answer) {
+  if (!key) return;
+  if (answers.size >= CACHE_MAX) answers.delete(answers.keys().next().value);
+  answers.set(key, { answer, at: Date.now() });
+}
 
 // Basic in-memory rate limit per IP. On Vercel each serverless instance has
 // its own memory, so this is a soft limit; use a shared store (e.g. Upstash
@@ -30,7 +64,7 @@ function sanitize(messages) {
   if (!Array.isArray(messages)) return null;
   const clean = messages
     .filter((m) => (m?.role === "user" || m?.role === "assistant") && typeof m.content === "string" && m.content.trim())
-    .map((m) => ({ role: m.role, content: m.content.slice(0, m.role === "user" ? MAX_CHARS : 4000) }))
+    .map((m) => ({ role: m.role, content: m.content.slice(0, m.role === "user" ? MAX_CHARS : MAX_ANSWER_CHARS) }))
     .slice(-MAX_TURNS);
   // The conversation must start with a user turn and end with the visitor's
   // new question.
@@ -61,8 +95,13 @@ export async function POST(request) {
   const messages = sanitize(payload?.messages);
   if (!messages) return json({ error: "Invalid request." }, 400);
 
+  const key = cacheKey(messages);
+  const cached = cachedAnswer(key);
+  if (cached) return json({ answer: cached });
+
   try {
-    const answer = await chat(config, SYSTEM, messages);
+    const answer = await chat(config, systemFor(messages), messages);
+    if (answer) remember(key, answer);
     return json({ answer: answer || "Sorry, I couldn't come up with an answer. Try asking another way." });
   } catch (error) {
     if (error instanceof ProviderError && error.status === 429) {

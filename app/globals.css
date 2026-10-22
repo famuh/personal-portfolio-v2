@@ -32,6 +32,15 @@
   --grad-sky: #c7e3ff;
   --grad-lime: #e9f9c4;
 
+  /* — pastel rainbow: the Ask launcher's hover state only (same in dark,
+     always paired with --on-accent text) — */
+  --pastel-pink: #ffb3d9;
+  --pastel-peach: #ffd1a8;
+  --pastel-lemon: #fff3a3;
+  --pastel-mint: #b5f5d0;
+  --pastel-sky: #a8d8ff;
+  --pastel-lilac: #d4b8ff;
+
   /* — glass — */
   --glass-bg: rgb(255 255 255 / 0.62);
   --glass-border: rgb(255 255 255 / 0.85);
@@ -305,6 +314,104 @@
 @utility animate-float {
   animation: float 7s var(--ease-in-out-quart) infinite;
   animation-delay: var(--delay, 0ms);
+}
+
+/* Ask launcher (components/ask/AskLauncher.jsx). Idle: the sparkle twinkles
+   and a ring pings outward. Hover/focus: a spinning pastel rainbow border, a
+   drifting pastel fill and a two-tone glow. Only transform, opacity, one
+   registered angle and a background position animate; no blur layers. */
+@property --ask-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes ask-spin {
+  to { --ask-angle: 360deg; }
+}
+
+@keyframes ask-drift {
+  to { background-position: 200% 50%; }
+}
+
+@keyframes ask-twinkle {
+  0%, 70%, 100% { transform: rotate(0deg) scale(1); }
+  78% { transform: rotate(-16deg) scale(1.2); }
+  88% { transform: rotate(10deg) scale(0.92); }
+}
+
+@keyframes ask-ping {
+  0% { transform: scale(1); opacity: 0.6; }
+  70%, 100% { transform: scale(1.75); opacity: 0; }
+}
+
+@utility animate-twinkle {
+  animation: ask-twinkle 3.6s var(--ease-in-out-quart) infinite;
+}
+
+@utility animate-ask-ping {
+  animation: ask-ping 2.8s var(--ease-out-expo) infinite;
+}
+
+@utility ask-fab {
+  --ask-rainbow: var(--pastel-pink), var(--pastel-peach), var(--pastel-lemon), var(--pastel-mint), var(--pastel-sky),
+    var(--pastel-lilac), var(--pastel-pink);
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo),
+    color var(--dur-fast);
+
+  /* rainbow border, a 2px ring cut out with a mask */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(from var(--ask-angle), var(--ask-rainbow));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--dur-base);
+    animation: ask-spin 2.2s linear infinite paused;
+  }
+
+  /* pastel fill; the stops start and end on pink so the drift loops cleanly */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(110deg, var(--ask-rainbow));
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity var(--dur-base);
+    animation: ask-drift 3.5s linear infinite paused;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--on-accent);
+    transform: translateY(-3px) rotate(-6deg) scale(1.08);
+    box-shadow:
+      -10px 8px 26px -8px var(--pastel-pink),
+      10px 12px 30px -8px var(--pastel-sky),
+      0 0 0 1px var(--glass-edge);
+  }
+
+  &:hover::before,
+  &:hover::after,
+  &:focus-visible::before,
+  &:focus-visible::after {
+    opacity: 1;
+    animation-play-state: running;
+  }
 }
 
 /* ==========================================================================
